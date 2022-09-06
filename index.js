@@ -10,6 +10,10 @@ const mysql = require("./models/dbConnect").con;
 //using homeRoute
 app.use("/", homeRoute);
 app.use("/sendNotif", homeRoute);
+
+// om
+app.use("/register", homeRoute);
+
 //using css , js , jquery .....for styling 
 app.use(express.static(__dirname + "/views"));
 
