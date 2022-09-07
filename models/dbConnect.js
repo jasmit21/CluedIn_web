@@ -5,8 +5,8 @@ const con = mysql.createConnection({
 
     host: "localhost",
     user: "root",
-    password: "",
-    database: 'register',
+    password: "root",
+    database: 'CluedIn',
 });
 con.connect((err)=>{
     if (err) throw err;

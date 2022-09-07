@@ -3,21 +3,22 @@ const con = require('../models/dbConnect');
 
 module.exports = {
     get : (req, res) => {
-        res.sendFile('views/index.html', { root: '.' });  //absolute path 
+        res.sendFile('views/Index.html', { root: '.' });  //absolute path 
+        // console.log(res.sendFile('views/Index.html', { root: '.' }));
     },
 
     post : (req , res) => {
         // fetching details 
-        console.log(req.body);
+        console.log(req.body); 
         var fname = req.body.fname;
         var lname = req.body.lname;
-        var sql = "INSERT INTO persons (LastName, FirstName) VALUES ?";
+        var sql = "INSERT INTO persons (FirstName,LastName) VALUES ?";
         var values = [
           [lname,fname]
         ];
-        con.query(sql,[values], function (err, result) {
+        con.query(sql,[values], (err, result) => {
         if (err) res.send(err);
-        res.send("new registration");
+        res.send("new data inserted");
         });
 
         // var notif_title = req.body.notif_title;

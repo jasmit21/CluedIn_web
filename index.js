@@ -3,7 +3,7 @@ const app = express();
 
 //connecting homeroute.js 
 const homeRoute = require("./routes/homeRoute");
-const registerRoute = require("./routes/registerRoute");
+// const registerRoute = require("./routes/registerRoute");
 
 //connecting dbConnect.js
 const mysql = require("./models/dbConnect").con;

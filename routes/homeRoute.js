@@ -10,6 +10,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json);
 
 var bodyParser = require('body-parser');
+const homeNotifController = require('../controllers/homeNotifController');
 
 
 router.get('/', homeController.get);
@@ -18,6 +19,7 @@ router.get('/', homeController.get);
 
 //routing to form success of noitf submit 
 
+router.post("/sendNotif", homeNotifController.post);
 router.post("/register", homeController.post);
 
 module.exports = router;
