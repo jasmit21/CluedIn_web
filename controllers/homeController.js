@@ -2,7 +2,8 @@ const firebaseAdmin = require("firebase-admin");
 
 module.exports = {
     get : (req, res) => {
-        res.sendFile('views/index.html', { root: '.' });  //absolute path 
+        res.sendFile('views/Index.html', { root: '.' });  //absolute path 
+        // console.log(res.sendFile('views/Index.html', { root: '.' }));
     },
 
     post : (req , res) => {

@@ -16,6 +16,7 @@ app.use(bodyParser.json());       // to support JSON-encoded bodies
 app.use("/", homeRoute);
 app.use("/sendNotif", homeRoute);
 // om
+
 app.use("/register", homeRoute);
 
 //creating server 

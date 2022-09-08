@@ -14,6 +14,7 @@ app.use(express.json);
 // const homeNotifController = require('../controllers/homeNotifController');
 
 router.get('/', homeController.get);
+
 router.post("/register", homeController.post);
 
 module.exports = router;
