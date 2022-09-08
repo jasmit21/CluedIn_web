@@ -1,24 +1,20 @@
+// dependencies
 const express = require('express');
 const app = express();
+const bodyParser = require('body-parser');
 
-//connecting homeroute.js 
+//declaring routes 
 const homeRoute = require("./routes/homeRoute");
-const registerRoute = require("./routes/registerRoute");
-
-//connecting dbConnect.js
-const mysql = require("./models/dbConnect").con;
 
 //using css , js , jquery .....for styling 
 app.use(express.static(__dirname + "/views"));
-
-var bodyParser = require('body-parser');
 //configuring middlewares to handle post request 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());       // to support JSON-encoded bodies
-//using homeRoute
+
+//using Routes
 app.use("/", homeRoute);
 app.use("/sendNotif", homeRoute);
-
 // om
 app.use("/register", homeRoute);
 

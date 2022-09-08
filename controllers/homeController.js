@@ -1,5 +1,4 @@
-const con = require('../models/dbConnect');
-// var bodyParser = require('body-parser');
+const firebaseAdmin = require("firebase-admin");
 
 module.exports = {
     get : (req, res) => {
@@ -7,19 +6,39 @@ module.exports = {
     },
 
     post : (req , res) => {
-        // fetching details 
-        console.log(req.body);
-        var fname = req.body.fname;
-        var lname = req.body.lname;
-        var sql = "INSERT INTO persons (LastName, FirstName) VALUES ?";
-        var values = [
-          [lname,fname]
-        ];
-        con.query(sql,[values], function (err, result) {
-        if (err) res.send(err);
-        res.send("new registration");
-        });
-
+// ----------------------firebase notification-------------------------
+         const fcmToken = "ebjzXqouTCeRUMTvWlwP0e:APA91bEcYr-AaP8xNftjJx0ATqtpgQ4_ucGOwm_JfTyTPkJunhFakRxpqqFJrjbo9kMbQ7cQC1_H43IgK3y0dOQFtMOKBuV2cUZfUrwYoIxGpJeh62oNmN5uRVAIFb5vfHYOWKeA1EMM";
+         const payload = {
+            notification:{
+                title:req.body.fname,
+                body:req.body.lname,
+                // imageUrl: "https://my-cdn.com/extreme-weather.png",
+                click_action:"FLUTTER_NOTIFICATION_CLICK",
+            },
+            data : {
+                data1 : "data1",
+                data2 : "data2",
+            },
+         }
+         const options ={
+            priority : "high",
+            timeToLive : 60*60,
+         }
+          firebaseAdmin.messaging().sendToDevice(fcmToken,payload,options);
+          res.send("notification send");
+        //----------------------- fetching details for database -----------------------
+        // console.log(req.body); 
+        // var fname = req.body.fname;
+        // var lname = req.body.lname;
+        // var sql = "INSERT INTO persons (FirstName,LastName) VALUES ?";
+        // var values = [
+        //   [lname,fname]
+        // ];
+        // con.query(sql,[values], (err, result) => {
+        // if (err) res.send(err);
+        // res.send("new data inserted");
+        // });
+// ----------------------------------------------------------------------
         // var notif_title = req.body.notif_title;
         // // console.log(notif_title);
         // var notif_desc  = req.body.notif_desc;

@@ -1,23 +1,19 @@
 const express = require('express');
 const homeController = require('../controllers/homeController');
-// const registerController = require("../controllers/registerController");
 const router = express.Router();
+const firebaseAdmin = require("firebase-admin");
 const app = express();
 
-var con = require("../models/dbConnect");
+firebaseAdmin.initializeApp({
+    credential: firebaseAdmin.credential.cert(require("../cluedin-db185-firebase-adminsdk-g30hi-5e023ee3ab.json")),
+  });
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json);
 
-var bodyParser = require('body-parser');
-
+// const homeNotifController = require('../controllers/homeNotifController');
 
 router.get('/', homeController.get);
-
-//om
-
-//routing to form success of noitf submit 
-
 router.post("/register", homeController.post);
 
 module.exports = router;
