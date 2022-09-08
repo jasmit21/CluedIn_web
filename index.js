@@ -15,11 +15,11 @@ var bodyParser = require('body-parser');
 //configuring middlewares to handle post request 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());       // to support JSON-encoded bodies
+
 //using homeRoute
 app.use("/", homeRoute);
 app.use("/sendNotif", homeRoute);
 
-// om
 app.use("/register", homeRoute);
 
 //creating server 
