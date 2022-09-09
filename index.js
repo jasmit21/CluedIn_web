@@ -15,6 +15,7 @@ app.use(bodyParser.json());       // to support JSON-encoded bodies
 //using Routes
 app.use("/", homeRoute);
 app.use("/sendNotif", homeRoute);
+
 // om
 
 app.use("/register", homeRoute);

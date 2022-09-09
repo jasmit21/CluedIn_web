@@ -1,5 +1,6 @@
 const express = require('express');
 const homeController = require('../controllers/homeController');
+const notifController = require('../controllers/homeNotifController');
 const router = express.Router();
 const firebaseAdmin = require("firebase-admin");
 const app = express();
@@ -16,6 +17,8 @@ app.use(express.json);
 router.get('/', homeController.get);
 
 router.post("/register", homeController.post);
+
+router.post('/sendNotif',notifController.post);
 
 module.exports = router;
 
