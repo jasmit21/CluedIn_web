@@ -5,7 +5,7 @@ const con = mysql.createConnection({
 
     host: "cluedin.c2hlbphxofti.us-west-2.rds.amazonaws.com",
     user: "admin",
-    password: "clued123",
+    password: "cluedin123",
     database: 'cluedin',
 });
 con.connect((err)=>{
