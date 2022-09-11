@@ -5,6 +5,7 @@ const bodyParser = require('body-parser');
 
 //declaring routes 
 const homeRoute = require("./routes/homeRoute");
+const dbApiRoute = require("./routes/dbApiRoute");
 
 //using css , js , jquery .....for styling 
 app.use(express.static(__dirname + "/views"));
@@ -16,7 +17,7 @@ app.use(bodyParser.json());       // to support JSON-encoded bodies
 app.use("/", homeRoute);
 app.use("/sendNotif", homeRoute);
 // om
-
+app.use("/dbapi",dbApiRoute);
 app.use("/register", homeRoute);
 
 //creating server 

@@ -2,6 +2,7 @@ const express = require('express');
 const homeController = require('../controllers/homeController');
 const router = express.Router();
 const firebaseAdmin = require("firebase-admin");
+const dbApiController = require('../controllers/dbApiController');
 const app = express();
 
 firebaseAdmin.initializeApp({
@@ -16,6 +17,10 @@ app.use(express.json);
 router.get('/', homeController.get);
 
 router.post("/register", homeController.post);
+
+router.post('/sendNotif',notifController.post);
+
+router.get("/dbapi",dbApiController.get);
 
 module.exports = router;
 
