@@ -44,7 +44,5 @@ module.exports = {
         }
          firebaseAdmin.messaging().sendToDevice(fcmToken,payload,options);
         //  res.send("notification send");
-
-
     }
 }

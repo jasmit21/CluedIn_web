@@ -7,6 +7,7 @@ const bodyParser = require('body-parser');
 const homeRoute = require("./routes/homeRoute");
 
 //using css , js , jquery .....for styling 
+app.set('view engine', 'hbs');
 app.use(express.static(__dirname + "/views"));
 //configuring middlewares to handle post request 
 app.use(bodyParser.urlencoded({extended: true}));
@@ -16,9 +17,15 @@ app.use(bodyParser.json());       // to support JSON-encoded bodies
 app.use("/", homeRoute);
 app.use("/sendNotif", homeRoute);
 
+//for fetching notif_table from db 
+
+app.use('/action', homeRoute);
 // om
 
 app.use("/register", homeRoute);
+
+//fetching data from mysql table
+app.use("/listNotif", homeRoute);
 
 //creating server 
 var port = process.env.PORT || 4000;
