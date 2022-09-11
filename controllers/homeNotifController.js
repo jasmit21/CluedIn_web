@@ -14,7 +14,8 @@ module.exports = {
         var scheduled_date = req.body.scheduled_date;
         var category   = req.body.category;  
 
-        var sql = "INSERT INTO notif_table (title,message,expDate,schDate,category) VALUES ?";
+        // var sql = "INSERT INTO notif_table (title,message,expDate,schDate,category) VALUES ?";
+        var sql = "INSERT INTO user_message (message_title,user_message,dateOfExpiration,scheduled_date,category) VALUES ?";
         var values = [
           [notif_title,notif_desc,exp_date,scheduled_date,category]
         ];

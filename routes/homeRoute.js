@@ -28,7 +28,7 @@ router.post("/action",function(request, response, next){
 
   if (action == 'fetch') 
   {
-    var qry = "SELECT * FROM notif_table ORDER BY id DESC";
+    var qry = "SELECT * FROM user_message ORDER BY message_id DESC";
     con.query(qry, function(error,data){
       if (error) {
         throw error;        
