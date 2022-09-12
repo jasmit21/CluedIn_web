@@ -255,7 +255,7 @@
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" id="custom-tabs-two-profile-tab" data-toggle="pill"
-                                        href="#custom-tabs-two-profile" role="tab"
+                                        href="#listNotif" role="tab" 
                                         aria-controls="custom-tabs-two-profile" aria-selected="false">List
                                         Notification</a>
                                 </li>
@@ -277,7 +277,8 @@
                                     aria-labelledby="custom-tabs-two-home-tab">
 
                                     <!-- creating form -->
-                                    <form id="quickform" method="post" action="/sendNotif"> <!--action looks for index.html -->
+                                    <form id="quickform" method="post" action="/sendNotif">
+                                        <!--action looks for index.html -->
                                         <div class="card-body">
                                             <div class="form-group">
                                                 <label for="notificationTitle">Notification Title</label>
@@ -305,7 +306,7 @@
                                                 <label>Schedule:</label>
                                                 <div class="input-group date" id="reservationdate"
                                                     data-target-input="nearest" style="width: 40%;">
-                                                    <input type="date" class="form-control datetimepicker-input" 
+                                                    <input type="date" class="form-control datetimepicker-input"
                                                         data-target="#reservationdate" name="scheduled_date">
                                                     <!-- <div class="input-group-append" data-target="#reservationdate"
                                                         data-toggle="datetimepicker">
@@ -319,7 +320,8 @@
                                                 <label>Category</label>
                                                 <select class="form-control select2 select2-hidden-accessible"
                                                     style="width: 20%;" data-select2-id="1" tabindex="-1"
-                                                    aria-hidden="true" name="category" placeholder="select category" required>
+                                                    aria-hidden="true" name="category" placeholder="select category"
+                                                    required>
                                                     <option selected="selected" data-select2-id="3"></option>
                                                     <option data-select2-id="33">FE</option>
                                                     <option data-select2-id="34">COMPS</option>
@@ -376,16 +378,48 @@
                                 </div>
 
                                 <!-- OM YAHA  DAAL FORM  -->
-                                <div class="tab-pane fade" id="custom-tabs-two-profile" role="tabpanel"
+                                <div class="tab-pane fade" id="listNotif" role="tabpanel"
                                     aria-labelledby="custom-tabs-two-profile-tab">
-                                    <form method="post" action="/register">
-                                        <input type="text" name="fname" placeholder="first name">
-                                        <input type="text" name="lname" placeholder="last name">
-                                        <button type="submit">send</button>
-                                    </form>
+
+                                    <!-- inside list notif div  -->
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <h3 class="card-title">Fixed Header Table</h3>
+                                            <div class="card-tools">
+                                                <div class="input-group input-group-sm" style="width: 150px;">
+                                                    <input type="text" name="table_search"
+                                                        class="form-control float-right" placeholder="Search">
+                                                    <div class="input-group-append">
+                                                        <button type="submit" class="btn btn-default">
+                                                            <i class="fas fa-search"></i>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="card-body table-responsive p-0" style="height: 500px;">
+                                            <table class="table table-head-fixed text-nowrap" id="notif_table">
+                                                <thead>
+                                                    <tr>
+                                                        <th>ID</th>
+                                                        <th>Title</th>
+                                                        <th>Message</th>
+                                                        <th>Expiry Date</th>
+                                                        <th>Scheduled Date</th>
+                                                        <th>Category</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    
+                                                </tbody>
+                                            </table>
+                                        </div>
+
+                                    </div>
                                 </div>
 
-                                
+
                                 <div class="tab-pane fade" id="custom-tabs-two-messages" role="tabpanel"
                                     aria-labelledby="custom-tabs-two-messages-tab">
                                     Morbi turpis dolor, vulputate vitae felis non, tincidunt congue mauris. Phasellus
@@ -459,6 +493,47 @@
                 <script src="dist/js/demo.js"></script>
                 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
                 <script src="dist/js/pages/dashboard2.js"></script>
+
+                <script>
+                    
+
+                    $(document).ready(function(){
+
+                        load_data();                        
+                        function load_data(){
+                            $.ajax({
+                                url:"http://localhost:4000/action",
+                                method:"POST",
+                                data:{action:'fetch'},
+                                dataType: "JSON",
+                                success:function(data){
+                                    var html = '';
+
+                                    if(data.data.length > 0)
+                                    {
+                                        for(var count =0; count< data.data.length; count++)
+                                        {
+                                            html += `
+                                            <tr>
+                                                <td>`+data.data[count].message_id+`</td>
+                                                <td>`+data.data[count].message_title+`</td>
+                                                <td>`+data.data[count].user_message+`</td>
+                                                <td>`+data.data[count].dateOfExpiration+`</td>
+                                                <td>`+data.data[count].scheduled_date+`</td>
+                                                <td>`+data.data[count].category+`</th>
+                                            </tr>
+                                            
+                                            `;
+                                        }
+                                    }
+
+                                    $('#notif_table tbody').html(html);
+
+                                }
+                            });
+                        }
+                    });
+                </script>
                 <!-- <script>
                     $(function () {
                         $.validator.setDefaults({
