@@ -5,7 +5,7 @@ const bodyParser = require('body-parser');
 
 //declaring routes 
 const homeRoute = require("./routes/homeRoute");
-const cluedinAppRoute = require("./routes/cluedinAppRoute");
+
 
 //using css , js , jquery .....for styling 
 app.set('view engine', 'hbs');
@@ -21,9 +21,6 @@ app.use("/sendNotif", homeRoute);
 //for fetching notif_table from db 
 
 app.use('/action', homeRoute);
-// om
-
-app.use("/register", homeRoute);
 
 //fetching data from mysql table
 app.use("/listNotif", homeRoute);
@@ -31,6 +28,7 @@ app.use("/listNotif", homeRoute);
 // cluedIn app signIn / signUp api 
 app.use("/api/signup",homeRoute);
 app.use("/api/signin",homeRoute);
+app.use("/tokenIsValid",homeRoute);
 
 //creating server 
 var port = process.env.PORT || 4000;

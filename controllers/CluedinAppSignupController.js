@@ -5,7 +5,7 @@ const con = require("../models/dbConnect");
 module.exports = {
     post : async (req, res) => {
         try{
-            var fname = req.body.fname;
+        var fname = req.body.fname;
         var email = req.body.email;
         var password = req.body.password;
         var mobno = req.body.mobno;
@@ -19,17 +19,23 @@ module.exports = {
             }else {
                 // Checking if the result length is more than 0.
                  if(result.length > 0) {
-                     res.send('Username already exist');
+                     res.json(
+                        {
+                            msg : "User with this email already exist",
+                        }
+                     );
                  }else {
                      var sql="insert into user_details (user_fname,user_email,user_pwd,user_mobno) values ?";
                      var values = [
                         [fname,email,hashpwd,mobno]
                     ];
                     con.query(sql,[values],(err,result)=>{
-                        if(err){
-                            res.send(err);
-                        }
-                        res.send(result);
+                        if(err) throw err;
+                        res.json(
+                            {
+                                result : result,
+                            }
+                        );
                     });
                 }
             }
