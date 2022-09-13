@@ -5,7 +5,11 @@ const bodyParser = require('body-parser');
 
 //declaring routes 
 const homeRoute = require("./routes/homeRoute");
+
+const dbApiRoute = require("./routes/dbApiRoute");
+
 const path = require('path');
+
 
 //using css , js , jquery .....for styling 
 // app.set('view engine', 'hbs');
@@ -36,6 +40,10 @@ app.use("/listuser",homeRoute);
 
 
 app.use('/action', homeRoute);
+
+// om
+app.use("/dbapi",dbApiRoute);
+app.use("/register", homeRoute);
 
 
 

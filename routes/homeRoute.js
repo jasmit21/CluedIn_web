@@ -4,7 +4,11 @@ const notifController = require('../controllers/homeNotifController');
 const listNotif = require('../controllers/listNotifController');
 const router = express.Router();
 const firebaseAdmin = require("firebase-admin");
+
+const dbApiController = require('../controllers/dbApiController');
+
 const con = require('../models/dbConnect');
+
 const app = express();
 const path = require('path');
 const createUser = require('../controllers/createUser');
@@ -70,6 +74,10 @@ router.post('/listuser', (req, res, next) => {
 });
 
 router.post('/sendNotif', notifController.post);
+
+router.post('/sendNotif',notifController.post);
+
+router.get("/dbapi",dbApiController.get);
 
 module.exports = router;
 
