@@ -29,7 +29,7 @@ app.use("/listNotif", homeRoute);
 app.use("/api/signup",homeRoute);
 app.use("/api/signin",homeRoute);
 app.use("/tokenIsValid",homeRoute);
-
+app.use("/api/getuser",homeRoute);
 //creating server 
 var port = process.env.PORT || 4000;
 app.listen(port, (err) => {

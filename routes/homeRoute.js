@@ -39,14 +39,12 @@ router.post("/action",function(request, response, next){
         data:data
       });
     });
-
   }
-
 });
 
 router.post('/sendNotif',notifController.post);
 router.post("/api/signup", cluedinAppSignupController.post);
 router.post("/api/signin", cluedinAppSigninController.post);
-router.post("/isValidRouter", cluedinAppSigninController.post);
+router.post("/tokenisvalid", cluedinAppSigninController.post);
 module.exports = router;
 

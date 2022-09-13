@@ -42,7 +42,7 @@ module.exports = {
                 }return res.json({ msg: "please enter email!!" });
             };
             const token = jwt.sign({ id: searchUserId }, "passwordKey");
-            var searchAllUserData = "select (user_email,user_mobno,)"
+            var searchAllUserData = "select (user_email,user_mobno) values"
             con.query(searchAllUserData)
             // res.json({ token, ...user._doc });
         }
