@@ -6,12 +6,7 @@ module.exports = {
         //absolute path 
         // console.log(res.sendFile('views/Index.html', { root: '.' }));
         
-        var Path =path.join(__dirname,"..","views","login.html");
+        var Path =path.join(__dirname,"..","views","index.html");
         res.sendfile(Path);
-        // res.render('index');
-
-
-        // var qry = "SELECT * FROM notif_table ORDER BY id DESC";
-
     },
 }

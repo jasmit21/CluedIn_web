@@ -160,10 +160,10 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="" class="nav-link">
+                            <a href="./createUser.html" class="nav-link">
                                 <i class="nav-icon fas fa-user-plus"></i>
                                 <p>
-                                    User Creation
+                                    Create User
                                 </p>
                             </a>
                         </li>
@@ -255,8 +255,8 @@
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" id="custom-tabs-two-profile-tab" data-toggle="pill"
-                                        href="#listNotif" role="tab" 
-                                        aria-controls="custom-tabs-two-profile" aria-selected="false">List
+                                        href="#listNotif" role="tab" aria-controls="custom-tabs-two-profile"
+                                        aria-selected="false">List
                                         Notification</a>
                                 </li>
                                 <li class="nav-item">
@@ -283,7 +283,8 @@
                                             <div class="form-group">
                                                 <label for="notificationTitle">Notification Title</label>
                                                 <input type="text" class="form-control" id="notificationTitle"
-                                                    placeholder="Enter title" name="notif_title" required>
+                                                    placeholder="Enter title" name="notif_title" maxlength="30"
+                                                    required>
                                             </div>
                                             <div class="form-group">
                                                 <label>Description</label>
@@ -346,6 +347,55 @@
                                                                     role="presentation"></b></span></span></span><span
                                                         class="dropdown-wrapper" aria-hidden="true"></span></span> -->
                                             </div>
+                                            <div class="row">
+                                                <div class="col-lg-4">
+                                                    <div class="form-group">
+                                                        <label>Department</label>
+                                                        <select class="form-control " style="width: 15rem;"
+                                                            tabindex="-1" id="slct1" aria-hidden="true" name="category"
+                                                            placeholder="select category"
+                                                            onchange="javascript:populate('slct1','slct2')" required>
+                                                            <option selected="selected" value="1">
+                                                                ALL
+                                                            </option>
+                                                            <option value="2">FE</option>
+                                                            <option value="3">IT</option>
+                                                            <option value="4">COMPS</option>
+                                                            <option value="5">EXTC</option>
+                                                            <option value="6">MECH</option>
+                                                            <!-- <option data-select2-id="38">EXAM</option> -->
+                                                        </select>
+
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-4">
+                                                    <div class="form-group">
+                                                        <label>Class</label>
+                                                        <select class="form-control" style="width: 15rem;" tabindex="-1"
+                                                            id="slct2" aria-hidden="true" name="class"
+                                                            placeholder="select class">
+
+                                                        </select>
+
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-4">
+                                                    <div class="form-group">
+                                                        <label>Gender</label>
+                                                        <select class="form-control " style="width: 15rem;"
+                                                            tabindex="-1" id="slct3" aria-hidden="true"
+                                                            name="user_gender" placeholder="select Gender" required>
+                                                            <option selected="selected" value="1">
+                                                                Male
+                                                            </option>
+                                                            <option value="0">Female</option>
+                                                        </select>
+
+                                                    </div>
+                                                </div>
+
+                                            </div>
+
                                             <!-- <div class="form-group">
                                                 <label for="exampleInputPassword1">Password</label>
                                                 <input type="password" class="form-control" id="exampleInputPassword1"
@@ -402,7 +452,7 @@
                                             <table class="table table-head-fixed text-nowrap" id="notif_table">
                                                 <thead>
                                                     <tr>
-                                                        <th>ID</th>
+                                                        <th>S.no</th>
                                                         <th>Title</th>
                                                         <th>Message</th>
                                                         <th>Expiry Date</th>
@@ -411,7 +461,7 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    
+
                                                 </tbody>
                                             </table>
                                         </div>
@@ -493,34 +543,34 @@
                 <script src="dist/js/demo.js"></script>
                 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
                 <script src="dist/js/pages/dashboard2.js"></script>
-
+                <script src="./plugins/jquery/jquery.min.js"></script>
+                <script src="./plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
                 <script>
-                    
 
-                    $(document).ready(function(){
 
-                        load_data();                        
-                        function load_data(){
+                    $(document).ready(function () {
+
+                        load_data();
+                        function load_data() {
                             $.ajax({
-                                url:"http://localhost:4000/action",
-                                method:"POST",
-                                data:{action:'fetch'},
+                                url: "http://localhost:4000/action",
+                                method: "POST",
+                                data: { action: 'fetch' },
                                 dataType: "JSON",
-                                success:function(data){
+                                success: function (data) {
                                     var html = '';
 
-                                    if(data.data.length > 0)
-                                    {
-                                        for(var count =0; count< data.data.length; count++)
-                                        {
+                                    if (data.data.length > 0) {
+                                        for (var count = 0; count < data.data.length; count++) {
                                             html += `
                                             <tr>
-                                                <td>`+data.data[count].message_id+`</td>
-                                                <td>`+data.data[count].message_title+`</td>
-                                                <td>`+data.data[count].user_message+`</td>
-                                                <td>`+data.data[count].dateOfExpiration+`</td>
-                                                <td>`+data.data[count].scheduled_date+`</td>
-                                                <td>`+data.data[count].category+`</th>
+                                                <td>`+ (count + 1) + `</td>
+                                                <td>`+ data.data[count].message_title + `</td>
+                                                <td>`+ data.data[count].user_message + `</td>
+                                                <td>`+ data.data[count].dateOfExpiration + `</td>
+                                                <td>`+ data.data[count].scheduled_date + `</td>
+                                                <td>`+ data.data[count].category + `</td>
+
                                             </tr>
                                             
                                             `;
@@ -533,6 +583,38 @@
                             });
                         }
                     });
+                </script>
+
+                <!-- function for sub category in notif form  -->
+
+                <script>
+                    function populate(s1, s2) {
+
+                        // console.log("hello jasmit")
+                        var s1 = document.getElementById(s1);
+
+                        var s2 = document.getElementById(s2);
+
+                        s2.innerHTML = "";
+                        if (s1.value == 2) {
+                            var optionArray = ["All|All"];
+                            console.log(optionArray);
+                        }
+                        else if (s1.value == 3||s1.value == 4 || s1.value == 5 || s1.value == 6) {
+                            var optionArray = ["All|All", "SE|SE", "TE|TE", "BE|BE"];
+                        }
+                        
+                        for (var option in optionArray) {
+                            var pair = optionArray[option].split("|");
+
+                            var newOption = document.createElement("option");
+                            newOption.value = pair[0];
+                            newOption.innerHTML = pair[1];
+                            s2.options.add(newOption);
+
+                        }
+                    }
+
                 </script>
                 <!-- <script>
                     $(function () {
@@ -547,6 +629,7 @@
                                     required: true,
                                     email: true,
                                 },
+                                
                                 password: {
                                     required: true,
                                     minlength: 5
