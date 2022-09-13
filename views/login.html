@@ -1,4 +1,40 @@
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100;200;300;400;500;600;700;800;900&display=swap');
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./dist/css/loginstyle.css">
+    <title>CluedIn | Login</title>
+</head>
+
+<body>
+    <div class="login-box">
+        <h2><strong>CluedIn</strong></h2>
+        <form  method="post" action="/">
+            <div class="user-box">
+                <input type="text" name="userName" required>
+                <label>Username</label>
+            </div>
+
+            <div class="user-box">
+                <input type="password" name="user_pwd" required>
+                <label>Password</label>
+            </div>
+            <div>
+                <a href="#" class="forgot__pass">Forgot password?</a>
+            </div>
+            <div>
+                <button class="submitbtn" type="submit">Submit</button>
+            </div>
+                <!-- <input class="btn__submit" type="submit" value=""> -->
+            
+        </form>
+    </div>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
 html {
   height: 100%;
@@ -201,3 +237,7 @@ body {
   background-color: #172031;
   color: #03e9f4;
 }
+    </style>
+</body>
+
+</html>
