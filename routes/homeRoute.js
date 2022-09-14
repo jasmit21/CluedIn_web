@@ -9,11 +9,18 @@ const dbApiController = require('../controllers/dbApiController');
 
 const con = require('../models/dbConnect');
 
+// const bcryptjs = require("bcryptjs");
+const cluedinAppSignupController = require("../controllers/cluedinAppSignupController");
+const cluedinAppSigninController = require("../controllers/cluedinAppSigninController");
+const cluedinAppRecieveMessagesController = require("../controllers/cluedinApprecieveMessageController");
+
+
 const app = express();
 const path = require('path');
 const createUser = require('../controllers/createUser');
 const authUser = require('../controllers/authUser');
 const dashboard = require('../controllers/dashboardController');
+
 firebaseAdmin.initializeApp({
   credential: firebaseAdmin.credential.cert(require("../cluedin-db185-firebase-adminsdk-g30hi-5e023ee3ab.json")),
 });
@@ -48,9 +55,7 @@ router.post("/action", function (request, response, next) {
         data: data
       });
     });
-
   }
-
 });
 
 
@@ -77,7 +82,14 @@ router.post('/sendNotif', notifController.post);
 
 router.post('/sendNotif',notifController.post);
 
+router.post("/api/signup", cluedinAppSignupController.post);
+router.post("/api/signin", cluedinAppSigninController.post);
+router.post("/tokenisvalid", cluedinAppSigninController.post);
+router.get("/api/recieveMessage",cluedinAppRecieveMessagesController.get);
+
+
 router.get("/dbapi",dbApiController.get);
+
 
 module.exports = router;
 

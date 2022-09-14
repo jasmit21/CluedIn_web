@@ -6,6 +6,7 @@ const bodyParser = require('body-parser');
 //declaring routes 
 const homeRoute = require("./routes/homeRoute");
 
+
 const dbApiRoute = require("./routes/dbApiRoute");
 
 const path = require('path');
@@ -34,6 +35,7 @@ app.get('/session', (req, res) => {
     var name = req.session.usermobno;
     return res.send(name);
 });
+
 
 //using css , js , jquery .....for styling 
 // app.set('view engine', 'hbs');
@@ -71,6 +73,13 @@ app.use("/register", homeRoute);
 
 
 
+
+// cluedIn app signIn / signUp api 
+app.use("/api/signup",homeRoute);
+app.use("/api/signin",homeRoute);
+app.use("/tokenIsValid",homeRoute);
+app.use("/api/getuser",homeRoute);
+app.use("/api/recieveMessage",homeRoute);
 //creating server 
 var port = process.env.PORT || 4000;
 app.listen(port, (err) => {
