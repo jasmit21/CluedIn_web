@@ -1,12 +1,13 @@
 const con = require('../models/dbConnect');
+const session = require("express-session");
 
 
 module.exports = {
 
     post: (req, res) => {
 
-        console.log(req.body.userName);
-        console.log(req.body.user_pwd);
+        // console.log(req.body.userName);
+        // console.log(req.body.user_pwd);
 
         var usermobno = req.body.userName;
         var pwd = req.body.user_pwd;
@@ -19,8 +20,10 @@ module.exports = {
         con.query(sql, (err, result) => {
             console.log(result);
             if (err) res.send(err);
-            if (result.length >= 1)  
+            if (result.length >= 1)  {
+                req.session.usermobno = usermobno;
                 res.redirect('/dashboard'); 
+            }
             else res.redirect('login.html');
         });
 

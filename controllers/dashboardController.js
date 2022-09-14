@@ -7,6 +7,6 @@ module.exports = {
         // console.log(res.sendFile('views/Index.html', { root: '.' }));
         
         var Path =path.join(__dirname,"..","views","index.html");
-        res.sendfile(Path);
+        res.sendFile(Path);
     },
 }
