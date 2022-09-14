@@ -10,7 +10,7 @@ const dbApiController = require('../controllers/dbApiController');
 const con = require('../models/dbConnect');
 
 // const bcryptjs = require("bcryptjs");
-const cluedinAppSignupController = require("../controllers/cluedinAppSignupController");
+const cluedinAppSignupController = require("../controllers/CluedinAppSignupController");
 const cluedinAppSigninController = require("../controllers/cluedinAppSigninController");
 const cluedinAppRecieveMessagesController = require("../controllers/cluedinApprecieveMessageController");
 
