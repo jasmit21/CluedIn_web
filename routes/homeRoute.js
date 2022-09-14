@@ -21,9 +21,9 @@ const createUser = require('../controllers/createUser');
 const authUser = require('../controllers/authUser');
 const dashboard = require('../controllers/dashboardController');
 
-firebaseAdmin.initializeApp({
-  credential: firebaseAdmin.credential.cert(require("../cluedin-db185-firebase-adminsdk-g30hi-5e023ee3ab.json")),
-});
+// firebaseAdmin.initializeApp({
+//   credential: firebaseAdmin.credential.cert(require("../cluedInOfficialAndroid.json")),
+// });
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json);
@@ -62,7 +62,6 @@ router.post("/action", function (request, response, next) {
 
 router.post('/listuser', (req, res, next) => {
   var action = req.body.action;
-
   if (action == 'fetch') {
     var qry = "SELECT user_fname,user_lname,user_email,user_gender,user_role_id,user_department,user_addr,user_pincode FROM user_details ";
     con.query(qry, function (error, data) {
@@ -71,7 +70,6 @@ router.post('/listuser', (req, res, next) => {
       }
       res.json({
         data: data
-        
       });
     });
 

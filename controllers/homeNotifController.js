@@ -1,11 +1,14 @@
 const con = require('../models/dbConnect');
 const firebaseAdmin = require("firebase-admin");
+const { credential } = require('firebase-admin');
+const serviceAccount = require("../cluedInOfficialAndroid.json");
 
 module.exports = {
 
     post : async (req , res) => {
         // fetching details 
-        // console.log(req.body);         
+        // console.log(req.body);   
+        firebaseAdmin.initializeApp({credential:firebaseAdmin.credential.cert(serviceAccount)});      
 
         var notif_title = req.body.notif_title;
         // console.log(notif_title);
@@ -48,9 +51,8 @@ module.exports = {
         console.log({result}["result"].map((userResult)=>
             userResult["firebase_token"]));
           firebaseAdmin.messaging().sendToDevice({result}["result"].map((userResult)=>
-          userResult["firebase_token"] || ''),payload,options);
-        });
-            
+          userResult["firebase_token"]),payload,options);
+        }); 
             res.send("ok");
         
         // data[fcmToken()];
