@@ -30,6 +30,7 @@ app.use("/api/signup",homeRoute);
 app.use("/api/signin",homeRoute);
 app.use("/tokenIsValid",homeRoute);
 app.use("/api/getuser",homeRoute);
+app.use("/api/recieveMessage",homeRoute);
 //creating server 
 var port = process.env.PORT || 4000;
 app.listen(port, (err) => {

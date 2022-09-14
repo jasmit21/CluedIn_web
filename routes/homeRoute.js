@@ -6,9 +6,10 @@ const router = express.Router();
 const firebaseAdmin = require("firebase-admin");
 const con = require('../models/dbConnect');
 const app = express();
-const bcryptjs = require("bcryptjs");
+// const bcryptjs = require("bcryptjs");
 const cluedinAppSignupController = require("../controllers/cluedinAppSignupController");
 const cluedinAppSigninController = require("../controllers/cluedinAppSigninController");
+const cluedinAppRecieveMessagesController = require("../controllers/cluedinApprecieveMessageController");
 firebaseAdmin.initializeApp({
     credential: firebaseAdmin.credential.cert(require("../cluedin-db185-firebase-adminsdk-g30hi-5e023ee3ab.json")),
   });
@@ -46,5 +47,6 @@ router.post('/sendNotif',notifController.post);
 router.post("/api/signup", cluedinAppSignupController.post);
 router.post("/api/signin", cluedinAppSigninController.post);
 router.post("/tokenisvalid", cluedinAppSigninController.post);
+router.get("/api/recieveMessage",cluedinAppRecieveMessagesController.get);
 module.exports = router;
 
