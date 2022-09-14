@@ -5,8 +5,10 @@ const bodyParser = require('body-parser');
 
 //declaring routes 
 const homeRoute = require("./routes/homeRoute");
-const path = require('path');
 
+const dbApiRoute = require("./routes/dbApiRoute");
+
+const path = require('path');
 
 //session 
 const sessions = require("express-session");
@@ -62,6 +64,10 @@ app.use("/listuser", homeRoute);
 
 
 app.use('/action', homeRoute);
+
+// om
+app.use("/dbapi",dbApiRoute);
+app.use("/register", homeRoute);
 
 
 
