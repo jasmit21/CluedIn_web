@@ -3,9 +3,9 @@ const firebaseAdmin = require("firebase-admin");
 
 module.exports = {
 
-    post : (req , res) => {
+    post : async (req , res) => {
         // fetching details 
-        console.log(req.body);         
+        // console.log(req.body);         
 
         var notif_title = req.body.notif_title;
         // console.log(notif_title);
@@ -21,13 +21,15 @@ module.exports = {
         ];
         con.query(sql,[values], (err, result) => {
         if (err) res.send(err);
-        res.send("notif sent");
+        // res.send("notif sent");
         console.log("data inserted finally!!!")
         });
+        
+            var getFcmTokensSql = "select firebase_token from cluedin.user_details where isDisabled = 0";
+            con.query(getFcmTokensSql,(err,result)=>{
+                if(err) throw err;
 
-        // ----------------------firebase notification-------------------------
-        const fcmToken = "ebjzXqouTCeRUMTvWlwP0e:APA91bEcYr-AaP8xNftjJx0ATqtpgQ4_ucGOwm_JfTyTPkJunhFakRxpqqFJrjbo9kMbQ7cQC1_H43IgK3y0dOQFtMOKBuV2cUZfUrwYoIxGpJeh62oNmN5uRVAIFb5vfHYOWKeA1EMM";
-        const payload = {
+            const payload = {
            notification:{
                title:req.body.notif_title,
                body:req.body.notif_desc,
@@ -43,7 +45,27 @@ module.exports = {
            priority : "high",
            timeToLive : 60*60,
         }
-         firebaseAdmin.messaging().sendToDevice(fcmToken,payload,options);
-        //  res.send("notification send");
-    }
+        console.log({result}["result"].map((userResult)=>
+            userResult["firebase_token"]));
+          firebaseAdmin.messaging().sendToDevice({result}["result"].map((userResult)=>
+          userResult["firebase_token"] || ''),payload,options);
+        });
+            
+            res.send("ok");
+        
+        // data[fcmToken()];
+        // console.log(fcmToken());
+        // ----------------------firebase notification-------------------------
+        // const fcmToken = [
+        //     "ebjzXqouTCeRUMTvWlwP0e:APA91bEcYr-AaP8xNftjJx0ATqtpgQ4_ucGOwm_JfTyTPkJunhFakRxpqqFJrjbo9kMbQ7cQC1_H43IgK3y0dOQFtMOKBuV2cUZfUrwYoIxGpJeh62oNmN5uRVAIFb5vfHYOWKeA1EMM",
+        //     "dUNs1KbMTTuC9IJ1YN-QNN:APA91bEtf_3484eeJQDboSsV-I7Fddn3JjAKtpUsuQoMamaVAr3x9MTEqksoJolOPgQyQE8KUR_3-Eoy9AFX2XmoxyDbyqExrrCkEg_-_qfC4lJ_K_0uHHQTqFnWcrRSjrMB9ncMDmmq",
+        // ];
+
+
+        
+//         //  res.send("notification send");
+//     }
+
+// ye dono nikaalna badmai
+}
 }
