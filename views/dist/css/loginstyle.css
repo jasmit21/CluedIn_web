@@ -184,3 +184,20 @@ body {
     bottom: 100%;
   }
 }
+
+.submitbtn{
+  width: 5rem;
+  height: 2rem;
+  background-color:#03e9f4;
+  color: #172031;
+  border: none;
+  text-align: center;
+  /* font-weight: bold; */
+  font-size: medium;
+  transition: 0.3s;
+}
+
+.submitbtn:hover{
+  background-color: #172031;
+  color: #03e9f4;
+}
