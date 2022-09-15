@@ -82,8 +82,8 @@ app.use("/api/getuser",homeRoute);
 app.use("/api/recieveMessage",homeRoute);
 //creating server 
 var port = process.env.PORT || 5000;
-app.listen(port, (err) => {
-    if (err) throw err;
-    console.log(`server running http://localhost:${port}`);
-});
+// app.listen(port, (err) => {
+//     if (err) throw err;
+//     console.log(`server running http://localhost:${port}`);
+// });
 
