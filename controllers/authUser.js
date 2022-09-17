@@ -26,7 +26,5 @@ module.exports = {
             }
             else res.redirect('login.html');
         });
-
-
     },
 }

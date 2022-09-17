@@ -194,6 +194,42 @@
                                         <p>IETE</p>
                                     </a>
                                 </li>
+                                <li class="nav-item">
+                                    <a href="" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>IEEE</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>MadGears</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Domain Maths Club</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Physics Club</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>E-Cell</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>SIE Club</p>
+                                    </a>
+                                </li>
                             </ul>
                         </li>
                         <li class="nav-item">
@@ -219,7 +255,7 @@
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1 class="m-0">DBIT Dashboard</h1>
+                            <h1 class="m-0">DBIT Admin Dashboard</h1>
                         </div><!-- /.col -->
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
@@ -395,87 +431,89 @@
                                                 </div>
 
                                             </div>
-                                       
 
-                                        <!-- <div class="form-group">
+
+                                            <!-- <div class="form-group">
                                                 <label for="exampleInputPassword1">Password</label>
                                                 <input type="password" class="form-control" id="exampleInputPassword1"
                                                     placeholder="Password">
                                             </div> -->
-                                        <div class="form-group">
-                                            <label for="exampleInputFile">File input</label>
-                                            <div class="input-group" style="width:30%;">
-                                                <div class="custom-file">
-                                                    <input type="file" class="custom-file-input" id="exampleInputFile">
-                                                    <label class="custom-file-label" for="exampleInputFile">Choose
-                                                        file</label>
+                                            <!----------------------Future Feature--------------------------------------------------------  -->
+                                            <!-- <div class="form-group">
+                                                <label for="exampleInputFile">File input</label>
+                                                <div class="input-group" style="width:30%;">
+                                                    <div class="custom-file">
+                                                        <input type="file" class="custom-file-input"
+                                                            id="exampleInputFile">
+                                                        <label class="custom-file-label" for="exampleInputFile">Choose
+                                                            file</label>
+                                                    </div>
+                                                    <div class="input-group-append">
+                                                        <span class="input-group-text">Upload</span>
+                                                    </div>
                                                 </div>
-                                                <div class="input-group-append">
-                                                    <span class="input-group-text">Upload</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- <div class="form-check">
+                                            </div> -->
+                                            <!-- <div class="form-check">
                                                 <input type="checkbox" class="form-check-input" id="exampleCheck1">
                                                 <label class="form-check-label" for="exampleCheck1">Check me out</label>
-                                            </div> -->
+                                            </div>-->
+                                        </div>
+
+                                        <div class="card-footer">
+                                            <button type="submit" class="btn btn-primary">Submit</button>
+                                        </div>
+                                    </form>
                                 </div>
 
-                                <div class="card-footer">
-                                    <button type="submit" class="btn btn-primary">Submit</button>
-                                </div>
-                                </form>
-                            </div> 
+                                <!-- OM YAHA  DAAL FORM  -->
+                                <div class="tab-pane fade" id="listNotif" role="tabpanel"
+                                    aria-labelledby="custom-tabs-two-profile-tab">
 
-                            <!-- OM YAHA  DAAL FORM  -->
-                            <div class="tab-pane fade" id="listNotif" role="tabpanel"
-                                aria-labelledby="custom-tabs-two-profile-tab">
-
-                                <!-- inside list notif div  -->
-                                <div class="card">
-                                    <div class="card-header">
-                                        <h3 class="card-title">Fixed Header Table</h3>
-                                        <div class="card-tools">
-                                            <div class="input-group input-group-sm" style="width: 150px;">
-                                                <input type="text" name="table_search" class="form-control float-right"
-                                                    placeholder="Search">
-                                                <div class="input-group-append">
-                                                    <button type="submit" class="btn btn-default">
-                                                        <i class="fas fa-search"></i>
-                                                    </button>
+                                    <!-- inside list notif div  -->
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <h3 class="card-title">Fixed Header Table</h3>
+                                            <div class="card-tools">
+                                                <div class="input-group input-group-sm" style="width: 150px;">
+                                                    <input type="text" name="table_search"
+                                                        class="form-control float-right" placeholder="Search">
+                                                    <div class="input-group-append">
+                                                        <button type="submit" class="btn btn-default">
+                                                            <i class="fas fa-search"></i>
+                                                        </button>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
+
+                                        <div class="card-body table-responsive p-0" style="height: 500px;">
+                                            <table class="table table-head-fixed text-nowrap" id="notif_table">
+                                                <thead>
+                                                    <tr>
+                                                        <th>S.no</th>
+                                                        <th>Title</th>
+                                                        <th>Message</th>
+                                                        <th>Expiry Date</th>
+                                                        <th>Scheduled Date</th>
+                                                        <th>Category</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+
+                                                </tbody>
+                                            </table>
+                                        </div>
+
                                     </div>
-
-                                    <div class="card-body table-responsive p-0" style="height: 500px;">
-                                        <table class="table table-head-fixed text-nowrap" id="notif_table">
-                                            <thead>
-                                                <tr>
-                                                    <th>S.no</th>
-                                                    <th>Title</th>
-                                                    <th>Message</th>
-                                                    <th>Expiry Date</th>
-                                                    <th>Scheduled Date</th>
-                                                    <th>Category</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-
-                                            </tbody>
-                                        </table>
-                                    </div>
-
                                 </div>
-                            </div>
 
 
-                            <div class="tab-pane fade" id="custom-tabs-two-messages" role="tabpanel"
-                                aria-labelledby="custom-tabs-two-messages-tab">
-                               
-                                <h3>Work Under Construction!!!</h3>
-                            </div>
-                            <!-- <div class="tab-pane fade" id="custom-tabs-two-settings" role="tabpanel"
+                                <div class="tab-pane fade" id="custom-tabs-two-messages" role="tabpanel"
+                                    aria-labelledby="custom-tabs-two-messages-tab">
+
+                                    <h3>Work Under Construction!!!</h3>
+                                </div>
+                                <!-- <div class="tab-pane fade" id="custom-tabs-two-settings" role="tabpanel"
                                 aria-labelledby="custom-tabs-two-settings-tab">
                                 Pellentesque vestibulum commodo nibh nec blandit. Maecenas neque magna, iaculis
                                 tempus
@@ -489,67 +527,67 @@
                                 habitasse
                                 platea dictumst. Praesent imperdiet accumsan ex sit amet facilisis.
                             </div> -->
+                            </div>
                         </div>
+
                     </div>
 
+
+
+                    <!-- Main Footer -->
+                    <footer class="main-footer">
+                        <strong>Copyright &copy; 2014-2021 <a href="">CluedIn</a>.</strong>
+                        All rights reserved.
+                        <div class="float-right d-none d-sm-inline-block">
+                            <b>Version</b> 1.0.0
+                        </div>
+                    </footer>
                 </div>
+                <!-- ./wrapper -->
+
+                <!-- REQUIRED SCRIPTS -->
+                <!-- jQuery -->
+                <script src="plugins/jquery/jquery.min.js"></script>
+                <!-- Bootstrap -->
+                <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+                <!-- overlayScrollbars -->
+                <script src="plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+                <!-- AdminLTE App -->
+                <script src="dist/js/adminlte.js"></script>
+
+                <!-- PAGE PLUGINS -->
+                <!-- jQuery Mapael -->
+                <script src="plugins/jquery-mousewheel/jquery.mousewheel.js"></script>
+                <script src="plugins/raphael/raphael.min.js"></script>
+                <script src="plugins/jquery-mapael/jquery.mapael.min.js"></script>
+                <script src="plugins/jquery-mapael/maps/usa_states.min.js"></script>
+                <!-- ChartJS -->
+                <script src="plugins/chart.js/Chart.min.js"></script>
+
+                <!-- AdminLTE for demo purposes -->
+                <script src="dist/js/demo.js"></script>
+                <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+                <script src="dist/js/pages/dashboard2.js"></script>
+                <script src="./plugins/jquery/jquery.min.js"></script>
+                <script src="./plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+                <script>
 
 
+                    $(document).ready(function () {
 
-                <!-- Main Footer -->
-                <footer class="main-footer">
-                    <strong>Copyright &copy; 2014-2021 <a href="">CluedIn</a>.</strong>
-                    All rights reserved.
-                    <div class="float-right d-none d-sm-inline-block">
-                        <b>Version</b> 1.0.0
-                    </div>
-                </footer>
-        </div>
-        <!-- ./wrapper -->
+                        load_data();
+                        function load_data() {
+                            $.ajax({
+                                url: "http://localhost:5000/action",
+                                method: "POST",
+                                data: { action: 'fetch' },
+                                dataType: "JSON",
+                                success: function (data) {
+                                    var html = '';
 
-        <!-- REQUIRED SCRIPTS -->
-        <!-- jQuery -->
-        <script src="plugins/jquery/jquery.min.js"></script>
-        <!-- Bootstrap -->
-        <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-        <!-- overlayScrollbars -->
-        <script src="plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
-        <!-- AdminLTE App -->
-        <script src="dist/js/adminlte.js"></script>
-
-        <!-- PAGE PLUGINS -->
-        <!-- jQuery Mapael -->
-        <script src="plugins/jquery-mousewheel/jquery.mousewheel.js"></script>
-        <script src="plugins/raphael/raphael.min.js"></script>
-        <script src="plugins/jquery-mapael/jquery.mapael.min.js"></script>
-        <script src="plugins/jquery-mapael/maps/usa_states.min.js"></script>
-        <!-- ChartJS -->
-        <script src="plugins/chart.js/Chart.min.js"></script>
-
-        <!-- AdminLTE for demo purposes -->
-        <script src="dist/js/demo.js"></script>
-        <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-        <script src="dist/js/pages/dashboard2.js"></script>
-        <script src="./plugins/jquery/jquery.min.js"></script>
-        <script src="./plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-        <script>
-
-
-            $(document).ready(function () {
-
-                load_data();
-                function load_data() {
-                    $.ajax({
-                        url: "http://localhost:5000/action",
-                        method: "POST",
-                        data: { action: 'fetch' },
-                        dataType: "JSON",
-                        success: function (data) {
-                            var html = '';
-
-                            if (data.data.length > 0) {
-                                for (var count = 0; count < data.data.length; count++) {
-                                    html += `
+                                    if (data.data.length > 0) {
+                                        for (var count = 0; count < data.data.length; count++) {
+                                            html += `
                                             <tr>
                                                 <td>`+ (count + 1) + `</td>
                                                 <td>`+ data.data[count].message_title + `</td>
@@ -561,49 +599,49 @@
                                             </tr>
                                             
                                             `;
+                                        }
+                                    }
+
+                                    $('#notif_table tbody').html(html);
+
                                 }
-                            }
-
-                            $('#notif_table tbody').html(html);
-
+                            });
                         }
                     });
-                }
-            });
-        </script>
+                </script>
 
-        <!-- function for sub category in notif form  -->
+                <!-- function for sub category in notif form  -->
 
-        <script>
-            function populate(s1, s2) {
+                <script>
+                    function populate(s1, s2) {
 
-                // console.log("hello jasmit")
-                var s1 = document.getElementById(s1);
+                        // console.log("hello jasmit")
+                        var s1 = document.getElementById(s1);
 
-                var s2 = document.getElementById(s2);
+                        var s2 = document.getElementById(s2);
 
-                s2.innerHTML = "";
-                if (s1.value == 2) {
-                    var optionArray = ["All|All"];
-                    console.log(optionArray);
-                }
-                else if (s1.value == 3 || s1.value == 4 || s1.value == 5 || s1.value == 6) {
-                    var optionArray = ["All|All", "SE|SE", "TE|TE", "BE|BE"];
-                }
+                        s2.innerHTML = "";
+                        if (s1.value == 2) {
+                            var optionArray = ["All|All"];
+                            console.log(optionArray);
+                        }
+                        else if (s1.value == 3 || s1.value == 4 || s1.value == 5 || s1.value == 6) {
+                            var optionArray = ["All|All", "SE|SE", "TE|TE", "BE|BE"];
+                        }
 
-                for (var option in optionArray) {
-                    var pair = optionArray[option].split("|");
+                        for (var option in optionArray) {
+                            var pair = optionArray[option].split("|");
 
-                    var newOption = document.createElement("option");
-                    newOption.value = pair[0];
-                    newOption.innerHTML = pair[1];
-                    s2.options.add(newOption);
+                            var newOption = document.createElement("option");
+                            newOption.value = pair[0];
+                            newOption.innerHTML = pair[1];
+                            s2.options.add(newOption);
 
-                }
-            }
+                        }
+                    }
 
-        </script>
-        <!-- <script>
+                </script>
+                <!-- <script>
                     $(function () {
                         $.validator.setDefaults({
                             submitHandler: function () {
