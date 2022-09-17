@@ -18,7 +18,7 @@ const cookieParser = require('cookie-parser');
 app.use(cookieParser());
 
 
-//session setup
+//----------------session setup------------------------
 // var session;
 //creating 24 hours from milliseconds
 const oneDay = 1000 * 60 * 60 * 24;
@@ -31,10 +31,6 @@ app.use(sessions({
     resave: false    
 }));
 
-app.get('/session', (req, res) => {
-    var name = req.session.usermobno;
-    return res.send(name);
-});
 
 
 //using css , js , jquery .....for styling 
@@ -54,7 +50,7 @@ app.use("/", homeRoute);
 app.use("/", homeRoute);
 
 app.use("/dashboard", homeRoute);
-
+app.use("/logout",homeRoute);
 app.use(express.static(__dirname + "/views"));
 
 

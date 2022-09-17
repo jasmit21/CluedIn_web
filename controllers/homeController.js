@@ -6,14 +6,16 @@ module.exports = {
         
         
         // //absolute path 
-        // // console.log(res.sendFile('views/Index.html', { root: '.' }));
-        // session = req.session;
-        // if (session.userid) {
-        //     res.send("welcome User <a href=\'/logout'>clock to logout</a>");            
-        // }
-     
+        // console.log(res.sendFile('views/Index.html', { root: '.' }));
+        let session = req.session;
+        if (session.userid) {
+            res.redirect('/dashboard')            
+        }
+        else
+        {     
         var Path =path.join(__dirname,"..","views","login.html");
         res.sendFile(Path);
+        }
         
         // res.render('index');
 

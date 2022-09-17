@@ -19,7 +19,7 @@ const app = express();
 const path = require('path');
 const createUser = require('../controllers/createUser');
 const authUser = require('../controllers/authUser');
-const dashboard = require('../controllers/dashboardController');
+const logoutController = require('../controllers/logoutController');
 
 // firebaseAdmin.initializeApp({
 //   credential: firebaseAdmin.credential.cert(require("../cluedInOfficialAndroid.json")),
@@ -28,19 +28,19 @@ const dashboard = require('../controllers/dashboardController');
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json);
 
-app.set('view engine', 'hbs');
-
-
+// app.set('view engine', 'hbs');
 
 router.get('/', homeController.get);
+//login validation 
+router.post('/auth',authUser.post);
+//destroying session
+router.get('/logout',logoutController.get);
 
-router.post('/',authUser.post);
+//listing notification
 router.get('/listNotif', listNotif.get);
 
-//post req to inser data into user table 
+//post req to insert data into user table 
 router.post('/createUser', createUser.post);
-
-router.get('/dashboard', dashboard.get);
 
 router.post("/action", function (request, response, next) {
   var action = request.body.action;
@@ -87,7 +87,6 @@ router.get("/api/recieveMessage",cluedinAppRecieveMessagesController.get);
 
 
 router.get("/dbapi",dbApiController.get);
-
 
 module.exports = router;
 

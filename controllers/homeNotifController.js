@@ -12,7 +12,6 @@ module.exports = {
 
         var notif_title = req.body.notif_title;
         // console.log(notif_title);
-        
         var notif_desc  = req.body.notif_desc;
         var exp_date  = req.body.exp_date;
         var scheduled_date = req.body.scheduled_date;
