@@ -29,9 +29,9 @@ module.exports = {
         console.log("data inserted finally!!!")
         });
         
-            var getFcmTokensSql = "select firebase_token from cluedin.user_details where isDisabled = 0";
-            pool.query(getFcmTokensSql,(err,result)=>{
-                if(err) throw err;
+            var getFcmTokensSql = ["ftqCvTWuTEOXogZjgv6YpR:APA91bG0LFFASBy8Msn54FJ75wFR2hkZFbs14KOLA02Tl4XXQRzJJ_n0JxJTslA-EgCeqoHNDnv9yRz3L5s-5POx77m7RcdKils9kHeMJlAcSa3R5lbi56tfcaJUlaeXfawBfe8Xzr9X","fkwNdJprRxaVK1tYpPSFBL:APA91bFRd3em3Eqkp0oqXTZJG0YQ33uNzPYmgh0jeX7bUMslYvEH2SaNcrMGbi_Cv7xH4zSXDyGWJnMhjAMY__36ilAl4aBsy85CSEfCYFFrX67OEBFnzdLwUeUMkson-X8apCkGlf2D"];
+            // pool.query(getFcmTokensSql,(err,result)=>{
+                // if(err) throw err;
 
             const payload = {
            notification:{
@@ -49,11 +49,10 @@ module.exports = {
            priority : "high",
            timeToLive : 60*60,
         }
-        console.log({result}["result"].map((userResult)=>
-            userResult["firebase_token"]));
-          firebaseAdmin.messaging().sendToDevice({result}["result"].map((userResult)=>
-          userResult["firebase_token"]),payload,options);
-        }); 
+        // console.log({result}["result"].map((userResult)=>
+        //     userResult["firebase_token"]));
+          firebaseAdmin.messaging().sendToDevice(getFcmTokensSql,payload,options);
+        // }); 
             res.send("ok");
         
         // data[fcmToken()];
