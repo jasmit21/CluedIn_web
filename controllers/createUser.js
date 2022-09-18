@@ -1,4 +1,4 @@
-const con = require('../models/dbConnect');
+const pool = require('../models/dbConnect');
 
 
 module.exports = {
@@ -26,7 +26,7 @@ module.exports = {
         var values = [
             [user_fname,user_lname,user_gender,user_email,user_mobno,user_addr,user_pincode,user_pwd,user_role,user_dept]
         ];
-        con.query(sql, [values], (err, result) => {
+        pool.query(sql, [values], (err, result) => {
             if (err) res.send(err);
             // res.send("notif sent");
             // res.sendfile("createUser.html");

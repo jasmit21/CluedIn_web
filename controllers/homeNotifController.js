@@ -1,4 +1,4 @@
-const con = require('../models/dbConnect');
+const pool = require('../models/dbConnect');
 const firebaseAdmin = require("firebase-admin");
 const { credential } = require('firebase-admin');
 const serviceAccount = require("../cluedInOfficialAndroid.json");
@@ -22,14 +22,14 @@ module.exports = {
         var values = [
           [notif_title,notif_desc,exp_date,scheduled_date,category]
         ];
-        con.query(sql,[values], (err, result) => {
+        pool.query(sql,[values], (err, result) => {
         if (err) res.send(err);
         // res.send("notif sent");
         console.log("data inserted finally!!!")
         });
         
             var getFcmTokensSql = "select firebase_token from cluedin.user_details where isDisabled = 0";
-            con.query(getFcmTokensSql,(err,result)=>{
+            pool.query(getFcmTokensSql,(err,result)=>{
                 if(err) throw err;
 
             const payload = {

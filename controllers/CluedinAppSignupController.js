@@ -1,7 +1,7 @@
 // const jwt = require("jsonwebtoken");
 // const auth = require("../middleware/auth");
 const bcryptjs = require("bcryptjs");
-const con = require("../models/dbConnect");
+const pool = require("../models/dbConnect");
 module.exports = {
     post : async (req, res) => {
         try{
@@ -12,7 +12,7 @@ module.exports = {
         var hashpwd = await bcryptjs.hash(password,8);
         var sql = "SELECT * FROM user_details where user_email = ?";
 
-        con.query(sql, [email], (err, result) => {
+        pool.query(sql, [email], (err, result) => {
                 
             if(err) {
                 res.send("sql err");
@@ -29,7 +29,7 @@ module.exports = {
                      var values = [
                         [fname,email,hashpwd,mobno]
                     ];
-                    con.query(sql,[values],(err,result)=>{
+                    pool.query(sql,[values],(err,result)=>{
                         if(err) throw err;
                         res.json(
                             {

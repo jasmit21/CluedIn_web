@@ -1,4 +1,4 @@
-const con = require("../models/dbConnect");
+const pool = require("../models/dbConnect");
 const session = require("express-session");
 const path = require('path');
 
@@ -13,7 +13,7 @@ module.exports = {
     // var sql = "INSERT INTO notif_table (title,message,expDate,schDate,category) VALUES ?";
     var sql = `Select * from user_details where user_mobno = "${usermobno}" and user_pwd = "${pwd}"`;
 
-    con.query(sql, (err, result) => {
+    pool.query(sql, (err, result) => {
       console.log(result);
       if (err) res.send(err);
       if (result.length >= 1) {

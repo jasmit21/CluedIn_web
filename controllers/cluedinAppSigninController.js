@@ -1,5 +1,5 @@
 const bcryptjs = require("bcryptjs");
-const con = require("../models/dbConnect");
+const pool = require("../models/dbConnect");
 const jwt = require("jsonwebtoken");
 const auth = require("../middleware/auth");
 module.exports = {
@@ -10,7 +10,7 @@ module.exports = {
         const searchpwd = () =>{
             var searchUserPwdSql = "SELECT user_pwd FROM user_details where user_email = ?";
             if(email){
-                con.query(searchUserPwdSql,[email],(err,result)=>{
+                pool.query(searchUserPwdSql,[email],(err,result)=>{
                     if(err)throw err;
                     else if(result.length > 0){
                         return result;
@@ -30,7 +30,7 @@ module.exports = {
           const searchUserId = () => {
             var searchUserIdSql = "SELECT user_id FROM user_details where user_email = ?";
                 if(email){
-                    con.query(searchUserIdSql,[email],(err,result)=>{
+                    pool.query(searchUserIdSql,[email],(err,result)=>{
                         if(err)throw err;
                         else if(result.length > 0){
                             return result;
@@ -43,7 +43,7 @@ module.exports = {
             };
             const token = jwt.sign({ id: searchUserId }, "passwordKey");
             var searchAllUserData = "select (user_email,user_mobno) values"
-            con.query(searchAllUserData)
+            pool.query(searchAllUserData)
             // res.json({ token, ...user._doc });
         }
         catch(e){

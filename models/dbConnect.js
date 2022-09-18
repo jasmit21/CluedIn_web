@@ -1,21 +1,22 @@
 
 const mysql = require('mysql');
 // const homeController = require('../controllers/homeController');
-const con = mysql.createConnection({
+const pool = mysql.createPool({
 
     host: "cluedin.c2hlbphxofti.us-west-2.rds.amazonaws.com",
     user: "admin",
     password: "cluedin123",
     database: 'cluedin',
+    connectionLimit : 100,
 
     // host: "localhost",
     // user: "root",
     // password: "root",
     // database: 'CluedIn',
 });
-con.connect((err)=>{
+pool.getConnection((err)=>{
     if (err) throw err;    
     console.log("DATABASE CONNECTED!!!");
 })
 
-module.exports = con; 
+module.exports = pool; 

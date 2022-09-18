@@ -7,7 +7,7 @@ const firebaseAdmin = require("firebase-admin");
 
 const dbApiController = require('../controllers/dbApiController');
 
-const con = require('../models/dbConnect');
+const pool = require('../models/dbConnect');
 
 // const bcryptjs = require("bcryptjs");
 const cluedinAppSignupController = require("../controllers/CluedinAppSignupController");
@@ -47,7 +47,7 @@ router.post("/action", function (request, response, next) {
 
   if (action == 'fetch') {
     var qry = "SELECT * FROM user_message ORDER BY message_id DESC";
-    con.query(qry, function (error, data) {
+    pool.query(qry, function (error, data) {
       if (error) {
         throw error;
       }
@@ -64,7 +64,7 @@ router.post('/listuser', (req, res, next) => {
   var action = req.body.action;
   if (action == 'fetch') {
     var qry = "SELECT user_fname,user_lname,user_email,user_gender,user_role_id,user_department,user_addr,user_pincode FROM user_details ";
-    con.query(qry, function (error, data) {
+    pool.query(qry, function (error, data) {
       if (error) {
         throw error;
       }

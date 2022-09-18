@@ -1,4 +1,4 @@
-const con = require('../models/dbConnect');
+const pool = require('../models/dbConnect');
 module.exports = {
     get: (req, res) => {  
     
