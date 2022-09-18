@@ -78,8 +78,6 @@ router.post('/listuser', (req, res, next) => {
 
 router.post('/sendNotif', notifController.post);
 
-router.post('/sendNotif',notifController.post);
-
 router.post("/api/signup", cluedinAppSignupController.post);
 router.post("/api/signin", cluedinAppSigninController.post);
 router.post("/tokenisvalid", cluedinAppSigninController.post);
