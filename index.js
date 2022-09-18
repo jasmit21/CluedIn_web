@@ -6,7 +6,6 @@ const bodyParser = require('body-parser');
 //declaring routes 
 const homeRoute = require("./routes/homeRoute");
 
-
 const dbApiRoute = require("./routes/dbApiRoute");
 
 const path = require('path');
