@@ -23,7 +23,7 @@ module.exports = {
         console.log(req.session);
         // var Path = path.join(__dirname, "..", "views", "index.html");
         res.redirect('/dashboard');
-      } else res.redirect("login.html");
+      } else res.render("login");
     });
   },
 };
