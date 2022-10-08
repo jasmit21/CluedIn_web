@@ -58,7 +58,10 @@ const upload = multer({
 router.post("/upload", upload.single("file"), async (req, res) => {
   try {
     const result = await s3Uploadv2(req.file);
-    console.log("-------------------------------------------------------upload-------------------------------------------------\n",result);
+    console.log(
+      "-------------------------------------------------------upload-------------------------------------------------\n",
+      result
+    );
     return res.json({ status: "success" });
   } catch (err) {
     console.log(err);
@@ -78,7 +81,6 @@ router.get("/logout", logoutController.get);
 router.post("/submitUser", createUser.post);
 
 router.get("/createuser", function (request, response) {
-  console.log("Rendering createrUser");
   response.render("createUser");
 });
 

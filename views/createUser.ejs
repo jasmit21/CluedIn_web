@@ -464,7 +464,16 @@
 
                                 <div class="tab-pane fade" id="bulk" role="tabpanel"
                                     aria-labelledby="custom-tabs-two-messages-tab">
-                                    <h2>Work Under Progress!!!</h2>
+                                    <h2>Upload Excel Sheet here</h2>
+                                    <br>
+                                    <form action="/import-excel" enctype="multipart/form-data" method="post">
+                                        <div class="input-group mb-3" style="width: 50%; ">
+                                            <input type="file" class="form-control" id="inputGroupFile02"
+                                                style="padding-bottom:2.5rem;">
+                                            <label class="input-group-text" for="inputGroupFile02">Upload</label>
+                                        </div>
+                                        <button type="submit" class="btn btn-primary">Submit</button>
+                                    </form>
                                 </div>
                                 <!-- <div class="tab-pane fade" id="custom-tabs-two-settings" role="tabpanel"
                                     aria-labelledby="custom-tabs-two-settings-tab">
