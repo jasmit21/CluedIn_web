@@ -58,7 +58,7 @@ const upload = multer({
 router.post("/upload", upload.single("file"), async (req, res) => {
   try {
     const result = await s3Uploadv2(req.file);
-    console.log(result);
+    console.log("-------------------------------------------------------upload-------------------------------------------------\n",result);
     return res.json({ status: "success" });
   } catch (err) {
     console.log(err);
