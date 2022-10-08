@@ -14,15 +14,15 @@ module.exports = {
     var sql = `Select * from user_details where user_mobno = "${usermobno}" and user_pwd = "${pwd}"`;
 
     pool.query(sql, (err, result) => {
-      console.log(result);
+      // console.log(result);
       if (err) res.send(err);
       if (result.length >= 1) {
         // req.session.usermobno = usermobno;
         var session = req.session;
         session.userid = req.body.userName;
         console.log(req.session);
-        var Path = path.join(__dirname, "..", "views", "index.html");
-        res.sendFile(Path);
+        // var Path = path.join(__dirname, "..", "views", "index.html");
+        res.redirect('/dashboard');
       } else res.redirect("login.html");
     });
   },

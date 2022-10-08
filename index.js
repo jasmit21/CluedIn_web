@@ -19,14 +19,14 @@ app.use(cookieParser());
 
 //----------------session setup------------------------
 // var session;
-//creating 24 hours from milliseconds
-const oneDay = 1000 * 60 * 60 * 24;
+//creating 5 mins from milliseconds
+const expiry = 1000 * 60 * 5 ;
 
 //session middleware
 app.use(sessions({
     secret: 'DBITCluedInsecretkey',
     saveUninitialized:true,
-    cookie:{maxAge: oneDay},
+    cookie:{maxAge: expiry},
     resave: false    
 }));
 
@@ -46,7 +46,7 @@ app.use("/", homeRoute);
 //     res.sendFile(__dirname+"/views/login.html");
 // });
 
-app.use("/", homeRoute);
+// app.use("/", homeRoute);
 
 app.use("/dashboard", homeRoute);
 app.use("/logout",homeRoute);
@@ -54,17 +54,18 @@ app.use(express.static(__dirname + "/views"));
 
 
 app.use("/sendNotif", homeRoute);
-app.use("/listNotif", homeRoute);
+app.use('/action', homeRoute);
+// app.use("/listNotif", homeRoute);
 
 app.use('/createUser', homeRoute);
 app.use("/listuser", homeRoute);
 
-
-app.use('/action', homeRoute);
-
 // om
+
+//role master
 app.use("/dbapi",dbApiRoute);
-app.use("/register", homeRoute);
+
+// app.use("/register", homeRoute);
 
 
 

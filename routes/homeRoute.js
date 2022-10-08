@@ -1,9 +1,10 @@
 const express = require('express');
 const homeController = require('../controllers/homeController');
 const notifController = require('../controllers/homeNotifController');
-const listNotif = require('../controllers/listNotifController');
+// const listNotif = require('../controllers/listNotifController');
 const router = express.Router();
 const firebaseAdmin = require("firebase-admin");
+const dashboard = require('../controllers/dashboardController');
 
 const dbApiController = require('../controllers/dbApiController');
 
@@ -33,11 +34,15 @@ app.use(express.json);
 router.get('/', homeController.get);
 //login validation 
 router.post('/auth',authUser.post);
+
+//dashboard
+router.get('/dashboard',dashboard.get);
+
 //destroying session
 router.get('/logout',logoutController.get);
 
 //listing notification
-router.get('/listNotif', listNotif.get);
+// router.get('/listNotif', listNotif.get);
 
 //post req to insert data into user table 
 router.post('/createUser', createUser.post);
@@ -63,7 +68,7 @@ router.post("/action", function (request, response, next) {
 router.post('/listuser', (req, res, next) => {
   var action = req.body.action;
   if (action == 'fetch') {
-    var qry = "SELECT user_fname,user_lname,user_email,user_gender,user_role_id,user_department,user_addr,user_pincode FROM user_details ";
+    var qry = "SELECT user_fname,user_lname,user_mobno,user_email,user_gender,user_role_id,user_department,user_addr,user_pincode FROM user_details ";
     pool.query(qry, function (error, data) {
       if (error) {
         throw error;

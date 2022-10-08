@@ -152,7 +152,7 @@
                         with font-awesome or any other icon font library -->
 
                         <li class="nav-item">
-                            <a href="index.html" class="nav-link">
+                            <a href="./index.html" class="nav-link">
                                 <i class="nav-icon fas fa-solid fa-bell"></i>
                                 <p>
                                     Notification Manager
@@ -160,7 +160,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="index.html" class="nav-link active renderindex">
+                            <a href="./createUser.html" class="nav-link active">
                                 <i class="nav-icon fas fa-user-plus"></i>
                                 <p>
                                     Create User
@@ -192,6 +192,42 @@
                                     <a href="" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>IETE</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>IEEE</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>MadGears</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Domain Maths Club</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Physics Club</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>E-Cell</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>SIE Club</p>
                                     </a>
                                 </li>
                             </ul>
@@ -473,7 +509,11 @@
                         var s2 = document.getElementById(s2);
 
                         s2.innerHTML = "";
-                        if (s1.value == 3) {
+                        if (s1.value == 1 || s1.value == 2) {
+                            var optionArray = ["---------------------|---------------------"];
+                            console.log(optionArray);
+                        }
+                        else if (s1.value == 3) {
                             var optionArray = ["|", "IT|IT", "COMPS|COMPS", "EXTC|EXTC", "MECH|MECH"];
                             console.log(optionArray);
                         }
@@ -512,7 +552,7 @@
                         load_data();
                         function load_data() {
                             $.ajax({
-                                url: "https://cluedin-web.herokuapp.com/listuser",
+                                url: "http://localhost:5000/listuser",
                                 method: "POST",
                                 data: { action: 'fetch' },
                                 dataType: "JSON",

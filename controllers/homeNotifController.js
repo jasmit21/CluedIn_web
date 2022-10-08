@@ -29,15 +29,17 @@ module.exports = {
         console.log("data inserted finally!!!")
         });
         
-            var getFcmTokensSql = ["ftqCvTWuTEOXogZjgv6YpR:APA91bG0LFFASBy8Msn54FJ75wFR2hkZFbs14KOLA02Tl4XXQRzJJ_n0JxJTslA-EgCeqoHNDnv9yRz3L5s-5POx77m7RcdKils9kHeMJlAcSa3R5lbi56tfcaJUlaeXfawBfe8Xzr9X","fkwNdJprRxaVK1tYpPSFBL:APA91bFRd3em3Eqkp0oqXTZJG0YQ33uNzPYmgh0jeX7bUMslYvEH2SaNcrMGbi_Cv7xH4zSXDyGWJnMhjAMY__36ilAl4aBsy85CSEfCYFFrX67OEBFnzdLwUeUMkson-X8apCkGlf2D"];
+            var getFcmTokensSql = ["ftqCvTWuTEOXogZjgv6YpR:APA91bG0LFFASBy8Msn54FJ75wFR2hkZFbs14KOLA02Tl4XXQRzJJ_n0JxJTslA-EgCeqoHNDnv9yRz3L5s-5POx77m7RcdKils9kHeMJlAcSa3R5lbi56tfcaJUlaeXfawBfe8Xzr9X","e6PtSnZLTLKFIrIF7yq7Dv:APA91bGya3l_n74SNLlm3_A3B_LgIsBOxRxvvZ83Dz5r-AMa3skQgsIrbZeA0DDaeuLonOQbCmP-A82yllSHLnH5CuaUVEHcMqblko5I4Dax99oyDaIdum6za8zk-cF3qPEA7tT-ja35"];
             // pool.query(getFcmTokensSql,(err,result)=>{
                 // if(err) throw err;
 
             const payload = {
            notification:{
+            
                title:req.body.notif_title,
                body:req.body.notif_desc,
-               // imageUrl: "https://my-cdn.com/extreme-weather.png",
+               sound: "default",
+               imageUrl: "https://techcommunity.microsoft.com/t5/image/serverpage/image-id/366577i4F851B60F8347ED4",
                click_action:"FLUTTER_NOTIFICATION_CLICK",
            },
            data : {

@@ -422,6 +422,9 @@
                                                         <select class="form-control " style="width: 15rem;"
                                                             tabindex="-1" id="slct3" aria-hidden="true"
                                                             name="user_gender" placeholder="select Gender" required>
+                                                            <option selected="selected" value="2">
+                                                                Both
+                                                            </option>
                                                             <option selected="selected" value="1">
                                                                 Male
                                                             </option>
@@ -639,7 +642,11 @@
                         var s2 = document.getElementById(s2);
 
                         s2.innerHTML = "";
-                        if (s1.value == 2) {
+                        if (s1.value == 1) {
+                            var optionArray = ["-------------|-------------------"];
+                            console.log(optionArray);
+                        }
+                        else if (s1.value == 2) {
                             var optionArray = ["All|All"];
                             console.log(optionArray);
                         }
