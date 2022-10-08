@@ -12,7 +12,9 @@ const importExcel = require("./controllers/importExcelController");
 const readXlsxFile = require("read-excel-file/node");
 const path = require("path");
 const pool = require("./models/dbConnect");
-
+//flash
+var flash = require('connect-flash');
+app.use(flash());
 //session
 const sessions = require("express-session");
 const cookieParser = require("cookie-parser");

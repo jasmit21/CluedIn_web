@@ -81,7 +81,7 @@ router.get("/logout", logoutController.get);
 router.post("/submitUser", createUser.post);
 
 router.get("/createuser", function (request, response) {
-  response.render("createUser");
+  response.render("createUser",{message : request.flash('message')});
 });
 
 router.post("/action", function (request, response, next) {
