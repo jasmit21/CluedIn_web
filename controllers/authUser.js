@@ -1,6 +1,6 @@
 const pool = require("../models/dbConnect");
 const session = require("express-session");
-const path = require('path');
+const path = require("path");
 
 module.exports = {
   post: (req, res) => {
@@ -22,8 +22,11 @@ module.exports = {
         session.userid = req.body.userName;
         console.log(req.session);
         // var Path = path.join(__dirname, "..", "views", "index.html");
-        res.redirect('/dashboard');
-      } else res.render("login");
+        res.redirect("/dashboard");
+      } else {
+        req.flash("Emsg", "Invalid Credentials");
+        res.redirect("/");
+      }
     });
   },
 };

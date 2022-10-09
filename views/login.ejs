@@ -1,218 +1,224 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>CluedIn-DBIT | Login</title>
-    <!-- <link rel="stylesheet" href="style.css"> -->
-  </head>
 
-  <body>
-    <div class="box">
-      <form autocomplete="off" method="post" action="/auth">
-        <img
-          class="animation__shake"
-          src="dist/img/CluedIn.png"
-          alt="DBIT"
-          width="100%"
-          style="margin-left: auto; margin-right: auto"
-        />
-        <div class="inputBox">
-          <input type="text" name="userName" required="required" />
-          <span>Userame</span>
-          <i></i>
-        </div>
-        <div class="inputBox">
-          <input type="password" name="user_pwd" required="required" />
-          <span>Password</span>
-          <i></i>
-        </div>
-        <div class="links">
-          <a href="#">Forgot Password ?</a>
-          <!-- <a href="#">Signup</a> -->
-        </div>
-        <input type="submit" value="Login" />
-      </form>
+<head>
+  <meta charset="UTF-8" />
+  <title>CluedIn-DBIT | Login</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <!-- <link rel="stylesheet" href="style.css"> -->
+</head>
+
+<body>
+  <% if(Emsg.length>0){ %>
+    <div class="alert alert-danger">
+      <%= Emsg %>
     </div>
+    <% } %>
+      <div class="box">
 
-    <style>
-      @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap");
 
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        font-family: "Poppins", sans-serif;
-      }
+        <form autocomplete="off" method="post" action="/auth">
+          <img class="animation__shake" src="dist/img/CluedIn.png" alt="DBIT" width="100%"
+            style="margin-left: auto; margin-right: auto" />
+          <div class="inputBox">
+            <input type="text" name="userName" required="required" />
+            <span>Userame</span>
+            <i></i>
+          </div>
+          <div class="inputBox">
+            <input type="password" name="user_pwd" required="required" />
+            <span>Password</span>
+            <i></i>
+          </div>
+          <div class="links">
+            <a href="#">Forgot Password ?</a>
+            <!-- <a href="#">Signup</a> -->
+          </div>
+          <input type="submit" value="Login" />
+        </form>
+      </div>
 
-      body {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        min-height: 100vh;
-        flex-direction: column;
-        background: #23242a;
-      }
+      <style>
+        @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap");
 
-      .box {
-        position: relative;
-        width: 380px;
-        height: 420px;
-        background: #1c1c1c;
-        border-radius: 8px;
-        overflow: hidden;
-      }
-
-      .box::before {
-        content: "";
-        z-index: 1;
-        position: absolute;
-        top: -50%;
-        left: -50%;
-        width: 380px;
-        height: 420px;
-        transform-origin: bottom right;
-        background: linear-gradient(0deg, transparent, #45f3ff, #45f3ff);
-        animation: animate 6s linear infinite;
-      }
-
-      .box::after {
-        content: "";
-        z-index: 1;
-        position: absolute;
-        top: -50%;
-        left: -50%;
-        width: 380px;
-        height: 420px;
-        transform-origin: bottom right;
-        background: linear-gradient(0deg, transparent, #45f3ff, #45f3ff);
-        animation: animate 6s linear infinite;
-        animation-delay: -3s;
-      }
-
-      @keyframes animate {
-        0% {
-          transform: rotate(0deg);
+        * {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+          font-family: "Poppins", sans-serif;
         }
 
-        100% {
-          transform: rotate(360deg);
+        body {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          min-height: 100vh;
+          flex-direction: column;
+          background: #23242a;
         }
-      }
 
-      form {
-        position: absolute;
-        inset: 2px;
-        background: #28292d;
-        padding: 50px 40px;
-        border-radius: 8px;
-        z-index: 2;
-        display: flex;
-        flex-direction: column;
-      }
+        .box {
+          position: relative;
+          width: 380px;
+          height: 420px;
+          background: #1c1c1c;
+          border-radius: 8px;
+          overflow: hidden;
+        }
 
-      h2 {
-        color: #45f3ff;
-        font-weight: 500;
-        text-align: center;
-        letter-spacing: 0.1em;
-      }
-      h4 {
-        color: #02111b;
-        font-weight: 500;
-        text-align: center;
-        letter-spacing: 0.1em;
-      }
+        .box::before {
+          content: "";
+          z-index: 1;
+          position: absolute;
+          top: -50%;
+          left: -50%;
+          width: 380px;
+          height: 420px;
+          transform-origin: bottom right;
+          background: linear-gradient(0deg, transparent, #45f3ff, #45f3ff);
+          animation: animate 6s linear infinite;
+        }
 
-      .inputBox {
-        position: relative;
-        width: 300px;
-        margin-top: 35px;
-      }
+        .box::after {
+          content: "";
+          z-index: 1;
+          position: absolute;
+          top: -50%;
+          left: -50%;
+          width: 380px;
+          height: 420px;
+          transform-origin: bottom right;
+          background: linear-gradient(0deg, transparent, #45f3ff, #45f3ff);
+          animation: animate 6s linear infinite;
+          animation-delay: -3s;
+        }
 
-      .inputBox input {
-        position: relative;
-        width: 100%;
-        padding: 20px 10px 10px;
-        background: transparent;
-        outline: none;
-        box-shadow: none;
-        border: none;
-        color: #23242a;
-        font-size: 1em;
-        letter-spacing: 0.05em;
-        transition: 0.5s;
-        z-index: 10;
-      }
+        @keyframes animate {
+          0% {
+            transform: rotate(0deg);
+          }
 
-      .inputBox span {
-        position: absolute;
-        left: 0;
-        padding: 20px 0px 10px;
-        pointer-events: none;
-        font-size: 1em;
-        color: #8f8f8f;
-        letter-spacing: 0.05em;
-        transition: 0.5s;
-      }
+          100% {
+            transform: rotate(360deg);
+          }
+        }
 
-      .inputBox input:valid ~ span,
-      .inputBox input:focus ~ span {
-        color: #45f3ff;
-        transform: translateX(0px) translateY(-34px);
-        font-size: 0.75em;
-      }
+        form {
+          position: absolute;
+          inset: 2px;
+          background: #28292d;
+          padding: 50px 40px;
+          border-radius: 8px;
+          z-index: 2;
+          display: flex;
+          flex-direction: column;
+        }
 
-      .inputBox i {
-        position: absolute;
-        left: 0;
-        bottom: 0;
-        width: 100%;
-        height: 2px;
-        background: #45f3ff;
-        border-radius: 4px;
-        overflow: hidden;
-        transition: 0.5s;
-        pointer-events: none;
-        z-index: 9;
-      }
+        h2 {
+          color: #45f3ff;
+          font-weight: 500;
+          text-align: center;
+          letter-spacing: 0.1em;
+        }
 
-      .inputBox input:valid ~ i,
-      .inputBox input:focus ~ i {
-        height: 44px;
-      }
+        h4 {
+          color: #02111b;
+          font-weight: 500;
+          text-align: center;
+          letter-spacing: 0.1em;
+        }
 
-      .links {
-        display: flex;
-        justify-content: space-between;
-      }
+        .inputBox {
+          position: relative;
+          width: 300px;
+          margin-top: 35px;
+        }
 
-      .links a {
-        margin: 10px 0;
-        font-size: 0.75em;
-        color: #8f8f8f;
-        text-decoration: beige;
-      }
+        .inputBox input {
+          position: relative;
+          width: 100%;
+          padding: 20px 10px 10px;
+          background: transparent;
+          outline: none;
+          box-shadow: none;
+          border: none;
+          color: #23242a;
+          font-size: 1em;
+          letter-spacing: 0.05em;
+          transition: 0.5s;
+          z-index: 10;
+        }
 
-      .links a:hover,
-      .links a:nth-child(2) {
-        color: #45f3ff;
-      }
+        .inputBox span {
+          position: absolute;
+          left: 0;
+          padding: 20px 0px 10px;
+          pointer-events: none;
+          font-size: 1em;
+          color: #8f8f8f;
+          letter-spacing: 0.05em;
+          transition: 0.5s;
+        }
 
-      input[type="submit"] {
-        border: none;
-        outline: none;
-        padding: 11px 25px;
-        background: #45f3ff;
-        cursor: pointer;
-        border-radius: 4px;
-        font-weight: 600;
-        width: 100px;
-        margin-top: 10px;
-      }
+        .inputBox input:valid~span,
+        .inputBox input:focus~span {
+          color: #45f3ff;
+          transform: translateX(0px) translateY(-34px);
+          font-size: 0.75em;
+        }
 
-      input[type="submit"]:active {
-        opacity: 0.8;
-      }
-    </style>
-  </body>
+        .inputBox i {
+          position: absolute;
+          left: 0;
+          bottom: 0;
+          width: 100%;
+          height: 2px;
+          background: #45f3ff;
+          border-radius: 4px;
+          overflow: hidden;
+          transition: 0.5s;
+          pointer-events: none;
+          z-index: 9;
+        }
+
+        .inputBox input:valid~i,
+        .inputBox input:focus~i {
+          height: 44px;
+        }
+
+        .links {
+          display: flex;
+          justify-content: space-between;
+        }
+
+        .links a {
+          margin: 10px 0;
+          font-size: 0.75em;
+          color: #8f8f8f;
+          text-decoration: beige;
+        }
+
+        .links a:hover,
+        .links a:nth-child(2) {
+          color: #45f3ff;
+        }
+
+        input[type="submit"] {
+          border: none;
+          outline: none;
+          padding: 11px 25px;
+          background: #45f3ff;
+          cursor: pointer;
+          border-radius: 4px;
+          font-weight: 600;
+          width: 100px;
+          margin-top: 10px;
+        }
+
+        input[type="submit"]:active {
+          opacity: 0.8;
+        }
+      </style>
+</body>
+
 </html>

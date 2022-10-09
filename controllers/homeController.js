@@ -10,7 +10,7 @@ module.exports = {
       res.redirect("/dashboard");
     } else {
       var Path = path.join(__dirname, "..", "views", "login");
-      res.render(Path);
+      res.render(Path, { Emsg : req.flash("Emsg")});
     }
 
     // res.render('index');
