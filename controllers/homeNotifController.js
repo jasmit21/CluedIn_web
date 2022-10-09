@@ -2,6 +2,7 @@ const pool = require("../models/dbConnect");
 const firebaseAdmin = require("firebase-admin");
 const { credential } = require("firebase-admin");
 const serviceAccount = require("../cluedInOfficialAndroid.json");
+var flash = require("connect-flash");
 
 module.exports = {
   post: async (req, res) => {
@@ -19,45 +20,52 @@ module.exports = {
     var category = req.body.category;
     var label = req.body.label;
 
-        // var sql = "INSERT INTO notif_table (title,message,expDate,schDate,category) VALUES ?";
-        var sql = "INSERT INTO user_message (message_title,user_message,dateOfExpiration,scheduled_date,category,message_label) VALUES ?";
-        var values = [
-          [notif_title,notif_desc,exp_date,scheduled_date,category,label]
-        ];
-        pool.query(sql,[values], (err, result) => {
-        if (err) res.send(err);
-        // res.send("notif sent");
-        console.log("data inserted finally!!!")
-        });
-        
-            var getFcmTokensSql = ["ftqCvTWuTEOXogZjgv6YpR:APA91bG0LFFASBy8Msn54FJ75wFR2hkZFbs14KOLA02Tl4XXQRzJJ_n0JxJTslA-EgCeqoHNDnv9yRz3L5s-5POx77m7RcdKils9kHeMJlAcSa3R5lbi56tfcaJUlaeXfawBfe8Xzr9X","fkwNdJprRxaVK1tYpPSFBL:APA91bFRd3em3Eqkp0oqXTZJG0YQ33uNzPYmgh0jeX7bUMslYvEH2SaNcrMGbi_Cv7xH4zSXDyGWJnMhjAMY__36ilAl4aBsy85CSEfCYFFrX67OEBFnzdLwUeUMkson-X8apCkGlf2D",
-            "d4ynm81pQWG2ouYK_1kUoQ:APA91bGU3J345r8iFyc_Tqvt8_ZdrQX701TB4hIYvXgGxK6izya8dpNbUnOxlKIht7wglZwxsnPQKMBFpTvwmZJxsaMcVT150RntkJ9_rMCpz72yXtyE-H4m_Vk8DCR1SRzYO2pgI5nl"];
-            // pool.query(getFcmTokensSql,(err,result)=>{
-                // if(err) throw err;
+    // var sql = "INSERT INTO notif_table (title,message,expDate,schDate,category) VALUES ?";
+    var sql =
+      "INSERT INTO user_message (message_title,user_message,dateOfExpiration,scheduled_date,category,message_label) VALUES ?";
+    var values = [
+      [notif_title, notif_desc, exp_date, scheduled_date, category, label],
+    ];
+    pool.query(sql, [values], (err, result) => {
+      if (err) res.send(err);
 
-            const payload = {
-           notification:{
-            
-               title:req.body.notif_title,
-               body:req.body.notif_desc,
-               sound: "default",
-               imageUrl: "https://techcommunity.microsoft.com/t5/image/serverpage/image-id/366577i4F851B60F8347ED4",
-               click_action:"FLUTTER_NOTIFICATION_CLICK",
-           },
-           data : {
-               data1 : "data1",
-               data2 : "data2",
-           },
-        }
-        const options ={
-           priority : "high",
-           timeToLive : 60*60,
-        }
-        // console.log({result}["result"].map((userResult)=>
-        //     userResult["firebase_token"]));
-          firebaseAdmin.messaging().sendToDevice(getFcmTokensSql,payload,options);
-        // }); 
-    res.send("ok");
+      // res.send("notif sent");
+      console.log("data inserted finally!!!");
+    });
+
+    var getFcmTokensSql = [
+      "ftqCvTWuTEOXogZjgv6YpR:APA91bG0LFFASBy8Msn54FJ75wFR2hkZFbs14KOLA02Tl4XXQRzJJ_n0JxJTslA-EgCeqoHNDnv9yRz3L5s-5POx77m7RcdKils9kHeMJlAcSa3R5lbi56tfcaJUlaeXfawBfe8Xzr9X",
+      "fkwNdJprRxaVK1tYpPSFBL:APA91bFRd3em3Eqkp0oqXTZJG0YQ33uNzPYmgh0jeX7bUMslYvEH2SaNcrMGbi_Cv7xH4zSXDyGWJnMhjAMY__36ilAl4aBsy85CSEfCYFFrX67OEBFnzdLwUeUMkson-X8apCkGlf2D",
+      "d4ynm81pQWG2ouYK_1kUoQ:APA91bGU3J345r8iFyc_Tqvt8_ZdrQX701TB4hIYvXgGxK6izya8dpNbUnOxlKIht7wglZwxsnPQKMBFpTvwmZJxsaMcVT150RntkJ9_rMCpz72yXtyE-H4m_Vk8DCR1SRzYO2pgI5nl",
+    ];
+    // pool.query(getFcmTokensSql,(err,result)=>{
+    // if(err) throw err;
+
+    const payload = {
+      notification: {
+        title: req.body.notif_title,
+        body: req.body.notif_desc,
+        sound: "default",
+        imageUrl:
+          "https://techcommunity.microsoft.com/t5/image/serverpage/image-id/366577i4F851B60F8347ED4",
+        click_action: "FLUTTER_NOTIFICATION_CLICK",
+      },
+      data: {
+        data1: "data1",
+        data2: "data2",
+      },
+    };
+    const options = {
+      priority: "high",
+      timeToLive: 60 * 60,
+    };
+    // console.log({result}["result"].map((userResult)=>
+    //     userResult["firebase_token"]));
+    firebaseAdmin.messaging().sendToDevice(getFcmTokensSql, payload, options);
+    // });
+    req.flash("message1", "Notification Sent ");
+    res.redirect("/dashboard");
+    // res.send("ok");
 
     // data[fcmToken()];
     // console.log(fcmToken());

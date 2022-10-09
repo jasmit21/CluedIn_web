@@ -313,6 +313,12 @@
                                 <div class="tab-pane fade active show" id="create-notification" role="tabpanel"
                                     aria-labelledby="custom-tabs-two-home-tab">
 
+                                    <% if(message1.length>0){ %>
+                                        <div class="alert alert-success">
+                                            <%= message1 %>
+                                        </div>
+                                    <% } %>
+
                                     <!-- creating form -->
                                     <form id="quickform" method="post" action="/sendNotif">
                                         <!--action looks for index.html -->
