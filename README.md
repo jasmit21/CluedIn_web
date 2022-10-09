@@ -1,6 +1,7 @@
 
 
 <img src="https://user-images.githubusercontent.com/88235295/194748146-cf88753e-de53-4ced-b4c7-ed3422817145.png" width=70% height=70%>
+
 # CluedIn-Web
 This is one of the two parts of our project: CluedIn which essentially serves as a central medium from where students can recieve all college related updates.
 
@@ -69,7 +70,7 @@ If you have any feedback, please reach out to us.
 
 **Server:** Node, Express, 
 
-**Database / CloudStorage:** S3 Bucket, Amazon RDS
+**Database / CloudStorage:** S3 Bucket, MySql {Amazon RDS}
 
 
 
