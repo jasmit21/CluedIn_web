@@ -121,8 +121,6 @@ function importFileToDb(exFile) {
       "INSERT INTO user_details (user_fname,user_lname,user_gender,user_email,user_mobno,user_addr,user_pincode,user_pwd,user_role_id,user_department) VALUES ?";
     pool.query(query, [rows], (error, result) => {
       console.log(error || result);
-      var totalRecords = result.affectedRows;
-      return totalRecords;
     });
   });
 }
