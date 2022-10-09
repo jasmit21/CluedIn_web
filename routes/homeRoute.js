@@ -60,7 +60,7 @@ router.post("/upload", upload.single("file"), async (req, res) => {
     const result = await s3Uploadv2(req.file);
     console.log(
       "-------------------------------------------------------upload-------------------------------------------------\n",
-      result
+      result.Location
     );
     return res.json({ status: "success" });
   } catch (err) {
@@ -81,7 +81,7 @@ router.get("/logout", logoutController.get);
 router.post("/submitUser", createUser.post);
 
 router.get("/createuser", function (request, response) {
-  response.render("createUser",{message : request.flash('message')});
+  response.render("createUser", { message: request.flash("message") });
 });
 
 router.post("/action", function (request, response, next) {

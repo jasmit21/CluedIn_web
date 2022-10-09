@@ -13,7 +13,7 @@ const readXlsxFile = require("read-excel-file/node");
 const path = require("path");
 const pool = require("./models/dbConnect");
 //flash
-var flash = require('connect-flash');
+var flash = require("connect-flash");
 app.use(flash());
 //session
 const sessions = require("express-session");
@@ -114,22 +114,24 @@ const storage = multer.diskStorage({
 });
 const uploadFile = multer({ storage: storage });
 
-app.post("/import-excel", uploadFile.single("import-excel"), (req, res) => {
-  importFileToDb(__dirname + "/uploads/" + req.file.filename);
-  res.redirect('/listuser');
-  console.log(res);
-});
-
 function importFileToDb(exFile) {
   readXlsxFile(exFile).then((rows) => {
     rows.shift();
     let query =
       "INSERT INTO user_details (user_fname,user_lname,user_gender,user_email,user_mobno,user_addr,user_pincode,user_pwd,user_role_id,user_department) VALUES ?";
-    pool.query(query, [rows], (error, response) => {
-      console.log(error || response);
+    pool.query(query, [rows], (error, result) => {
+      console.log(error || result);
+      var totalRecords = result.affectedRows;
+      return totalRecords;
     });
   });
 }
+
+app.post("/import-excel", uploadFile.single("import-excel"), (req, res) => {
+  records = importFileToDb(__dirname + "/uploads/" + req.file.filename);
+  req.flash("message", `${records} users were created successfully`);
+  res.redirect("/listuser");
+});
 
 //creating server
 var port = process.env.PORT || 5000;
