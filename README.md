@@ -67,7 +67,9 @@ If you have any feedback, please reach out to us.
 
 **Client:** HTML, CSS, JavaScript, EJS
 
-**Server:** Node, Express
+**Server:** Node, Express, 
+
+**Database / CloudStorage:** S3 Bucket, Amazon RDS
 
 
 
