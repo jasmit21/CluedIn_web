@@ -81,7 +81,15 @@ router.get("/logout", logoutController.get);
 router.post("/submitUser", createUser.post);
 
 router.get("/createuser", function (request, response) {
-  response.render("createUser", { message: request.flash("message") });
+  // console.log('create user')
+  let session = request.session;
+    if (session.userid) {
+      response.render("createUser", { message: request.flash("message") });
+    } else {
+      var Path = path.join(__dirname, "..", "views", "login");
+      res.render(Path);
+    }
+  
 });
 
 router.post("/action", function (request, response, next) {
