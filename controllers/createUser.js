@@ -1,5 +1,5 @@
 const pool = require("../models/dbConnect");
-var flash  = require('connect-flash');
+var flash = require("connect-flash");
 
 module.exports = {
   post: (req, res) => {
@@ -36,12 +36,12 @@ module.exports = {
       ],
     ];
     pool.query(sql, [values], (err, result) => {
-      if (err)  return res.send(err);
+      if (err) return res.send(err);
       // res.send("notif sent");
       // res.sendfile("createUser.html");
       console.log("data inserted into user_details finally!!!");
-      req.flash('message','Data Inserted Successfully')
-      res.redirect('/createuser');
+      req.flash("message", "User created Successfully");
+      res.redirect("/createuser");
     });
   },
   // get: (req, res) => {

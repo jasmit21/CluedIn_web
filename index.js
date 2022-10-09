@@ -126,8 +126,8 @@ function importFileToDb(exFile) {
 }
 
 app.post("/import-excel", uploadFile.single("import-excel"), (req, res) => {
-  records = importFileToDb(__dirname + "/uploads/" + req.file.filename);
-  req.flash("message", `${records} users were created successfully`);
+  importFileToDb(__dirname + "/uploads/" + req.file.filename);
+  req.flash("message", `Users were created successfully`);
   res.redirect("/listuser");
 });
 
