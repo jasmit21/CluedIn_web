@@ -34,9 +34,8 @@ module.exports = {
     });
 
     var getFcmTokensSql = [
-      "ftqCvTWuTEOXogZjgv6YpR:APA91bG0LFFASBy8Msn54FJ75wFR2hkZFbs14KOLA02Tl4XXQRzJJ_n0JxJTslA-EgCeqoHNDnv9yRz3L5s-5POx77m7RcdKils9kHeMJlAcSa3R5lbi56tfcaJUlaeXfawBfe8Xzr9X",
-      "fkwNdJprRxaVK1tYpPSFBL:APA91bFRd3em3Eqkp0oqXTZJG0YQ33uNzPYmgh0jeX7bUMslYvEH2SaNcrMGbi_Cv7xH4zSXDyGWJnMhjAMY__36ilAl4aBsy85CSEfCYFFrX67OEBFnzdLwUeUMkson-X8apCkGlf2D",
-      "d4ynm81pQWG2ouYK_1kUoQ:APA91bGU3J345r8iFyc_Tqvt8_ZdrQX701TB4hIYvXgGxK6izya8dpNbUnOxlKIht7wglZwxsnPQKMBFpTvwmZJxsaMcVT150RntkJ9_rMCpz72yXtyE-H4m_Vk8DCR1SRzYO2pgI5nl",
+      "cghubDBUQVixer-83NkN9n:APA91bFQyrRyUNsDCR3_V1wMUViHZO3Tgst7lVTeWez6CT5J7-hekMEGgvdI26tptTu1UQUvagP-ovYd2ObpXyH0QXpOHWk4D-oUjRPPFK2jWkUO8xq0ye8y8C0Pnbm9DGmyaYIbp1gb",
+      "f4AXXfzaQ_6_7LsOaD7DtC:APA91bF80tU46SGXZB1rmqdpki5Agxsv-d4a047KYNI0lOYFHc7kjqVcCRYgkprEqPG-u82WKGduMvwu_xi3HLD_USA079E7CHKV67pjN3isu7mAUI6BR-_LBpzmttJHTrZI-0r-iBWw",
     ];
     // pool.query(getFcmTokensSql,(err,result)=>{
     // if(err) throw err;
