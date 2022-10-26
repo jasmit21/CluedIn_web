@@ -6,6 +6,8 @@ module.exports = {
   get: (req, res) => {
     var session = req.session;
 
+    // var Path = path.join(__dirname, "..", "views", "index");
+    // res.render(Path,{message1 : req.flash('message1')});
     if (session.userid != null) {
       var Path = path.join(__dirname, "..", "views", "index");
       res.render(Path,{message1 : req.flash('message1')});

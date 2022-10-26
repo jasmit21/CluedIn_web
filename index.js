@@ -128,7 +128,7 @@ function importFileToDb(exFile) {
 app.post("/import-excel", uploadFile.single("import-excel"), (req, res) => {
   importFileToDb(__dirname + "/uploads/" + req.file.filename);
   req.flash("message", `Users were created successfully`);
-  res.redirect("/listuser");
+  res.redirect("/createUser");
 });
 
 //creating server
