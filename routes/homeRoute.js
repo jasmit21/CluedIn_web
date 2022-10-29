@@ -83,13 +83,13 @@ router.post("/submitUser", createUser.post);
 router.get("/createuser", function (request, response) {
   // console.log('create user')
   let session = request.session;
-    if (session.userid) {
-      response.render("createUser", { message: request.flash("message") });
-    } else {
-      var Path = path.join(__dirname, "..", "views", "login");
-      res.render(Path);
-    }
-  
+  if (session.userid) {
+    response.render("createUser", { message: request.flash("message") });
+  } else {
+    var Path = path.join(__dirname, "..", "views", "login");
+    res.render(Path);
+  }
+
 });
 
 router.post("/action", function (request, response, next) {
@@ -110,9 +110,11 @@ router.post("/action", function (request, response, next) {
 
 router.post("/listuser", (req, res, next) => {
   var action = req.body.action;
+  console.log("hiii");
   if (action == "fetch") {
+    console.log("hiii action = fetch");
     var qry =
-      "SELECT user_fname,user_lname,user_mobno,user_email,user_gender,user_role_id,user_department,user_addr,user_pincode FROM user_details ";
+      "SELECT user_id,user_fname,user_lname,user_mobno,user_email,user_gender,user_role_id,user_department,user_addr,user_pincode FROM user_details ";
     pool.query(qry, function (error, data) {
       if (error) {
         throw error;
@@ -121,6 +123,17 @@ router.post("/listuser", (req, res, next) => {
         data: data,
       });
     });
+  }
+  if (action == 'fetch_single') {
+    console.log("hiii fetch_single");
+    var id = req.body.id;
+    var query = `SELECT user_fname,user_lname,user_mobno,user_email,user_gender,user_addr,user_pincode FROM user_details WHERE user_id = "${id}"`;
+    pool.query(query, function (err, data) {
+      if (err) throw err;
+      console.log(data);
+      res.json(data[0]);
+      console.log((data[0]));
+    })
   }
 });
 

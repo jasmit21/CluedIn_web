@@ -315,7 +315,7 @@
                                         <div class="alert alert-success">
                                             <%= message %>
                                         </div>
-                                    <% } %>
+                                        <% } %>
                                             <!-- creating form -->
                                             <form id="quickform" method="post" action="/submitUser">
                                                 <!--action looks for index.html -->
@@ -595,9 +595,66 @@
                 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
                 <!-- <script src="dist/js/pages/dashboard2.js"></script> -->
 
+                <!--modal-->
+                <div class="modal fade" id="action_modal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <form method="post" id="sample_form">
+                                <div class="modal-header" id="dynamic_modal_title">
+                                    <h5 class="modal-title" id="exampleModalLabel"></h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
 
+                                    <div class="mb-3">
+                                        <label for="recipient-name" class="col-form-label">First Name</label>
+                                        <input type="text" class="form-control" name="user_fname" id="first_name">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="recipient-name" class="col-form-label">Last Name</label>
+                                        <input type="text" class="form-control" name="user_lname" id="last_name">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="recipient-name" class="col-form-label">Mobile No.</label>
+                                        <input type="number" class="form-control" name="user_mobno" id="mobile_num">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="recipient-name" class="col-form-label">Email</label>
+                                        <input type="email" class="form-control" name="user_email" id="email">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="col-form-label">Gender</label>
+                                        <select class="form-control " id="gender" aria-hidden="true" name="gender"
+                                            placeholder="select Gender" required>
+                                            <option selected="selected" value="1">
+                                                Male
+                                            </option>
+                                            <option value="0">Female</option>
+                                        </select>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="message-text" class="col-form-label">Address</label>
+                                        <textarea class="form-control" id="address"></textarea>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="" class="col-form-label">Pincode</label>
+                                        <input type="number" name="pincode" id="pincode">
+                                    </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <input type="hidden" name="id" id="id">
+                            <input type="hidden" name="action" id="action" value="Add">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary" id="action_button">Add</button>
+                        </div>
+                    </div>
+                </div>
                 <!-- ---------------------------------Rendering user Table----------------------------------- -->
                 <script>
+
 
 
                     $(document).ready(function () {
@@ -626,7 +683,7 @@
                                                     <td>`+ data.data[count].user_department + `</td>
                                                     <td>`+ data.data[count].user_addr + `</td>
                                                     <td>`+ data.data[count].user_pincode + `</td>
-                                                    <td style="border-radius: 5px;"><button class="btn btn-warning" data-id=`+(count+1)+`>edit</button></td>
+                                                    <td style="border-radius: 5px;"><button class="btn btn-warning btn-sm edit" data-id=`+ data.data[count].user_id + `>edit</button></td>
                                                 </tr>
                             
                                             `;
@@ -639,6 +696,38 @@
                                 }
                             });
                         }
+
+
+                        $(document).on('click', '.edit', function () {
+                            var id = $(this).data('id');
+                            // var mobno = $('mobile_num');
+
+                            $('dynamic_modal_title').text('Edit Data');
+
+                            $('#action').val('Edit');
+
+                            $('#action_button').text('Edit');
+
+                            $('#action_modal').modal('show');
+
+                            $.ajax({
+                                url: "http://localhost:5000/listuser",
+                                method: "POST",
+                                data: { id: id, action: 'fetch_single' },
+                                dataType: "JSON",
+                                success: function (data) {
+                                    console.log(data.user_addr);
+                                    $('first_name').val(data.user_fname);
+                                    $('last_name').val(data.user_lname);
+                                    $('mobile_num').val(data.user_mobno);
+                                    $('email').val(data.user_email);
+                                    $('gender').val(data.user_gender);
+                                    $('address').val(data.user_addr);
+                                    $('pincode').val(data.user_pincode);
+                                }
+                            });
+
+                        });
                     });
                 </script>
 
