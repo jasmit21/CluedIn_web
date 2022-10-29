@@ -458,6 +458,7 @@
                                                         <th>Department</th>
                                                         <th>Address</th>
                                                         <th>Pincode</th>
+                                                        <th>Action</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -569,50 +570,6 @@
 
 
                 <!-- ---------------------------------Rendering user Table----------------------------------- -->
-                <script>
-
-
-                    $(document).ready(function () {
-
-                        load_data();
-                        function load_data() {
-                            $.ajax({
-                                url: "http://localhost:5000/listuser",
-                                method: "POST",
-                                data: { action: 'fetch' },
-                                dataType: "JSON",
-                                success: function (data) {
-                                    var html = '';
-
-                                    if (data.data.length > 0) {
-                                        for (var count = 0; count < data.data.length; count++) {
-                                            html += `
-                                                <tr>
-                                                    <td>`+ (count + 1) + `</td>
-                                                    <td>`+ data.data[count].user_fname + `</td>
-                                                    <td>`+ data.data[count].user_lname + `</td>
-                                                    <td>`+ data.data[count].user_mobno + `</td>
-                                                    <td>`+ data.data[count].user_email + `</td>
-                                                    <td>`+ data.data[count].user_gender + `</td>
-                                                    <td>`+ data.data[count].user_role_id + `</td>
-                                                    <td>`+ data.data[count].user_department + `</td>
-                                                    <td>`+ data.data[count].user_addr + `</td>
-                                                    <td>`+ data.data[count].user_pincode + `</td>
-                                                
-                                                </tr>
-                            
-                                            `;
-                                        }
-                                    }
-
-                                    $('tbody').html(html);
-                                    console.log(html);
-
-                                }
-                            });
-                        }
-                    });
-                </script>
 
 
 
@@ -669,7 +626,7 @@
                                                     <td>`+ data.data[count].user_department + `</td>
                                                     <td>`+ data.data[count].user_addr + `</td>
                                                     <td>`+ data.data[count].user_pincode + `</td>
-                                                
+                                                    <td style="border-radius: 5px;"><button class="btn btn-warning" data-id=`+(count+1)+`+>edit</button></td>
                                                 </tr>
                             
                                             `;
