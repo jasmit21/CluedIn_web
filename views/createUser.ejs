@@ -430,6 +430,7 @@
                                     <!-- inside list notif div  -->
                                     <div class="card">
                                         <div class="card-header">
+                                            <span id="message"></span>
                                             <h3 class="card-title">USER Table</h3>
                                             <div class="card-tools">
                                                 <div class="input-group input-group-sm" style="width: 150px;">
@@ -596,11 +597,13 @@
                 <!-- <script src="dist/js/pages/dashboard2.js"></script> -->
 
                 <!--modal-->
-                <div class="modal fade" id="action_modal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                <div class="modal" id="action_modal" tabindex="-1" aria-labelledby="exampleModalLabel"
                     aria-hidden="true">
                     <div class="modal-dialog">
+
                         <div class="modal-content">
-                            <form method="post" id="sample_form">
+                            <form method="get" action="/updateuser" id="sample_form">
+
                                 <div class="modal-header" id="dynamic_modal_title">
                                     <h5 class="modal-title" id="exampleModalLabel"></h5>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal"
@@ -609,24 +612,24 @@
                                 <div class="modal-body">
 
                                     <div class="mb-3">
-                                        <label for="recipient-name" class="col-form-label">First Name</label>
+                                        <label class="col-form-label">First Name</label>
                                         <input type="text" class="form-control" name="user_fname" id="first_name">
                                     </div>
                                     <div class="mb-3">
-                                        <label for="recipient-name" class="col-form-label">Last Name</label>
+                                        <label class="col-form-label">Last Name</label>
                                         <input type="text" class="form-control" name="user_lname" id="last_name">
                                     </div>
                                     <div class="mb-3">
-                                        <label for="recipient-name" class="col-form-label">Mobile No.</label>
+                                        <label class="col-form-label">Mobile No.</label>
                                         <input type="number" class="form-control" name="user_mobno" id="mobile_num">
                                     </div>
                                     <div class="mb-3">
-                                        <label for="recipient-name" class="col-form-label">Email</label>
+                                        <label class="col-form-label">Email</label>
                                         <input type="email" class="form-control" name="user_email" id="email">
                                     </div>
                                     <div class="mb-3">
                                         <label class="col-form-label">Gender</label>
-                                        <select class="form-control " id="gender" aria-hidden="true" name="gender"
+                                        <select class="form-control " id="gender" aria-hidden="true" name="user_gender"
                                             placeholder="select Gender" required>
                                             <option selected="selected" value="1">
                                                 Male
@@ -635,20 +638,23 @@
                                         </select>
                                     </div>
                                     <div class="mb-3">
-                                        <label for="message-text" class="col-form-label">Address</label>
-                                        <textarea class="form-control" id="address"></textarea>
+                                        <label class="col-form-label">Address</label>
+                                        <textarea class="form-control" id="address" name="user_addr"></textarea>
                                     </div>
                                     <div class="mb-3">
-                                        <label for="" class="col-form-label">Pincode</label>
-                                        <input type="number" name="pincode" id="pincode">
+                                        <label class="col-form-label">Pincode</label>
+                                        <input type="number" name="user_pincode" id="pincode">
                                     </div>
+
+                                </div>
+                                <div class="modal-footer">
+                                    <input type="hidden" name="id" id="id">
+                                    <input type="hidden" name="action" id="action" value="Add">
+                                    <button type="button" class="btn btn-secondary"
+                                        data-bs-dismiss="modal">Close</button>
+                                    <button type="submit" class="btn btn-primary Update" id="action_button">Add</button>
+                                </div>
                             </form>
-                        </div>
-                        <div class="modal-footer">
-                            <input type="hidden" name="id" id="id">
-                            <input type="hidden" name="action" id="action" value="Add">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary" id="action_button">Add</button>
                         </div>
                     </div>
                 </div>
@@ -683,7 +689,7 @@
                                                     <td>`+ data.data[count].user_department + `</td>
                                                     <td>`+ data.data[count].user_addr + `</td>
                                                     <td>`+ data.data[count].user_pincode + `</td>
-                                                    <td style="border-radius: 5px;"><button class="btn btn-warning btn-sm edit" data-id=`+ data.data[count].user_id + `>edit</button></td>
+                                                    <td style="border-radius: 5px;"><button class="btn btn-warning btn-sm edit" data-id=`+ data.data[count].user_id + `>edit</button>&nbsp;<button type="button" class="btn btn-danger btn-sm delete" data-id="` + data.data[count].user_id + `">Delete</button></td></td>
                                                 </tr>
                             
                                             `;
@@ -691,18 +697,47 @@
                                     }
 
                                     $('tbody').html(html);
-                                    console.log(html);
+                                    // console.log(html);
 
                                 }
                             });
                         }
+                        $('#sample_form').on('submit', function () {
+                            event.preventDefault
+                            $('#action').val('Edit');
+                            console.log("inside sample form");
+                            $.ajax({
+                                url: "http://localhost:5000/listuser",
+                                method: "POST",
+                                data: $('#sample_form').serialize(),
+                                dataType: "JSON",
+                                beforeSend: function () {
+                                    $('#action_button').attr('disabled', 'disable')
+                                },
+                                success: function (data) {
+                                    $('#action_button').attr('disabled', false);
 
+                                    $('#message').html('<div class="alert alert-success">' + data.success + '</div');
+
+                                    $('#action_modal').modal('hide');
+
+                                    load_data();
+
+                                    setTimeout(function () {
+                                        $('#message'.html(''))
+                                    }, 5000);
+
+                                }
+                            })
+                        });
 
                         $(document).on('click', '.edit', function () {
                             var id = $(this).data('id');
+
+                            // console.log(id);
                             // var mobno = $('mobile_num');
 
-                            $('dynamic_modal_title').text('Edit Data');
+                            $('#dynamic_modal_title').text('Edit Data');
 
                             $('#action').val('Edit');
 
@@ -717,17 +752,43 @@
                                 dataType: "JSON",
                                 success: function (data) {
                                     console.log(data.user_addr);
-                                    $('first_name').val(data.user_fname);
-                                    $('last_name').val(data.user_lname);
-                                    $('mobile_num').val(data.user_mobno);
-                                    $('email').val(data.user_email);
-                                    $('gender').val(data.user_gender);
-                                    $('address').val(data.user_addr);
-                                    $('pincode').val(data.user_pincode);
+                                    $('#first_name').val(data.user_fname);
+                                    $('#last_name').val(data.user_lname);
+                                    $('#mobile_num').val(data.user_mobno);
+                                    $('#email').val(data.user_email);
+                                    $('#gender').val(data.user_gender);
+                                    $('#address').val(data.user_addr);
+                                    $('#pincode').val(data.user_pincode);
+                                    $('#id').val(data.user_id);
+
                                 }
                             });
 
                         });
+                        //delete ajax logic
+                        $(document).on('click', '.delete', function () {
+
+                            var id = $(this).data('id');
+
+                            if (confirm("Are you sure you want to delete this data?")) {
+                                console.log("inside if");
+                                $.ajax({
+                                    url: "http://localhost:5000/listuser",
+                                    method: "GET",
+                                    data: { action: 'delete', id: id },
+                                    dataType: "JSON",
+                                    success: function (data) {
+                                        $('#message').html('<div class="alert alert-success">' + data.message + '</div>');
+                                        load_data();
+                                        setTimeout(function () {
+                                            $('#message').html('');
+                                        }, 3000);
+                                    }
+                                });
+                            }
+
+                        });
+
                     });
                 </script>
 

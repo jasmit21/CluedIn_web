@@ -64,6 +64,8 @@ app.use("/action", homeRoute);
 app.use("/createUser", homeRoute);
 app.use("/listuser", homeRoute);
 app.use("/import-excel", importExcel);
+app.use('updateuser',homeRoute);
+
 // om
 
 //role master

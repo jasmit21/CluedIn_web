@@ -24,7 +24,10 @@ const path = require("path");
 const createUser = require("../controllers/createUser");
 const authUser = require("../controllers/authUser");
 const logoutController = require("../controllers/logoutController");
-
+const listuser = require('../controllers/listusercontroller');
+const listNotif = require('../controllers/listNotifController')
+const updateuser = require('../controllers/updateuserController');
+const deleteuser = require('../controllers/deleteuserController');
 // firebaseAdmin.initializeApp({
 //   credential: firebaseAdmin.credential.cert(require("../cluedInOfficialAndroid.json")),
 // });
@@ -74,9 +77,6 @@ router.get("/dashboard", dashboard.get);
 //destroying session
 router.get("/logout", logoutController.get);
 
-//listing notification
-// router.get('/listNotif', listNotif.get);
-
 //post req to insert data into user table
 router.post("/submitUser", createUser.post);
 
@@ -89,53 +89,20 @@ router.get("/createuser", function (request, response) {
     var Path = path.join(__dirname, "..", "views", "login");
     res.render(Path);
   }
-
 });
 
-router.post("/action", function (request, response, next) {
-  var action = request.body.action;
+//update user details 
+router.get("/updateuser", updateuser.update)
 
-  if (action == "fetch") {
-    var qry = "SELECT * FROM user_message ORDER BY message_id DESC";
-    pool.query(qry, function (error, data) {
-      if (error) {
-        throw error;
-      }
-      response.json({
-        data: data,
-      });
-    });
-  }
-});
 
-router.post("/listuser", (req, res, next) => {
-  var action = req.body.action;
-  console.log("hiii");
-  if (action == "fetch") {
-    console.log("hiii action = fetch");
-    var qry =
-      "SELECT user_id,user_fname,user_lname,user_mobno,user_email,user_gender,user_role_id,user_department,user_addr,user_pincode FROM user_details ";
-    pool.query(qry, function (error, data) {
-      if (error) {
-        throw error;
-      }
-      res.json({
-        data: data,
-      });
-    });
-  }
-  if (action == 'fetch_single') {
-    console.log("hiii fetch_single");
-    var id = req.body.id;
-    var query = `SELECT user_fname,user_lname,user_mobno,user_email,user_gender,user_addr,user_pincode FROM user_details WHERE user_id = "${id}"`;
-    pool.query(query, function (err, data) {
-      if (err) throw err;
-      console.log(data);
-      res.json(data[0]);
-      console.log((data[0]));
-    })
-  }
-});
+//list notification
+router.post("/action", listNotif.show);
+
+//list , edit , display users list
+router.post("/listuser", listuser.list);
+//for delete
+router.get("/listuser",deleteuser.delete);
+
 
 router.post("/sendNotif", notifController.post);
 
