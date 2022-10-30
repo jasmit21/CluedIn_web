@@ -673,6 +673,7 @@
                                 data: { action: 'fetch' },
                                 dataType: "JSON",
                                 success: function (data) {
+                                    console.log(data.data[1].user_id);
                                     var html = '';
 
                                     if (data.data.length > 0) {

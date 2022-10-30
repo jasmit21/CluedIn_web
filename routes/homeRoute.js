@@ -95,22 +95,6 @@ router.get("/createuser", function (request, response) {
 
 router.get('/action', notifData.get);
 
-router.post("/listuser", (req, res, next) => {
-  var action = req.body.action;
-  if (action == "fetch") {
-    var qry =
-      "SELECT user_fname,user_lname,user_mobno,user_email,user_gender,user_role_id,user_department,user_addr,user_pincode FROM user_details ";
-    pool.query(qry, function (error, data) {
-      if (error) {
-        throw error;
-      }
-      res.json({
-        data: data,
-      });
-    });
-  }
-});
-
 //update user details 
 router.get("/updateuser", updateuser.update)
 
