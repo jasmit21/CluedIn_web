@@ -25,7 +25,10 @@ const path = require("path");
 const createUser = require("../controllers/createUser");
 const authUser = require("../controllers/authUser");
 const logoutController = require("../controllers/logoutController");
-
+const listuser = require('../controllers/listusercontroller');
+const listNotif = require('../controllers/listNotifController')
+const updateuser = require('../controllers/updateuserController');
+const deleteuser = require('../controllers/deleteuserController');
 // firebaseAdmin.initializeApp({
 //   credential: firebaseAdmin.credential.cert(require("../cluedInOfficialAndroid.json")),
 // });
@@ -75,9 +78,6 @@ router.get("/dashboard", dashboard.get);
 //destroying session
 router.get("/logout", logoutController.get);
 
-//listing notification
-// router.get('/listNotif', listNotif.get);
-
 //post req to insert data into user table
 router.post("/submitUser", createUser.post);
 
@@ -110,6 +110,14 @@ router.post("/listuser", (req, res, next) => {
     });
   }
 });
+
+//update user details 
+router.get("/updateuser", updateuser.update)
+
+//list , edit , display users list
+router.post("/listuser", listuser.list);
+//for delete
+router.get("/listuser",deleteuser.delete);
 
 router.post("/sendNotif", notifController.post);
 

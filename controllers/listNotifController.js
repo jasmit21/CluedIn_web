@@ -1,8 +1,6 @@
-const pool = require('../models/dbConnect');
+const pool = require("../models/dbConnect");
 module.exports = {
-    get: (req, res) => {  
-    
-
-        res.render('login');
-    },
-}
+  get: (req, res) => {
+    res.render("login");
+  },
+};
