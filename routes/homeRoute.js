@@ -95,8 +95,6 @@ router.get("/createuser", function (request, response) {
 router.get("/updateuser", updateuser.update)
 
 
-//list notification
-router.post("/action", listNotif.show);
 
 //list , edit , display users list
 router.post("/listuser", listuser.list);
