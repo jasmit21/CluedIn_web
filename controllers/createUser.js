@@ -18,7 +18,7 @@ module.exports = {
     var user_addr = req.body.user_addr;
     var user_pincode = req.body.user_pincode;
 
-    // var sql = "INSERT INTO notif_table (title,message,expDate,schDate,category) VALUES ?";
+    // var sql = "INSERT INTO user_message (title,message,expDate,schDate,category) VALUES ?";
     var sql =
       "INSERT INTO user_details (user_fname,user_lname,user_gender,user_email,user_mobno,user_addr,user_pincode,user_pwd,user_role_id,user_department) VALUES ?";
     var values = [

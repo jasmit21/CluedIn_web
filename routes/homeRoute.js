@@ -1,6 +1,7 @@
 const express = require("express");
 const homeController = require("../controllers/homeController");
 const notifController = require("../controllers/homeNotifController");
+const notifData = require("../controllers/notifDatatableController");
 
 // const listNotif = require('../controllers/listNotifController');
 
@@ -83,30 +84,16 @@ router.post("/submitUser", createUser.post);
 router.get("/createuser", function (request, response) {
   // console.log('create user')
   let session = request.session;
-    if (session.userid) {
-      response.render("createUser", { message: request.flash("message") });
-    } else {
-      var Path = path.join(__dirname, "..", "views", "login");
-      res.render(Path);
-    }
-  
-});
-
-router.post("/action", function (request, response, next) {
-  var action = request.body.action;
-
-  if (action == "fetch") {
-    var qry = "SELECT * FROM user_message ORDER BY message_id DESC";
-    pool.query(qry, function (error, data) {
-      if (error) {
-        throw error;
-      }
-      response.json({
-        data: data,
-      });
-    });
+  if (session.userid) {
+    response.render("createUser", { message: request.flash("message") });
+  } else {
+    var Path = path.join(__dirname, "..", "views", "login");
+    res.render(Path);
   }
+
 });
+
+router.get('/action', notifData.get);
 
 router.post("/listuser", (req, res, next) => {
   var action = req.body.action;

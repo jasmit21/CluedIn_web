@@ -6,7 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Admin Dashboard</title>
 
+    <!-- need to figure out which link does what -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.3/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css" rel="stylesheet">
+
     <!-- Google Font: Source Sans Pro -->
+    
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <!-- Font Awesome Icons -->
@@ -499,29 +505,21 @@
                                     <!-- inside list notif div  -->
                                     <div class="card">
                                         <div class="card-header">
-                                            <h3 class="card-title">Fixed Header Table</h3>
+                                            
                                             <div class="card-tools">
                                                 <div class="input-group input-group-sm" style="width: 150px;">
-                                                    <input type="text" name="table_search"
-                                                        class="form-control float-right" placeholder="Search">
-                                                    <div class="input-group-append">
-                                                        <button type="submit" class="btn btn-default">
-                                                            <i class="fas fa-search"></i>
-                                                        </button>
-                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
 
                                         <div class="card-body table-responsive p-0" style="height: 500px;">
-                                            <table class="table table-head-fixed text-nowrap" id="notif_table">
+                                            <table class="table table-head-fixed" id="notif_table">
                                                 <thead>
                                                     <tr>
-                                                        <th>S.no</th>
                                                         <th>Title</th>
                                                         <th>Message</th>
-                                                        <th>Expiry Date</th>
-                                                        <th>Scheduled Date</th>
+                                                        <!-- <th>Expiry Date</th>
+                                                        <th>Scheduled Date</th> -->
                                                         <th>Category</th>
                                                     </tr>
                                                 </thead>
@@ -573,8 +571,12 @@
                 <!-- ./wrapper -->
 
                 <!-- REQUIRED SCRIPTS -->
+                <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+                <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+                <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+                <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
                 <!-- jQuery -->
-                <script src="plugins/jquery/jquery.min.js"></script>
+                <!-- <script src="plugins/jquery/jquery.min.js"></script> -->
                 <!-- Bootstrap -->
                 <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
                 <!-- overlayScrollbars -->
@@ -595,9 +597,8 @@
                 <script src="dist/js/demo.js"></script>
                 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
                 <script src="dist/js/pages/dashboard2.js"></script>
-                <script src="./plugins/jquery/jquery.min.js"></script>
-                <script src="./plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-                <script>
+                <!-- <script src="./plugins/jquery/jquery.min.js"></script> -->
+                <!-- <script>
 
 
                     $(document).ready(function () {
@@ -629,12 +630,40 @@
                                         }
                                     }
 
-                                    $('#notif_table tbody').html(html);
+                                    $('#user_message tbody').html(html);
 
                                 }
                             });
                         }
                     });
+                </script> -->
+                <script>
+                    $(document).ready(function() {
+                        console.log('reached here in ejs');
+
+                        var dataTable = $('#notif_table').DataTable({
+                            'processing' : true,
+                            'serverSide' : true,
+                            'lengthMenu' : [
+                                [7, 10, 25, 50, -1],
+                                [7, 10,25, 50, 'All'],
+                            ],
+                            'serverMethod' : 'get',
+                            'ajax' : {
+                                'url' : "/action"
+                            },
+                            'aaSorting' : [],
+                            'columns' : [
+                                { data : 'message_title' },
+                                { data : 'user_message' },
+                                // { data : 'dateOfExpiration' },
+                                // { data : 'scheduled_date' },
+                                { data : 'category' },
+
+                            ]
+                        });
+                    });
+
                 </script>
 
                 <!-- function for sub category in notif form  -->

@@ -20,7 +20,7 @@ module.exports = {
     var category = req.body.category;
     var label = req.body.label;
 
-    // var sql = "INSERT INTO notif_table (title,message,expDate,schDate,category) VALUES ?";
+    // var sql = "INSERT INTO user_message (title,message,expDate,schDate,category) VALUES ?";
     var sql =
       "INSERT INTO user_message (message_title,user_message,dateOfExpiration,scheduled_date,category,message_label) VALUES ?";
     var values = [

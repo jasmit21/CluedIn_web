@@ -10,7 +10,7 @@ module.exports = {
     var usermobno = req.body.userName;
     var pwd = req.body.user_pwd;
 
-    // var sql = "INSERT INTO notif_table (title,message,expDate,schDate,category) VALUES ?";
+    // var sql = "INSERT INTO user_message (title,message,expDate,schDate,category) VALUES ?";
     var sql = `Select * from user_details where user_mobno = "${usermobno}" and user_pwd = "${pwd}"`;
 
     pool.query(sql, (err, result) => {
