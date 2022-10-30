@@ -1,6 +1,7 @@
 const express = require("express");
 const homeController = require("../controllers/homeController");
 const notifController = require("../controllers/homeNotifController");
+const notifData = require("../controllers/notifDatatableController");
 
 // const listNotif = require('../controllers/listNotifController');
 
@@ -89,18 +90,34 @@ router.get("/createuser", function (request, response) {
     var Path = path.join(__dirname, "..", "views", "login");
     res.render(Path);
   }
+
+});
+
+router.get('/action', notifData.get);
+
+router.post("/listuser", (req, res, next) => {
+  var action = req.body.action;
+  if (action == "fetch") {
+    var qry =
+      "SELECT user_fname,user_lname,user_mobno,user_email,user_gender,user_role_id,user_department,user_addr,user_pincode FROM user_details ";
+    pool.query(qry, function (error, data) {
+      if (error) {
+        throw error;
+      }
+      res.json({
+        data: data,
+      });
+    });
+  }
 });
 
 //update user details 
 router.get("/updateuser", updateuser.update)
 
-
-
 //list , edit , display users list
 router.post("/listuser", listuser.list);
 //for delete
 router.get("/listuser",deleteuser.delete);
-
 
 router.post("/sendNotif", notifController.post);
 

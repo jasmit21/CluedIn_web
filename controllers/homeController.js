@@ -15,6 +15,6 @@ module.exports = {
 
     // res.render('index');
 
-    // var qry = "SELECT * FROM notif_table ORDER BY id DESC";
+    // var qry = "SELECT * FROM user_message ORDER BY id DESC";
   },
 };
