@@ -658,7 +658,7 @@
                                 <div class="modal-footer">
                                     <input type="hidden" name="id" id="id">
                                     <input type="hidden" name="action" id="action" value="Add">
-                                    <button type="button" class="btn btn-secondary"
+                                    <button type="button" class="btn btn-secondary closed"
                                         data-bs-dismiss="modal">Close</button>
                                     <button type="submit" class="btn btn-primary Update" id="action_button">Add</button>
                                 </div>
@@ -797,6 +797,10 @@
                             }
 
                         });
+
+                        $(document).on('click', '.closed', function () {
+                            $('#action_modal').modal('hide');
+                        })
 
                     });
                 </script>
