@@ -4,28 +4,35 @@ require("dotenv").config();
 const app = express();
 const bodyParser = require("body-parser");
 const multer = require("multer");
-//declaring routes
-const homeRoute = require("./routes/homeRoute");
 
+//declaring routes
+//router files
+const homeRoute = require("./routes/homeRoute");
+const appApi = require('./routes/appAPIroute');
 const dbApiRoute = require("./routes/dbApiRoute");
+
+//controller
 const importExcel = require("./controllers/importExcelController");
 const readXlsxFile = require("read-excel-file/node");
 const path = require("path");
 const pool = require("./models/dbConnect");
+
 //flash
 var flash = require("connect-flash");
 app.use(flash());
+
 //session
 const sessions = require("express-session");
 const cookieParser = require("cookie-parser");
+
 //set ccokie-parser
 app.use(cookieParser());
 
 
 //----------------session setup------------------------
 // var session;
-//creating 5 mins from milliseconds
-const expiry = 1000 * 60 * 5;
+//creating 5 mins from milliseconds 
+const expiry = 1000 * 60 * 60;
 
 //session middleware
 app.use(
@@ -36,6 +43,7 @@ app.use(
     resave: false,
   })
 );
+//--------------------session ended-------------------
 
 // register view engine
 app.set("view engine", "ejs");
@@ -45,14 +53,8 @@ app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json()); // to support JSON-encoded bodies
 
-//using Routes
+//using Routes for web
 app.use("/", homeRoute);
-// app.get("/", (req,res)=>{
-//     res.sendFile(__dirname+"/views/login.html");
-// });
-
-// app.use("/", homeRoute);
-
 app.use("/dashboard", homeRoute);
 app.use("/logout", homeRoute);
 app.use(express.static(__dirname + "/views"));
@@ -66,19 +68,20 @@ app.use("/listuser", homeRoute);
 app.use("/import-excel", importExcel);
 app.use('updateuser',homeRoute);
 
-// om
-
 //role master
 app.use("/dbapi", dbApiRoute);
 
 // app.use("/register", homeRoute);
 
-// cluedIn app signIn / signUp api
+// cluedIn app api
 app.use("/api/signup", homeRoute);
 app.use("/api/signin", homeRoute);
 app.use("/tokenIsValid", homeRoute);
 app.use("/api/getuser", homeRoute);
 app.use("/api/recieveMessage", homeRoute);
+app.use("/api/app", appApi);
+// app.use("/api/authAppUser", homeRoute);
+
 
 // handle errors related to multer
 

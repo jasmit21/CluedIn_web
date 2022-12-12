@@ -29,6 +29,9 @@ const listuser = require('../controllers/listusercontroller');
 const listNotif = require('../controllers/listNotifController')
 const updateuser = require('../controllers/updateuserController');
 const deleteuser = require('../controllers/deleteuserController');
+
+let authAppUser = require("../controllers/appControllers/authAppUser");
+
 // firebaseAdmin.initializeApp({
 //   credential: firebaseAdmin.credential.cert(require("../cluedInOfficialAndroid.json")),
 // });
@@ -111,5 +114,7 @@ router.post("/tokenisvalid", cluedinAppSigninController.post);
 router.get("/api/recieveMessage", cluedinAppRecieveMessagesController.get);
 
 router.get("/dbapi", dbApiController.get);
+
+
 
 module.exports = router;

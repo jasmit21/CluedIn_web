@@ -8,7 +8,8 @@ module.exports = {
     let session = req.session;
     if (session.userid) {
       res.redirect("/dashboard");
-    } else {
+    } 
+    else {
       var Path = path.join(__dirname, "..", "views", "login");
       res.render(Path, { Emsg : req.flash("Emsg")});
     }
