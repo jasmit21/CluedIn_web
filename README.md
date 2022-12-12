@@ -50,7 +50,7 @@ npm start
 
 Here's the Mobile app part of this project
 
-[CluedIn-Flutter](https://github.com/tushar4303/CluedIn-Flutter)
+📱[CluedIn-Flutter](https://github.com/tushar4303/CluedIn-Flutter)
 
 
 ## Feedback
