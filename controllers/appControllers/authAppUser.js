@@ -6,7 +6,7 @@ app.use(express.json);
 
 module.exports = {
   post: (req, res) => {
-    console.log("reached app api");
+    // console.log("reached app api");
     var usermobno = req.body.usermobno; //user mobile number sent by app
 
     // var sql = "INSERT INTO user_message (title,message,expDate,schDate,category) VALUES ?";

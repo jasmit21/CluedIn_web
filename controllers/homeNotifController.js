@@ -8,9 +8,9 @@ module.exports = {
   post: async (req, res) => {
     // fetching details
     // console.log(req.body);
-    firebaseAdmin.initializeApp({
-      credential: firebaseAdmin.credential.cert(serviceAccount),
-    });
+    // firebaseAdmin.initializeApp({
+    //   credential: firebaseAdmin.credential.cert(serviceAccount),
+    // });
 
     var notif_title = req.body.notif_title;
     // console.log(notif_title);

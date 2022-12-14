@@ -11,8 +11,6 @@ const app = express();
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json);
 
-// routes or api's
-// console.log("reached api routes");
 router.post('/authAppUser',authAppUser.post);
    
 

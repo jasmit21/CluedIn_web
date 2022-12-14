@@ -44,6 +44,13 @@ app.use(
   })
 );
 //--------------------session ended-------------------
+//firebase
+const firebaseAdmin = require("firebase-admin");
+const { credential } = require("firebase-admin");
+const serviceAccount = require("./cluedInOfficialAndroid.json");
+firebaseAdmin.initializeApp({
+  credential: firebaseAdmin.credential.cert(serviceAccount),
+});
 
 // register view engine
 app.set("view engine", "ejs");
