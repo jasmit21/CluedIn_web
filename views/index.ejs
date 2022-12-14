@@ -409,12 +409,12 @@
                                                     <div class="row">
                                                         <div class="col-lg-4">
                                                             <div class="form-group">
-                                                                <label>Branch</label>
-                                                                <select class="form-control " style="width: 15rem;"
+                                                                <label>Branch (*press ctrl key to select multiple fields)</label>
+                                                                <select style="height: 9rem;width:15rem ;" class="form-control " style="width: 15rem;"
                                                                     tabindex="-1" id="slct1" aria-hidden="true"
                                                                     name="category" placeholder="select category"
                                                                     onchange="javascript:populate('slct1','slct2')"
-                                                                    required>
+                                                                    multiple required>
                                                                     <option selected="selected" value="1">
                                                                         ALL
                                                                     </option>
@@ -433,7 +433,7 @@
                                                                 <label>Class</label>
                                                                 <select class="form-control" style="width: 15rem;"
                                                                     tabindex="-1" id="slct2" aria-hidden="true"
-                                                                    name="class" placeholder="select class">
+                                                                    name="class" placeholder="select class" multiple>
 
                                                                 </select>
 
@@ -693,14 +693,17 @@
 
                         s2.innerHTML = "";
                         if (s1.value == 1) {
-                            var optionArray = ["-------------|-------------------"];
+                            var optionArray = ["ALL|ALL"];
                             console.log(optionArray);
                         }
-                        else if (s1.value == 2) {
-                            var optionArray = ["All|All"];
-                            console.log(optionArray);
-                        }
-                        else if (s1.value == 3 || s1.value == 4 || s1.value == 5 || s1.value == 6) {
+                        // else if (s1.value == 2) {
+                        //     var optionArray = ["All|All"];
+                        //     console.log(optionArray);
+                        // }
+                        // else if (s1.value == 1 && s1.value == 2 || s1.value == 3 || s1.value == 4 || s1.value == 5 || s1.value == 6) {
+                        //     var optionArray = ["All|All"];
+                        // }
+                        else if (s1.value == 2 || s1.value == 3 || s1.value == 4 || s1.value == 5 || s1.value == 6) {
                             var optionArray = ["All|All", "SE|SE", "TE|TE", "BE|BE"];
                         }
 
