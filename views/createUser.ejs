@@ -355,7 +355,7 @@
                                                     <div class="row">
                                                         <div class="col-lg-4">
                                                             <div class="form-group">
-                                                                <label>Category</label>
+                                                                <label>Role</label>
                                                                 <select class="form-control " style="width: 15rem;"
                                                                     tabindex="-1" id="slct1" aria-hidden="true"
                                                                     name="user_role" placeholder="select user role"
@@ -366,8 +366,17 @@
                                                                     </option>
                                                                     <option value="2">Principal</option>
                                                                     <option value="3">HOD</option>
-                                                                    <option value="4">Student</option>
-                                                                    <option value="5">TPO</option>
+                                                                    <option value="4">Dean</option>
+                                                                    <option value="5">Class Teacher</option>
+                                                                    <option value="6">Faculty</option>
+                                                                    <option value="7">Management</option>
+                                                                    <option value="8">Exam Admin</option>
+                                                                    <option value="9">Admission Admin</option>
+                                                                    <option value="10">TPO</option>
+                                                                    <option value="11">SBC</option>
+                                                                    <option value="12">SBC PR Representative</option>
+                                                                    <option value="13">Library</option>
+                                                                    <option value="14">Student</option>
                                                                     <!-- <option data-select2-id="38">EXAM</option> -->
                                                                 </select>
 
@@ -379,9 +388,7 @@
                                                                 <select class="form-control" style="width: 15rem;"
                                                                     tabindex="-1" id="slct2" aria-hidden="true"
                                                                     name="user_dept" placeholder="select user dept">
-
                                                                 </select>
-
                                                             </div>
                                                         </div>
                                                         <div class="col-lg-4">
@@ -395,6 +402,7 @@
                                                                         Male
                                                                     </option>
                                                                     <option value="0">Female</option>
+                                                                    <option value="2">Other</option>
                                                                 </select>
 
                                                             </div>
@@ -544,7 +552,7 @@
                         var s2 = document.getElementById(s2);
 
                         s2.innerHTML = "";
-                        if (s1.value == 1 || s1.value == 2) {
+                        if (s1.value == 1 || s1.value == 2 || s1.value == 7 ||s1.value == 8 ||s1.value == 9 || s1.value == 13) {
                             var optionArray = ["---------------------|---------------------"];
                             console.log(optionArray);
                         }
@@ -552,11 +560,14 @@
                             var optionArray = ["|", "IT|IT", "COMPS|COMPS", "EXTC|EXTC", "MECH|MECH"];
                             console.log(optionArray);
                         }
-                        else if (s1.value == 4) {
+                        else if (s1.value == 4 || s1.value == 5 || s1.value == 6||s1.value == 14) {
                             var optionArray = ["|", "IT|IT", "COMPS|COMPS", "EXTC|EXTC", "MECH|MECH"];
                         }
-                        else if (s1.value == 5) {
+                        else if (s1.value == 10) {
                             var optionArray = ["|", "Head|Head", "PR|PR"];
+                        }
+                        else if (s1.value == 11 || s1.value == 12) {
+                            var optionArray = ["|", "CSI|CSI", "ACM|ACM","IETE|IETE","Madgear|Madgear","IEEE|IEEE","E-Cell|E-Cell","SIE|SIE","NSS|NSS","Domain Maths|Domain Maths","Physics|Physics"];
                         }
                         for (var option in optionArray) {
                             var pair = optionArray[option].split("|");
@@ -569,12 +580,6 @@
                         }
                     }
 
-                </script>
-
-                <script>
-                    function validateForm() {
-
-                    }
                 </script>
 
 
