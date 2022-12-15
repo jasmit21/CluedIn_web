@@ -17,10 +17,10 @@ module.exports = {
       if (err) res.send(err);
       if (result.length == 1) {
         //response for user found
-        res.json({ success: "true", msg: "user is registered" });
+        res.json({  data: null, success: "true", msg: "user is registered" });
       } else {
         //response for user not found
-        res.json({ success: "false", msg: "user is not registered" });
+        res.json({ data: null, success: "false", msg: "user is not registered" });
       }
     });
   },
