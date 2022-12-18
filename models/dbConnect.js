@@ -3,9 +3,9 @@ const mysql = require('mysql');
 // const homeController = require('../controllers/homeController');
 const pool = mysql.createPool({
 
-    host: "cluedin.c2hlbphxofti.us-west-2.rds.amazonaws.com",
-    user: "admin",
-    password: "cluedin123",
+    host: "128.199.23.207",
+    user: "cluedin",
+    password: "cluedin",
     database: 'cluedin',
     connectionLimit : 100,
 
