@@ -407,7 +407,7 @@
                                                         class="dropdown-wrapper" aria-hidden="true"></span></span> -->
 
                                                     <div class="row">
-                                                        <div class="col-lg-4">
+                                                        <div class="col-lg-3">
                                                             <div class="form-group">
                                                                 <label>Branch (*press ctrl key to select multiple fields)</label>
                                                                 <select style="height: 9rem;width:15rem ;overflow: hidden;" class="form-control" style="width: 15rem;"
@@ -428,7 +428,7 @@
 
                                                             </div>
                                                         </div>
-                                                        <div class="col-lg-4">
+                                                        <div class="col-lg-3">
                                                             <div class="form-group">
                                                                 <label>Class</label>
                                                                 <select class="form-control" style="width: 15rem;overflow: hidden;"
@@ -439,17 +439,42 @@
 
                                                             </div>
                                                         </div>
-                                                        <div class="col-lg-4">
+                                                        <div class="col-lg-3">
+                                                            <div class="form-group">
+                                                                <label>Division</label>
+                                                                <select class="form-control " style="width: 15rem;"
+                                                                    tabindex="-1" id="" aria-hidden="true"
+                                                                    name="user_div" placeholder=""
+                                                                    required>
+                                                                    <option selected="selected" value="1">
+                                                                        A
+                                                                    </option>
+                                                                    <option  value="2">
+                                                                        B
+                                                                    </option>
+                                                                    <option  value="3">
+                                                                        C
+                                                                    </option>
+                                                                    <option value="4">D</option>
+                                                                    <option value="5">E</option>
+                                                                </select>
+
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-3">
                                                             <div class="form-group">
                                                                 <label>Gender</label>
                                                                 <select class="form-control " style="width: 15rem;"
                                                                     tabindex="-1" id="slct3" aria-hidden="true"
                                                                     name="user_gender" placeholder="select Gender"
                                                                     required>
-                                                                    <option selected="selected" value="2">
+                                                                    <option selected="selected" value="3">
+                                                                        All
+                                                                    </option>
+                                                                    <option  value="2">
                                                                         Other
                                                                     </option>
-                                                                    <option selected="selected" value="1">
+                                                                    <option  value="1">
                                                                         Male
                                                                     </option>
                                                                     <option value="0">Female</option>
@@ -618,11 +643,11 @@
                     $(document).ready(function () {
 
                         load_data();
-                        function load_data() {
-                            $.ajax({
-                                url: "http://localhost:5000/action",
-                                method: "POST",
-                                data: { action: 'fetch' },
+                        function load_data() {    
+                            $.ajax({    
+                                url: "http://localhost:5000/action",    
+                                method: "POST",    
+                                data: { action: 'fetch' },    
                                 dataType: "JSON",
                                 success: function (data) {
                                     var html = '';
