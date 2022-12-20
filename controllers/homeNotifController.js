@@ -59,12 +59,13 @@ module.exports = {
       priority: "high",
       timeToLive: 60 * 60,
     };
-    // console.log({result}["result"].map((userResult)=>
-    //     userResult["firebase_token"]));
+
     firebaseAdmin.messaging().sendToDevice(getFcmTokensSql, payload, options);
-    // });
+
     req.flash("message1", "Notification Sent ");
     res.redirect("/dashboard");
+
+    
     // res.send("ok");
 
     // data[fcmToken()];
