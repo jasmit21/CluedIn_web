@@ -1,7 +1,7 @@
 const pool = require("../models/dbConnect");
 const firebaseAdmin = require("firebase-admin");
 const { credential } = require("firebase-admin");
-const serviceAccount = require("../cluedInOfficialAndroid.json");
+const serviceAccount = require("../cluedin-db185-firebase-adminsdk-g30hi-5e023ee3ab.json");
 var flash = require("connect-flash");
 
 module.exports = {
