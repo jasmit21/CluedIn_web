@@ -339,15 +339,28 @@
                                                 <!--action looks for index.html -->
                                                 <div class="card-body">
                                                     <div class="form-group">
-                                                        <label for="notificationTitle">Notification Title</label>
+                                                        <label for="notificationTitle">Notification Title *</label>
                                                         <input type="text" class="form-control" id="notificationTitle"
                                                             placeholder="Enter title" name="notif_title" maxlength="30"
                                                             required>
                                                     </div>
                                                     <div class="form-group">
-                                                        <label>Description</label>
+                                                        <label>Description *</label>
                                                         <textarea class="form-control" rows="3" name="notif_desc"
                                                             placeholder="Enter ..." required></textarea>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>Schedule:</label>
+                                                        <div class="input-group date" id="reservationdate"
+                                                            data-target-input="nearest" style="width: 40%;">
+                                                            <input type="date" class="form-control datetimepicker-input"
+                                                                data-target="#reservationdate" name="scheduled_date">
+                                                            <!-- <div class="input-group-append" data-target="#reservationdate"
+                                                        data-toggle="datetimepicker">
+                                                        <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                                                    </div> -->
+                                                        </div>
+
                                                     </div>
                                                     <div class="form-group">
                                                         <label>Expiry Date:</label>
@@ -361,19 +374,7 @@
                                                     </div> -->
                                                         </div>
                                                     </div>
-                                                    <div class="form-group">
-                                                        <label>Schedule:</label>
-                                                        <div class="input-group date" id="reservationdate"
-                                                            data-target-input="nearest" style="width: 40%;">
-                                                            <input type="date" class="form-control datetimepicker-input"
-                                                                data-target="#reservationdate" name="scheduled_date">
-                                                            <!-- <div class="input-group-append" data-target="#reservationdate"
-                                                        data-toggle="datetimepicker">
-                                                        <div class="input-group-text"><i class="fa fa-calendar"></i></div>
-                                                    </div> -->
-                                                        </div><br>
-                                                        <div id="err_msg" class="err_msg"></div>
-                                                    </div>
+
 
                                                     <!-- Dropdown selection -->
                                                     <!--<div class="form-group" data-select2-id="29">
@@ -409,8 +410,11 @@
                                                     <div class="row">
                                                         <div class="col-lg-3">
                                                             <div class="form-group">
-                                                                <label>Branch (*press ctrl key to select multiple fields)</label>
-                                                                <select style="height: 9rem;width:15rem ;overflow: hidden;" class="form-control" style="width: 15rem;"
+                                                                <label>Branch (*press ctrl key to select multiple
+                                                                    fields)</label>
+                                                                <select
+                                                                    style="height: 9rem;width:15rem ;overflow: hidden;"
+                                                                    class="form-control" style="width: 15rem;"
                                                                     tabindex="-1" id="slct1" aria-hidden="true"
                                                                     name="category" placeholder="select category"
                                                                     onchange="javascript:populate('slct1','slct2')"
@@ -431,9 +435,10 @@
                                                         <div class="col-lg-3">
                                                             <div class="form-group">
                                                                 <label>Class</label>
-                                                                <select class="form-control" style="width: 15rem;overflow: hidden;"
-                                                                    tabindex="-1" id="slct2" aria-hidden="true"
-                                                                    name="class" placeholder="select class" multiple>
+                                                                <select class="form-control"
+                                                                    style="width: 15rem;overflow: hidden;" tabindex="-1"
+                                                                    id="slct2" aria-hidden="true" name="class"
+                                                                    placeholder="select class" multiple>
 
                                                                 </select>
 
@@ -444,15 +449,14 @@
                                                                 <label>Division</label>
                                                                 <select class="form-control " style="width: 15rem;"
                                                                     tabindex="-1" id="" aria-hidden="true"
-                                                                    name="user_div" placeholder=""
-                                                                    required>
+                                                                    name="user_div" placeholder="" required>
                                                                     <option selected="selected" value="1">
                                                                         A
                                                                     </option>
-                                                                    <option  value="2">
+                                                                    <option value="2">
                                                                         B
                                                                     </option>
-                                                                    <option  value="3">
+                                                                    <option value="3">
                                                                         C
                                                                     </option>
                                                                     <option value="4">D</option>
@@ -471,10 +475,10 @@
                                                                     <option selected="selected" value="3">
                                                                         All
                                                                     </option>
-                                                                    <option  value="2">
+                                                                    <option value="2">
                                                                         Other
                                                                     </option>
-                                                                    <option  value="1">
+                                                                    <option value="1">
                                                                         Male
                                                                     </option>
                                                                     <option value="0">Female</option>
@@ -742,7 +746,7 @@
 
                         }
                     }
-                </script>                
+                </script>
                 <!-- <script>
                     $(function () {
                         $.validator.setDefaults({
