@@ -503,16 +503,15 @@
                                                                 </select>
                                                             </div>
                                                         </div>
-                                                        <div class="col-lg-4" id="notifEventSchedule">
-                                                            <div  style="visibility:hidden;" class="form-group">
-
-                                                                <label id="event-date-label" style="visibility: hidden;">Event Schedule:</label>
+                                                        <div class="col-lg-4">
+                                                            <div id="notifEventSchedule" style="visibility:hidden;" class="form-group">
+                                                                <label>Event Schedule:</label>
                                                                 <div class="input-group date"
                                                                     data-target-input="nearest" style="width: 40%;">
-                                                                    <input type="date" id="notifEventdate"
+                                                                    <input type="date"
                                                                         class="form-control datetimepicker-input"
                                                                         data-target="#reservationdate"
-                                                                        name="scheduled_date">
+                                                                        name="event_scheduled_date">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -810,16 +809,8 @@
                         return minDate;
                     }
                     function notifLabelHandler() {
-                        let notifEventSchedule = document.getElementById("notifEventdate");
-                        let notifLabel = document.getElementById("notifLabel");
-                        let notifMsgExpiryDate = document.getElementById("notifMsgExpiryDate").value;
-                        let eventDateLabel = document.getElementById("event-date-label")
-                        if (notifLabel.value == "Event") {
-                            notifEventSchedule.style.visibility = "visible";
-                            eventDateLabel.style.visibility = "visible";
-                            var minDate = ScheduleDate();
-                            notifEventSchedule.setAttribute("min", minDate);
-                            notifEventSchedule.setAttribute("max", notifMsgExpiryDate);
+                        if (document.getElementById("notifLabel").value == "Event") {
+                            document.getElementById("notifEventSchedule").style.visibility = "visible";
                         } else {
                             notifEventSchedule.style.visibility = "hidden";
                         }
