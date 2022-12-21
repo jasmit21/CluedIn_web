@@ -1,7 +1,7 @@
 const pool = require("../models/dbConnect");
 const firebaseAdmin = require("firebase-admin");
 const { credential } = require("firebase-admin");
-const serviceAccount = require("../cluedInOfficialAndroid.json");
+const serviceAccount = require("../cluedin-db185-firebase-adminsdk-g30hi-5e023ee3ab.json");
 var flash = require("connect-flash");
 
 module.exports = {
@@ -59,12 +59,13 @@ module.exports = {
       priority: "high",
       timeToLive: 60 * 60,
     };
-    // console.log({result}["result"].map((userResult)=>
-    //     userResult["firebase_token"]));
+
     firebaseAdmin.messaging().sendToDevice(getFcmTokensSql, payload, options);
-    // });
+
     req.flash("message1", "Notification Sent ");
     res.redirect("/dashboard");
+
+    
     // res.send("ok");
 
     // data[fcmToken()];

@@ -1,3 +1,5 @@
+//currently not in use as the same code is written in index.js 
+
 const express = require("express");
 const app = express();
 const multer = require("multer");
@@ -39,7 +41,7 @@ function importFileToDb(exFile) {
         console.error(error);
       } else {
         let query = "INSERT INTO user_details (user_fname,user_lname,user_gender,user_email,user_mobno,user_addr,user_pincode,user_pwd,user_role_id,user_department) VALUES ?";
-        pool.query(query, [rows], (error, response) => {
+        pool.query(qryyy, [rows], (error, response) => {
           console.log(error || response);
         });
       }

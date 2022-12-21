@@ -45,9 +45,10 @@ app.use(
 );
 //--------------------session ended-------------------
 //firebase
+// const { initializeApp } = require('firebase-admin/app');
 const firebaseAdmin = require("firebase-admin");
 const { credential } = require("firebase-admin");
-const serviceAccount = require("./cluedInOfficialAndroid.json");
+const serviceAccount = require("./cluedin-79346-firebase-adminsdk-94sut-ab59f886cd.json");
 firebaseAdmin.initializeApp({
   credential: firebaseAdmin.credential.cert(serviceAccount),
 });
@@ -72,7 +73,7 @@ app.use("/action", homeRoute);
 
 app.use("/createUser", homeRoute);
 app.use("/listuser", homeRoute);
-app.use("/import-excel", importExcel);
+// app.use("/import-excel", importExcel);
 app.use('updateuser',homeRoute);
 
 //role master

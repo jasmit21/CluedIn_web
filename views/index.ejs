@@ -248,7 +248,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="/logout" class="nav-link" style="margin-top: 25rem;">
+                            <a href="/logout" class="nav-link">
                                 <i class="nav-icon fas fa-regular fa-arrow-right"></i>
                                 <p>
                                     Logout
@@ -339,41 +339,37 @@
                                                 <!--action looks for index.html -->
                                                 <div class="card-body">
                                                     <div class="form-group">
-                                                        <label for="notificationTitle">Notification Title</label>
+                                                        <label for="notificationTitle">Notification Title *</label>
                                                         <input type="text" class="form-control" id="notificationTitle"
                                                             placeholder="Enter title" name="notif_title" maxlength="30"
                                                             required>
                                                     </div>
                                                     <div class="form-group">
-                                                        <label>Description</label>
+                                                        <label>Description *</label>
                                                         <textarea class="form-control" rows="3" name="notif_desc"
                                                             placeholder="Enter ..." required></textarea>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label>Expiry Date:</label>
-                                                        <div class="input-group date" id="reservationdate"
-                                                            data-target-input="nearest" style="width: 40%;">
-                                                            <input type="date" class="form-control datetimepicker-input"
-                                                                data-target="#reservationdate" name="exp_date">
-                                                            <!-- <div class="input-group-append" data-target="#reservationdate"
-                                                        data-toggle="datetimepicker">
-                                                        <div class="input-group-text"><i class="fa fa-calendar"></i></div>
-                                                    </div> -->
-                                                        </div>
                                                     </div>
                                                     <div class="form-group">
                                                         <label>Schedule:</label>
                                                         <div class="input-group date" id="reservationdate"
                                                             data-target-input="nearest" style="width: 40%;">
                                                             <input type="date" class="form-control datetimepicker-input"
-                                                                data-target="#reservationdate" name="scheduled_date">
-                                                            <!-- <div class="input-group-append" data-target="#reservationdate"
-                                                        data-toggle="datetimepicker">
-                                                        <div class="input-group-text"><i class="fa fa-calendar"></i></div>
-                                                    </div> -->
-                                                        </div><br>
-                                                        <div id="err_msg" class="err_msg"></div>
+                                                                data-target="#reservationdate" name="scheduled_date"
+                                                                id="notifMsgScheduleDate"
+                                                                onclick="notifMsgScheduleHandler();">
+                                                        </div>
                                                     </div>
+                                                    <div class="form-group">
+                                                        <label>Expiry Date:</label>
+                                                        <div class="input-group date" id="reservationdate"
+                                                            data-target-input="nearest" style="width: 40%;">
+                                                            <input type="date" class="form-control datetimepicker-input"
+                                                                data-target="#reservationdate" name="scheduled_date"
+                                                                id="notifMsgExpiryDate"
+                                                                onclick="notifMsgExpiryHandler();">
+                                                        </div>
+                                                    </div>
+
 
                                                     <!-- Dropdown selection -->
                                                     <!--<div class="form-group" data-select2-id="29">
@@ -407,14 +403,20 @@
                                                         class="dropdown-wrapper" aria-hidden="true"></span></span> -->
 
                                                     <div class="row">
-                                                        <div class="col-lg-4">
+                                                        <div class="col-lg-3">
                                                             <div class="form-group">
-                                                                <label>Branch (*press ctrl key to select multiple fields)</label>
-                                                                <select style="height: 9rem;width:15rem ;overflow: hidden;" class="form-control " style="width: 15rem;"
+
+                                                                
+                                                                <label>Branch (*press ctrl key to select multiple
+                                                                    fields)</label>
+                                                                <select
+                                                                    style="height: 9rem;width:15rem ;overflow: hidden;"
+                                                                    class="form-control" style="width: 15rem;"
                                                                     tabindex="-1" id="slct1" aria-hidden="true"
                                                                     name="category" placeholder="select category"
-                                                                    onchange="javascript:populate('slct1','slct2')"
-                                                                    multiple required>
+                                                                    onchange="populate('slct1','slct2')" multiple
+                                                                    required>
+                                                                    
                                                                     <option selected="selected" value="0">
                                                                         ALL
                                                                     </option>
@@ -435,28 +437,52 @@
 
                                                             </div>
                                                         </div>
-                                                        <div class="col-lg-4">
-                                                            <div class="form-group">
+                                                        <div class="col-lg-3">
+                                                            <div class="form-group">                                                          
                                                                 <label>Standard</label>
-                                                                <select class="form-control" style="width: 15rem;"
-                                                                    tabindex="-1" id="slct2" aria-hidden="true"
-                                                                    name="standard" placeholder="select class" multiple>
-
+                                                                <select class="form-control"
+                                                                    style="width: 15rem;overflow: hidden;" tabindex="-1"
+                                                                    id="slct2" aria-hidden="true" name="class"
+                                                                    placeholder="select class" multiple>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-3">
+                                                            <div class="form-group">
+                                                                <label>Division</label>
+                                                                <select class="form-control"
+                                                                    style="width: 15rem; overflow: hidden;height: 7rem;"
+                                                                    tabindex="-1" id="" aria-hidden="true"
+                                                                    name="user_div" placeholder="" multiple required>
+                                                                    <option selected="selected" value="1">
+                                                                        A
+                                                                    </option>
+                                                                    <option value="2">
+                                                                        B
+                                                                    </option>
+                                                                    <option value="3">
+                                                                        C
+                                                                    </option>
+                                                                    <option value="4">D</option>
+                                                                    <option value="5">E</option>
                                                                 </select>
 
                                                             </div>
                                                         </div>
-                                                        <div class="col-lg-4">
+                                                        <div class="col-lg-3">
                                                             <div class="form-group">
                                                                 <label>Gender</label>
                                                                 <select class="form-control " style="width: 15rem;"
                                                                     tabindex="-1" id="slct3" aria-hidden="true"
                                                                     name="user_gender" placeholder="select Gender"
                                                                     required>
-                                                                    <option selected="selected" value="2">
+                                                                    <option selected="selected" value="3">
+                                                                        All
+                                                                    </option>
+                                                                    <option value="2">
                                                                         Other
                                                                     </option>
-                                                                    <option selected="selected" value="1">
+                                                                    <option value="1">
                                                                         Male
                                                                     </option>
                                                                     <option value="0">Female</option>
@@ -466,23 +492,76 @@
                                                         </div>
 
                                                     </div>
-                                                    <div class="form-group">
-                                                        <label>Label</label>
-                                                        <select class="form-control " style="width: 15rem;"
-                                                            tabindex="-1" aria-hidden="true" name="label"
-                                                            placeholder="select label type" required>
-                                                            <option selected="selected" value="1">
-                                                                Select label
-                                                            </option>
-                                                            <option value="Academics">Academics</option>
-                                                            <option value="TPO">TPO</option>
-                                                            <option value="Exam">Exam</option>
-                                                            <option value="Urgent">Urgent</option>
-                                                            <option value="Event">Event</option>
-                                                            <!-- <option data-select2-id="38">EXAM</option> -->
-                                                        </select>
-
+                                                    <div class="row">
+                                                        <div class="col-lg-4">
+                                                            <div class="form-group">
+                                                                <label>Label</label>
+                                                                <select class="form-control " style="width: 15rem;"
+                                                                    tabindex="-1" aria-hidden="true" name="label"
+                                                                    placeholder="select label type" id="notifLabel"
+                                                                    onchange="notifLabelHandler();" required>
+                                                                    <option selected="selected" value="1">
+                                                                        Select label
+                                                                    </option>
+                                                                    <option value="Academics">Academics</option>
+                                                                    <option value="TPO">TPO</option>
+                                                                    <option value="Exam">Exam</option>
+                                                                    <option value="Urgent">Urgent</option>
+                                                                    <option value="Event">Event</option>
+                                                                    <!-- <option data-select2-id="38">EXAM</option> -->
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-4">
+                                                            <div id="notifEventSchedule" style="visibility:hidden;" class="form-group">
+                                                                <label>Event Schedule:</label>
+                                                                <div class="input-group date"
+                                                                    data-target-input="nearest" style="width: 40%;">
+                                                                    <input type="date"
+                                                                        class="form-control datetimepicker-input"
+                                                                        data-target="#reservationdate"
+                                                                        name="event_scheduled_date">
+                                                                </div>
+                                                            </div>
+                                                        </div>
                                                     </div>
+                                                    <div class="row">
+                                                        <div class="col-lg-4">
+                                                            <div class="form-group">
+                                                                <label>Image URL:</label>
+                                                                <div class="input-group " style="width: 100%; ">
+                                                                    <input type="file" name="notif-img"
+                                                                        class="form-control"
+                                                                        accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel"
+                                                                        id="notifImgUrl">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-4">
+                                                            <div class="form-group">
+                                                                <label>Attachement URL:</label>
+                                                                <div class="input-group " style="width: 100%; ">
+                                                                    <input type="file" name="notif-attachment"
+                                                                        class="form-control"
+                                                                        accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel"
+                                                                        id="notifAttachmentUrl">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-4">
+                                                            <div class="form-group">
+                                                                <label>Registration Link:</label>
+                                                                <div class="input-group " style="width: 100%; ">
+                                                                    <input type="url" class="form-control"
+                                                                        id="notifRegistrationUrl"
+                                                                        placeholder="registration url"
+                                                                        name="notif_reg_url" required>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+
 
 
                                                     <!-- <div class="form-group">
@@ -625,11 +704,11 @@
                     $(document).ready(function () {
 
                         load_data();
-                        function load_data() {
-                            $.ajax({
-                                url: "http://localhost:5000/action",
-                                method: "POST",
-                                data: { action: 'fetch' },
+                        function load_data() {    
+                            $.ajax({    
+                                url: "http://localhost:5000/action",    
+                                method: "POST",    
+                                data: { action: 'fetch' },    
                                 dataType: "JSON",
                                 success: function (data) {
                                     var html = '';
@@ -723,6 +802,34 @@
                             s2.options.add(newOption);
 
                         }
+                    }
+                    function ScheduleDate() {
+                        let todayDate = new Date();
+                        let month = todayDate.getMonth() + 1;
+                        let year = todayDate.getUTCFullYear();
+                        let tdate = todayDate.getDate();
+                        if (tdate < 10) {
+                            tdate = "0" + tdate;
+                        }
+                        if (month < 10) {
+                            month = "0" + month;
+                        }
+                        let minDate = year + "-" + month + "-" + tdate;
+                        return minDate;
+                    }
+                    function notifLabelHandler() {
+                        if (document.getElementById("notifLabel").value == "Event") {
+                            document.getElementById("notifEventSchedule").style.visibility = "visible";
+                        } else {
+                            notifEventSchedule.style.visibility = "hidden";
+                        }
+                    }
+                    function notifMsgScheduleHandler() {
+                        let minDate = ScheduleDate();
+                        document.getElementById("notifMsgScheduleDate").setAttribute("min", minDate);
+                    }
+                    function notifMsgExpiryHandler() {
+                        document.getElementById("notifMsgExpiryDate").setAttribute("min", document.getElementById("notifMsgScheduleDate").value);
                     }
                 </script>
                 <!-- <script>
