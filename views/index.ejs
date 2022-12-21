@@ -415,7 +415,7 @@
                                                                     name="category" placeholder="select category"
                                                                     onchange="javascript:populate('slct1','slct2')"
                                                                     multiple required>
-                                                                    <option selected="selected" value="1">
+                                                                    <option selected="selected" value="0">
                                                                         ALL
                                                                     </option>
                                                                     <!-- <option value="2">FE</option>
@@ -424,20 +424,23 @@
                                                                     <option value="5">EXTC</option>
                                                                     <option value="6">MECH</option> -->
                                                                     <!-- <option data-select2-id="38">EXAM</option> -->
-                                                                    <% for (let count = 0; count < branch_data.length; count++) {
-                                                                        %>
-                                                                        <option value="<%= branch_data[count].branch_id %>"><%= branch_data[count].branch_name %></option>
-                                                                    <%} %>                                                                     
+                                                                    <% for (let count=0; count < branch_data.length;
+                                                                        count++) { %>
+                                                                        <option
+                                                                            value="<%= branch_data[count].branch_id %>">
+                                                                            <%= branch_data[count].branch_name %>
+                                                                        </option>
+                                                                        <%} %>
                                                                 </select>
 
                                                             </div>
                                                         </div>
                                                         <div class="col-lg-4">
                                                             <div class="form-group">
-                                                                <label>Class</label>
+                                                                <label>Standard</label>
                                                                 <select class="form-control" style="width: 15rem;"
                                                                     tabindex="-1" id="slct2" aria-hidden="true"
-                                                                    name="class" placeholder="select class" multiple>
+                                                                    name="standard" placeholder="select class" multiple>
 
                                                                 </select>
 
@@ -721,7 +724,7 @@
 
                         }
                     }
-                </script>                
+                </script>
                 <!-- <script>
                     $(function () {
                         $.validator.setDefaults({
