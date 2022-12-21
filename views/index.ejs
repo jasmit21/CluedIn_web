@@ -507,7 +507,8 @@
                                                                         id="notifEventdate"
                                                                         class="form-control datetimepicker-input"
                                                                         data-target="#reservationdate"
-                                                                        name="scheduled_date">
+                                                                        name="scheduled_date"
+                                                                        onclick="notifEventScheduleDateHandler();">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -804,21 +805,26 @@
                             let minDate = year+"-"+month+"-"+tdate;
                             return minDate;
                     }
-                    function notifLabelHandler(){
-                        let notifEventSchedule = document.getElementById("notifEventdate");
-                        let notifLabel = document.getElementById("notifLabel");
+                    function notifEventScheduleDateHandler(){
+                        let notifMsgScheduleDate = document.getElementById("notifMsgScheduleDate").value;
                         let notifMsgExpiryDate = document.getElementById("notifMsgExpiryDate").value;
+                        document.getElementById("notifEventdate").setAttribute("min",notifMsgScheduleDate);
+                        document.getElementById("notifEventdate").setAttribute("max",notifMsgExpiryDate);
+                        }
+                    function notifLabelHandler(){
+                        let notifEventSchedule = document.getElementById("notifEventSchedule");
+                        let notifLabel = document.getElementById("notifLabel");
+                        
                         if (notifLabel.value=="Event"){
                             notifEventSchedule.style.visibility="visible";
                             var minDate = ScheduleDate();
                             notifEventSchedule.setAttribute("min",minDate);
-                            notifEventSchedule.setAttribute("max",notifMsgExpiryDate);
+                            notifEventSchedule.setAttribute("max",document.getElementById("notifMsgExpiryDate").value);
                         }else{
                             notifEventSchedule.style.visibility="hidden";
                         }
                     }    
                     function notifMsgScheduleHandler(){
-                        
                         let minDate = ScheduleDate();
                         document.getElementById("notifMsgScheduleDate").setAttribute("min",minDate);
                     }
