@@ -354,7 +354,9 @@
                                                         <div class="input-group date" id="reservationdate"
                                                             data-target-input="nearest" style="width: 40%;">
                                                             <input type="date" class="form-control datetimepicker-input"
-                                                                data-target="#reservationdate" name="scheduled_date" id="notifMsgScheduleDate" onclick="notifMsgScheduleHandler();">
+                                                                data-target="#reservationdate" name="scheduled_date"
+                                                                id="notifMsgScheduleDate"
+                                                                onclick="notifMsgScheduleHandler();">
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
@@ -362,7 +364,9 @@
                                                         <div class="input-group date" id="reservationdate"
                                                             data-target-input="nearest" style="width: 40%;">
                                                             <input type="date" class="form-control datetimepicker-input"
-                                                                data-target="#reservationdate" name="scheduled_date" id="notifMsgExpiryDate" onclick="notifMsgExpiryHandler();">
+                                                                data-target="#reservationdate" name="scheduled_date"
+                                                                id="notifMsgExpiryDate"
+                                                                onclick="notifMsgExpiryHandler();">
                                                         </div>
                                                     </div>
 
@@ -408,8 +412,8 @@
                                                                     class="form-control" style="width: 15rem;"
                                                                     tabindex="-1" id="slct1" aria-hidden="true"
                                                                     name="category" placeholder="select category"
-                                                                    onchange="populate('slct1','slct2')"
-                                                                    multiple required>
+                                                                    onchange="populate('slct1','slct2')" multiple
+                                                                    required>
                                                                     <option selected="selected" value="1">
                                                                         ALL
                                                                     </option>
@@ -437,7 +441,8 @@
                                                         <div class="col-lg-3">
                                                             <div class="form-group">
                                                                 <label>Division</label>
-                                                                <select class="form-control" style="width: 15rem; overflow: hidden;height: 7rem;"
+                                                                <select class="form-control"
+                                                                    style="width: 15rem; overflow: hidden;height: 7rem;"
                                                                     tabindex="-1" id="" aria-hidden="true"
                                                                     name="user_div" placeholder="" multiple required>
                                                                     <option selected="selected" value="1">
@@ -484,8 +489,8 @@
                                                                 <label>Label</label>
                                                                 <select class="form-control " style="width: 15rem;"
                                                                     tabindex="-1" aria-hidden="true" name="label"
-                                                                    placeholder="select label type" id="notifLabel" onchange="notifLabelHandler();"
-                                                                    required>
+                                                                    placeholder="select label type" id="notifLabel"
+                                                                    onchange="notifLabelHandler();" required>
                                                                     <option selected="selected" value="1">
                                                                         Select label
                                                                     </option>
@@ -498,13 +503,13 @@
                                                                 </select>
                                                             </div>
                                                         </div>
-                                                        <div class="col-lg-4">
-                                                            <div class="form-group" id="notifEventSchedule" style="visibility:hidden;">
-                                                                <label>Event Schedule:</label>
-                                                                <div class="input-group date" 
+                                                        <div class="col-lg-4" id="notifEventSchedule">
+                                                            <div  style="visibility:hidden;" class="form-group">
+
+                                                                <label id="event-date-label" style="visibility: hidden;">Event Schedule:</label>
+                                                                <div class="input-group date"
                                                                     data-target-input="nearest" style="width: 40%;">
-                                                                    <input type="date"
-                                                                        id="notifEventdate"
+                                                                    <input type="date" id="notifEventdate"
                                                                         class="form-control datetimepicker-input"
                                                                         data-target="#reservationdate"
                                                                         name="scheduled_date">
@@ -790,41 +795,43 @@
 
                         }
                     }
-                    function ScheduleDate(){
+                    function ScheduleDate() {
                         let todayDate = new Date();
-                            let month = todayDate.getMonth() + 1;
-                            let year = todayDate.getUTCFullYear();
-                            let tdate = todayDate.getDate();
-                            if(tdate<10){
-                                tdate = "0"+tdate;
-                            }
-                            if(month<10){
-                                month = "0"+month;
-                            }
-                            let minDate = year+"-"+month+"-"+tdate;
-                            return minDate;
+                        let month = todayDate.getMonth() + 1;
+                        let year = todayDate.getUTCFullYear();
+                        let tdate = todayDate.getDate();
+                        if (tdate < 10) {
+                            tdate = "0" + tdate;
+                        }
+                        if (month < 10) {
+                            month = "0" + month;
+                        }
+                        let minDate = year + "-" + month + "-" + tdate;
+                        return minDate;
                     }
-                    function notifLabelHandler(){
+                    function notifLabelHandler() {
                         let notifEventSchedule = document.getElementById("notifEventdate");
                         let notifLabel = document.getElementById("notifLabel");
                         let notifMsgExpiryDate = document.getElementById("notifMsgExpiryDate").value;
-                        if (notifLabel.value=="Event"){
-                            notifEventSchedule.style.visibility="visible";
+                        let eventDateLabel = document.getElementById("event-date-label")
+                        if (notifLabel.value == "Event") {
+                            notifEventSchedule.style.visibility = "visible";
+                            eventDateLabel.style.visibility = "visible";
                             var minDate = ScheduleDate();
-                            notifEventSchedule.setAttribute("min",minDate);
-                            notifEventSchedule.setAttribute("max",notifMsgExpiryDate);
-                        }else{
-                            notifEventSchedule.style.visibility="hidden";
+                            notifEventSchedule.setAttribute("min", minDate);
+                            notifEventSchedule.setAttribute("max", notifMsgExpiryDate);
+                        } else {
+                            notifEventSchedule.style.visibility = "hidden";
                         }
-                    }    
-                    function notifMsgScheduleHandler(){
-                        
-                        let minDate = ScheduleDate();
-                        document.getElementById("notifMsgScheduleDate").setAttribute("min",minDate);
                     }
-                    function notifMsgExpiryHandler(){
+                    function notifMsgScheduleHandler() {
+
+                        let minDate = ScheduleDate();
+                        document.getElementById("notifMsgScheduleDate").setAttribute("min", minDate);
+                    }
+                    function notifMsgExpiryHandler() {
                         let notifMsgScheduleDate = document.getElementById("notifMsgScheduleDate").value;
-                        document.getElementById("notifMsgExpiryDate").setAttribute("min",notifMsgScheduleDate);
+                        document.getElementById("notifMsgExpiryDate").setAttribute("min", notifMsgScheduleDate);
                     }
                 </script>
                 <!-- <script>
