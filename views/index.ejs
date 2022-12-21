@@ -816,13 +816,11 @@
                         }
                     }
                     function notifMsgScheduleHandler() {
-
                         let minDate = ScheduleDate();
                         document.getElementById("notifMsgScheduleDate").setAttribute("min", minDate);
                     }
                     function notifMsgExpiryHandler() {
-                        let notifMsgScheduleDate = document.getElementById("notifMsgScheduleDate").value;
-                        document.getElementById("notifMsgExpiryDate").setAttribute("min", notifMsgScheduleDate);
+                        document.getElementById("notifMsgExpiryDate").setAttribute("min", document.getElementById("notifMsgScheduleDate").value);
                     }
                 </script>
                 <!-- <script>
