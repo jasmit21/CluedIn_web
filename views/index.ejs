@@ -406,17 +406,17 @@
                                                         <div class="col-lg-3">
                                                             <div class="form-group">
 
-                                                                
+
                                                                 <label>Branch (*press ctrl key to select multiple
                                                                     fields)</label>
                                                                 <select
                                                                     style="height: 9rem;width:15rem ;overflow: hidden;"
-                                                                    class="form-control" style="width: 15rem;"
+                                                                    class="form-control"
                                                                     tabindex="-1" id="slct1" aria-hidden="true"
                                                                     name="category" placeholder="select category"
                                                                     onchange="populate('slct1','slct2')" multiple
                                                                     required>
-                                                                    
+
                                                                     <option selected="selected" value="0">
                                                                         ALL
                                                                     </option>
@@ -438,12 +438,13 @@
                                                             </div>
                                                         </div>
                                                         <div class="col-lg-3">
-                                                            <div class="form-group">                                                          
+                                                            <div class="form-group">
                                                                 <label>Standard</label>
                                                                 <select class="form-control"
-                                                                    style="width: 15rem;overflow: hidden;" tabindex="-1"
-                                                                    id="slct2" aria-hidden="true" name="class"
-                                                                    placeholder="select class" multiple>
+                                                                    style="width: 15rem;overflow: hidden;height: 7.5rem;"
+                                                                    tabindex="-1" id="slct2" aria-hidden="true"
+                                                                    name="class" placeholder="select class" multiple>
+
                                                                 </select>
                                                             </div>
                                                         </div>
@@ -452,9 +453,9 @@
                                                                 <label>Division</label>
                                                                 <select class="form-control"
                                                                     style="width: 15rem; overflow: hidden;height: 7rem;"
-                                                                    tabindex="-1" id="" aria-hidden="true"
+                                                                    tabindex="-1" id="slct3" aria-hidden="true"
                                                                     name="user_div" placeholder="" multiple required>
-                                                                    <option selected="selected" value="1">
+                                                                    <!--<option selected="selected" value="1">
                                                                         A
                                                                     </option>
                                                                     <option value="2">
@@ -464,7 +465,7 @@
                                                                         C
                                                                     </option>
                                                                     <option value="4">D</option>
-                                                                    <option value="5">E</option>
+                                                                    <option value="5">E</option>-->
                                                                 </select>
 
                                                             </div>
@@ -513,7 +514,8 @@
                                                             </div>
                                                         </div>
                                                         <div class="col-lg-4">
-                                                            <div id="notifEventSchedule" style="visibility:hidden;" class="form-group">
+                                                            <div id="notifEventSchedule" style="visibility:hidden;"
+                                                                class="form-group">
                                                                 <label>Event Schedule:</label>
                                                                 <div class="input-group date"
                                                                     data-target-input="nearest" style="width: 40%;">
@@ -769,8 +771,23 @@
                 <!-- function for sub category in notif form  -->
 
                 <script>
+                    
+                    $(document).ready(()=>{
+                        console.log("hi jasmit");
+                        $.get('/dropdown',(data,status)=>{
+                            console.log(data);
+                            let standard = data.standard;
+                            // console.log(standard);
+                            let division = data.division;
+                            // console.log(division);    
+                           console.log("std:"+standard);
+                        });
+                    });
+                    
+
                     //dropdown logic
                     function populate(s1, s2) {
+                        console.log("std:"+standard[0].std_id);
 
                         // console.log("hello jasmit")
                         var s1 = document.getElementById(s1);
@@ -778,9 +795,9 @@
                         var s2 = document.getElementById(s2);
 
                         s2.innerHTML = "";
-                        if (s1.value == 1) {
+                        if (s1.value == 0) {
                             var optionArray = ["ALL|ALL"];
-                            console.log(optionArray);
+                            // console.log(optionArray);
                         }
                         // else if (s1.value == 2) {
                         //     var optionArray = ["All|All"];
@@ -789,8 +806,11 @@
                         // else if (s1.value == 1 && s1.value == 2 || s1.value == 3 || s1.value == 4 || s1.value == 5 || s1.value == 6) {
                         //     var optionArray = ["All|All"];
                         // }
-                        else if (s1.value == 2 || s1.value == 3 || s1.value == 4 || s1.value == 5 || s1.value == 6) {
-                            var optionArray = ["All|All", "SE|SE", "TE|TE", "BE|BE"];
+                        else if (s1.value == 1) {
+                            var optionArray = ["All|All", "1|FE"];
+                        }
+                        else if (s1.value == 2 || s1.value == 3 || s1.value == 4 || s1.value == 5) {
+                            var optionArray = ["All|All", "1|FE", "2|SE", "3|TE", "4|BE"];
                         }
 
                         for (var option in optionArray) {
@@ -832,53 +852,7 @@
                         document.getElementById("notifMsgExpiryDate").setAttribute("min", document.getElementById("notifMsgScheduleDate").value);
                     }
                 </script>
-                <!-- <script>
-                    $(function () {
-                        $.validator.setDefaults({
-                            submitHandler: function () {
-                                alert("Form successful submitted!");
-                            }
-                        });
-                        $('#quickForm').validate({
-                            rules: {
-                                email: {
-                                    required: true,
-                                    email: true,
-                                },
-                                
-                                password: {
-                                    required: true,
-                                    minlength: 5
-                                },
-                                terms: {
-                                    required: true
-                                },
-                            },
-                            messages: {
-                                email: {
-                                    required: "Please enter a email address",
-                                    email: "Please enter a valid email address"
-                                },
-                                password: {
-                                    required: "Please provide a password",
-                                    minlength: "Your password must be at least 5 characters long"
-                                },
-                                terms: "Please accept our terms"
-                            },
-                            errorElement: 'span',
-                            errorPlacement: function (error, element) {
-                                error.addClass('invalid-feedback');
-                                element.closest('.form-group').append(error);
-                            },
-                            highlight: function (element, errorClass, validClass) {
-                                $(element).addClass('is-invalid');
-                            },
-                            unhighlight: function (element, errorClass, validClass) {
-                                $(element).removeClass('is-invalid');
-                            }
-                        });
-                    });
-                </script> -->
+
 </body>
 
 </html>

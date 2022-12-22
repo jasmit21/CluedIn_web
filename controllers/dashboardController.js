@@ -19,7 +19,7 @@ module.exports = {
         if (err) {
           throw err;
         }
-        console.log(data);
+        // console.log(data);
         // res.render(Path,{branch_data:data});
         res.render(Path,{message1 : req.flash('message1'),branch_data : data});
       })

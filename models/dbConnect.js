@@ -9,12 +9,13 @@ const pool = mysql.createPool({
     user: "cluedin",
     password: "cluedin",
     database: 'cluedin',
+    multipleStatements: true,
     connectionLimit : 100,
 
-    host: "128.199.23.207",
-    user: "cluedin",
-    password: "cluedin",
-    database: 'cluedin',
+    // host: "128.199.23.207",
+    // user: "cluedin",
+    // password: "cluedin",
+    // database: 'cluedin',
     
 
 });
