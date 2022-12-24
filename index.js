@@ -4,7 +4,7 @@ require("dotenv").config();
 const app = express();
 const bodyParser = require("body-parser");
 const multer = require("multer");
-
+const excel = require('xlsx')
 //declaring routes
 //router files
 const homeRoute = require("./routes/homeRoute");
@@ -148,6 +148,7 @@ const uploadFile = multer({ storage: storage });
 function importFileToDb(exFile) {
   readXlsxFile(exFile).then((rows) => {
     rows.shift();
+    console.log("rowData =",rows);
     let query =
       "INSERT INTO user_details (user_fname,user_lname,user_gender,user_email,user_mobno,user_addr,user_pincode,user_pwd,user_role_id,user_department) VALUES ?";
     pool.query(query, [rows], (error, result) => {
