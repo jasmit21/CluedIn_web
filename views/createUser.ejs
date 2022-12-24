@@ -342,8 +342,8 @@
                                                     <div class="form-group">
                                                         <label for="mobile">Mobile Number</label>
                                                         <input type="number" class="form-control" id="user_mobno"
-                                                            placeholder="Enter mobile number" name="user_mobno"  maxlength="10"
-                                                            required>
+                                                            placeholder="Enter mobile number" name="user_mobno"
+                                                            maxlength="10" required>
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="password">Password</label>
@@ -361,25 +361,7 @@
                                                                     name="user_role" placeholder="select user role"
                                                                     onchange="javascript:populate('slct1','slct2')"
                                                                     required>
-                                                                    <option selected="selected" value="1">
-                                                                        Admin
-                                                                    </option>
-                                                                    <option value="2">Principal</option>
-                                                                    <option value="3">HOD</option>
-                                                                    <option value="4">Dean</option>
-                                                                    <option value="5">Class Teacher</option>
-                                                                    <option value="6">Faculty</option>
-                                                                    <option value="7">Management</option>
-                                                                    <option value="8">Exam Admin</option>
-                                                                    <option value="9">Admission Admin</option>
-                                                                    <option value="10">TPO</option>
-                                                                    <option value="11">SBC</option>
-                                                                    <option value="12">SBC PR Representative</option>
-                                                                    <option value="13">Library</option>
-                                                                    <option value="14">Student</option>
-                                                                    <!-- <option data-select2-id="38">EXAM</option> -->
                                                                 </select>
-
                                                             </div>
                                                         </div>
                                                         <div class="col-lg-4">
@@ -552,7 +534,7 @@
                         var s2 = document.getElementById(s2);
 
                         s2.innerHTML = "";
-                        if (s1.value == 1 || s1.value == 2 || s1.value == 7 ||s1.value == 8 ||s1.value == 9 || s1.value == 13) {
+                        if (s1.value == 1 || s1.value == 2 || s1.value == 7 || s1.value == 8 || s1.value == 9 || s1.value == 13) {
                             var optionArray = ["---------------------|---------------------"];
                             console.log(optionArray);
                         }
@@ -560,14 +542,14 @@
                             var optionArray = ["|", "IT|IT", "COMPS|COMPS", "EXTC|EXTC", "MECH|MECH"];
                             console.log(optionArray);
                         }
-                        else if (s1.value == 4 || s1.value == 5 || s1.value == 6||s1.value == 14) {
+                        else if (s1.value == 4 || s1.value == 5 || s1.value == 6 || s1.value == 14) {
                             var optionArray = ["|", "IT|IT", "COMPS|COMPS", "EXTC|EXTC", "MECH|MECH"];
                         }
                         else if (s1.value == 10) {
                             var optionArray = ["|", "Head|Head", "PR|PR"];
                         }
                         else if (s1.value == 11 || s1.value == 12) {
-                            var optionArray = ["|", "CSI|CSI", "ACM|ACM","IETE|IETE","Madgear|Madgear","IEEE|IEEE","E-Cell|E-Cell","SIE|SIE","NSS|NSS","Domain Maths|Domain Maths","Physics|Physics"];
+                            var optionArray = ["|", "CSI|CSI", "ACM|ACM", "IETE|IETE", "Madgear|Madgear", "IEEE|IEEE", "E-Cell|E-Cell", "SIE|SIE", "NSS|NSS", "Domain Maths|Domain Maths", "Physics|Physics"];
                         }
                         for (var option in optionArray) {
                             var pair = optionArray[option].split("|");
@@ -634,7 +616,8 @@
                                     </div>
                                     <div class="mb-3">
                                         <label class="col-form-label">Mobile No.</label>
-                                        <input type="number" class="form-control" name="user_mobno" id="mobile_num" max="10">
+                                        <input type="number" class="form-control" name="user_mobno" id="mobile_num"
+                                            max="10">
                                     </div>
                                     <div class="mb-3">
                                         <label class="col-form-label">Email</label>
@@ -686,7 +669,7 @@
                                 data: { action: 'fetch' },
                                 dataType: "JSON",
                                 success: function (data) {
-                                    console.log(data.data[1].user_id);
+                                    // console.log(data.data[1].user_id);
                                     var html = '';
 
                                     if (data.data.length > 0) {
@@ -711,6 +694,29 @@
                                     }
 
                                     $('tbody').html(html);
+                                    // console.log(html);
+
+                                }
+                            });
+                            $.ajax({
+                                url: "/listuser",
+                                method: "POST",
+                                data: { action: 'fetch_user_role' },
+                                dataType: "JSON",
+                                success: function (data) {
+                                    // console.log(data[0]);
+                                    var html = '<option>----------Select Role---------</option>';
+
+                                    if (data.length > 0) {
+                                        for (var count = 0; count < data.length; count++) {
+                                            html += `
+                                                <option value="`+ data[count].role_id + `">` + data[count].role_name + `</option>
+                            
+                                            `;
+                                        }
+                                    }
+
+                                    $('#slct1').html(html);
                                     // console.log(html);
 
                                 }
@@ -809,10 +815,6 @@
 
                     });
                 </script>
-
-
-
-
 
 </body>
 

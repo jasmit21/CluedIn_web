@@ -3,9 +3,9 @@ const pool = require("../models/dbConnect");
 module.exports = {
   list: (req, res) => {
     var action = req.body.action;
-    console.log("hiii");
+    // console.log("hiii");
     if (action == "fetch") {
-      console.log("hiii action = fetch");
+      // console.log("hiii action = fetch");
       var qry =
         "SELECT user_id,user_fname,user_lname,user_mobno,user_email,user_gender,user_role_id,user_department,user_addr,user_pincode FROM user_details WHERE isDisabled = 0 ";
       pool.query(qry, function (error, data) {
@@ -23,9 +23,21 @@ module.exports = {
       var query = `SELECT user_id,user_fname,user_lname,user_mobno,user_email,user_gender,user_addr,user_pincode FROM user_details WHERE user_id = "${id}"`;
       pool.query(query, function (err, data) {
         if (err) throw err;
-        console.log(data);
+        // console.log(data);
         res.json(data[0]);
-        console.log(data[0]);
+        // console.log(data[0]);
+      });
+    }
+    //to fetch the user_roles for dropdown of create user form 
+    if (action == "fetch_user_role") {
+      console.log("fetching user role");
+      // var id = req.body.id;
+      var query = `SELECT role_id,role_name FROM role_master`;
+      pool.query(query, function (err, data) {
+        if (err) throw err;
+        // console.log(data);
+        res.json(data);
+        // console.log(data[0]);
       });
     }
     if (action == "Edit") {
