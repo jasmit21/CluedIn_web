@@ -775,19 +775,19 @@
                     $(document).ready(()=>{
                         console.log("hi jasmit");
                         $.get('/dropdown',(data,status)=>{
-                            console.log(data);
+                            // console.log(data);
                             let standard = data.standard;
                             // console.log(standard);
                             let division = data.division;
                             // console.log(division);    
-                           console.log("std:"+standard);
+                        //    console.log("std:"+standard);
                         });
                     });
-                    
+                    // console.log("std:"+standard);
 
                     //dropdown logic
                     function populate(s1, s2) {
-                        console.log("std:"+standard[0].std_id);
+                        
 
                         // console.log("hello jasmit")
                         var s1 = document.getElementById(s1);
