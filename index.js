@@ -78,7 +78,24 @@ app.use('updateuser',homeRoute);
 
 //role master
 app.use("/dbapi", dbApiRoute);
-
+app.use("/dropdown",(req,res)=>{
+  let qry = `SELECT std_id,std_name FROM standard;SELECT div_id,div_name FROM division`;
+  pool.query(qry,(err,result)=>{
+    if (err) throw err;
+    var data=JSON.parse(JSON.stringify(result));
+    console.log(data);
+    var data1 = data[0];
+    // console.log(data1);
+    var data2= data[1];
+    // console.log("std"+data1,"    --div"+data2);
+    res.json(
+      {
+        standard:data1,
+        division:data2
+      })
+    // console.log(data1[3].std_id);
+  });
+});
 // app.use("/register", homeRoute);
 
 // cluedIn app api
