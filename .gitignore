@@ -2,3 +2,5 @@
 **/.env
 uploads/
 node_modules/
+package.json
+//ignore this line
