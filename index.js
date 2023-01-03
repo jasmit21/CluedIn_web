@@ -145,20 +145,34 @@ const storage = multer.diskStorage({
 });
 const uploadFile = multer({ storage: storage });
 
-function importFileToDb(exFile) {
-  readXlsxFile(exFile).then((rows) => {
-    rows.shift();
-    console.log("rowData =",rows);
-    let query =
-      "INSERT INTO user_details (user_fname,user_lname,user_gender,user_email,user_mobno,user_addr,user_pincode,user_pwd,user_role_id,user_department) VALUES ?";
-    pool.query(query, [rows], (error, result) => {
-      console.log(error || result);
-    });
-  });
+function importFileToDb(exFile,req) {  //get bsd id from dropdown and store it in local variable and use select qry to get b,s&d
+  console.log("req:",req.body.std);
+  // readXlsxFile(exFile).then((rows) => {
+  //   rows.shift();
+  //   console.log("rowData =",rows[1][1]);
+  //   let query = //for loop 
+  //     "INSERT INTO user_details (user_fname,user_lname,user_gender,user_email,user_mobno,user_addr,user_pincode,user_pwd,user_role_id,user_department) VALUES ?";
+      
+  //   pool.query(query, [rows], (error, result) => {
+  //     console.log("ROWS:",[rows]);
+  //     console.log(error || result);
+  //     //2nd query
+  //   });
+  // });
+
+
+/* use any excel read package
+0) Get ay_id, sem_id, bsd_id from the html form and store in local variable.
+1) Check no. of rows in the excel file
+2) for each row 
+  a. insert into user_details
+  b. You will get user_id from the resultset (aka result).
+  c. insert into table aka student mapping table 
+*/
 }
 
 app.post("/import-excel", uploadFile.single("import-excel"), (req, res) => {
-  importFileToDb(__dirname + "/uploads/" + req.file.filename);
+  importFileToDb(__dirname + "/uploads/" + req.file.filename,req);
   req.flash("message", `Users were created successfully`);
   res.redirect("/createUser");
 });
