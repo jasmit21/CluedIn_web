@@ -78,25 +78,6 @@ app.use('updateuser',homeRoute);
 
 //role master
 app.use("/dbapi", dbApiRoute);
-app.use("/dropdown",(req,res)=>{
-  let qry = `SELECT std_id,std_name FROM standard;SELECT div_id,div_name FROM division`;
-  pool.query(qry,(err,result)=>{
-    if (err) throw err;
-    var data=JSON.parse(JSON.stringify(result));
-    console.log(data);
-    var data1 = data[0];
-    // console.log(data1);
-    var data2= data[1];
-    // console.log("std"+data1,"    --div"+data2);
-    res.json(
-      {
-        standard:data1,
-        division:data2
-      })
-    // console.log(data1[3].std_id);
-  });
-});
-// app.use("/register", homeRoute);
 
 // cluedIn app api
 app.use("/api/signup", homeRoute);
@@ -178,54 +159,51 @@ app.post("/import-excel", uploadFile.single("import-excel"), (req, res) => {
 });
 
 
+// var target_gender = 1;
+// var params = {};
 
+// if(target_gender!=0) {
+//   params.target_gender=target_gender;
+// }
 
+// console.log(params);
 
-var target_gender = 1;
-var params = {};
+// function buildConditions(params) {
+//   var conditions = [];
+//   var values = [];
+//   var conditionsStr;
 
-if(target_gender!=0) {
-  params.target_gender=target_gender;
-}
+//   if (typeof params.target_gender !== 'undefined') {
+//     conditions.push("t1.user_gender = ?");
+//     values.push(parseInt(params.target_gender));
+//   }
 
-console.log(params);
+//   if (1) {
 
-function buildConditions(params) {
-  var conditions = [];
-  var values = [];
-  var conditionsStr;
-
-  if (typeof params.target_gender !== 'undefined') {
-    conditions.push("t1.user_gender = ?");
-    values.push(parseInt(params.target_gender));
-  }
-
-  if (1) {
-
-    conditions.push("t2.user_id = t1.user_id and t2.ay_id=2 and t2.bsd_id =12 and t2.isDisabled=0 and t2.isDelete=0;");
-   // values.push(parseInt(params.target_gender));
-}
+//     conditions.push("t2.user_id = t1.user_id and t2.ay_id=2 and t2.bsd_id =12 and t2.isDisabled=0 and t2.isDelete=0;");
+//    // values.push(parseInt(params.target_gender));
+// }
 
   
-  return {
-    where: conditions.length ?
-             conditions.join(' AND ') : '1',
-    values: values
-  };
-}
+//   return {
+//     where: conditions.length ?
+//              conditions.join(' AND ') : '1',
+//     values: values
+//   };
+// }
 
-var conditions = buildConditions(params);
-var sql_1 = 'select t1.firebase_token from user_details t1, Student_branch_standard_div_ay_rollno_sem_mapping t2 WHERE ' + conditions.where;
+// var conditions = buildConditions(params);
+// var sql_1 = 'select t1.firebase_token from user_details t1, Student_branch_standard_div_ay_rollno_sem_mapping t2 WHERE ' + conditions.where;
 
-console.log(sql_1);
-pool.query(sql_1, conditions.values, (err, result) => {
+// console.log(sql_1);
+// pool.query(sql_1, conditions.values, (err, result) => {
 
 
-  if (err) res.send(err);
+//   if (err) res.send(err);
 
-  // res.send("notif sent");
-  console.log("om",result);
-});
+//   // res.send("notif sent");
+//   console.log("om",result);
+// });
 
 
 //creating server
