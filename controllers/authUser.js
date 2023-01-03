@@ -18,8 +18,10 @@ module.exports = {
       if (err) res.send(err);
       if (result.length >= 1) {
         // req.session.usermobno = usermobno;
+        // console.log(result[0].user_id);
         var session = req.session;
         session.userid = req.body.userName;
+        session.senderid = result[0].user_id; //this is for senderId of the user who sends the notification
         console.log(req.session);
         // var Path = path.join(__dirname, "..", "views", "index.html");
         res.redirect("/dashboard");
