@@ -20,6 +20,9 @@ module.exports = {
     var category = req.body.category;
     var label = req.body.label;
 
+
+
+
     // var sql = "INSERT INTO user_message (title,message,expDate,schDate,category) VALUES ?";
     var sql =
       "INSERT INTO user_message (message_title,user_message,dateOfExpiration,scheduled_date,category,message_label) VALUES ?";
@@ -27,11 +30,17 @@ module.exports = {
       [notif_title, notif_desc, exp_date, scheduled_date, category, label],
     ];
     pool.query(sql, [values], (err, result) => {
+
+
       if (err) res.send(err);
 
       // res.send("notif sent");
       console.log("data inserted finally!!!");
     });
+
+
+
+
 
     var getFcmTokensSql = [
       "cghubDBUQVixer-83NkN9n:APA91bFQyrRyUNsDCR3_V1wMUViHZO3Tgst7lVTeWez6CT5J7-hekMEGgvdI26tptTu1UQUvagP-ovYd2ObpXyH0QXpOHWk4D-oUjRPPFK2jWkUO8xq0ye8y8C0Pnbm9DGmyaYIbp1gb",
