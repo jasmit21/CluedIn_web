@@ -322,7 +322,7 @@
                                 </li> -->
                             </ul>
                         </div>
-                       
+
                         <div class="card-body">
                             <div class="tab-content" id="custom-tabs-two-tabContent">
                                 <div class="tab-pane fade active show" id="create-notification" role="tabpanel"
@@ -403,97 +403,47 @@
                                                                     role="presentation"></b></span></span></span><span
                                                         class="dropdown-wrapper" aria-hidden="true"></span></span> -->
 
-                                                    <div class="row">
-                                                        <div class="col-lg-3">
-                                                            <div class="form-group">
+
+                                                    <div class="form-group">
 
 
-                                                                <label>Branch (*press ctrl key to select multiple
-                                                                    fields)</label>
-                                                                <select
-                                                                    style="height: 9rem;width:15rem ;overflow: hidden;"
-                                                                    class="form-control"
-                                                                    tabindex="-1" id="slct1" aria-hidden="true"
-                                                                    name="category" placeholder="select category"
-                                                                    onchange="populate('slct1','slct2')" multiple
-                                                                    required>
+                                                        <label>Target Class (*press ctrl key to select multiple
+                                                            fields)</label>
+                                                        <select style="height: 15rem;width:15rem ;" class="form-control"
+                                                            tabindex="-1" id="slct1" aria-hidden="true" name="target_class"
+                                                            placeholder="select category"
+                                                            onchange="populate('slct1','slct2')" multiple required>
 
-                                                                    <option selected="selected" value="0">
-                                                                        ALL
-                                                                    </option>
-                                                                    <!-- <option value="2">FE</option>
-                                                                    <option value="3">IT</option>
-                                                                    <option value="4">COMPS</option>
-                                                                    <option value="5">EXTC</option>
-                                                                    <option value="6">MECH</option> -->
-                                                                    <!-- <option data-select2-id="38">EXAM</option> -->
-                                                                    <% for (let count=0; count < branch_data.length;
-                                                                        count++) { %>
-                                                                        <option
-                                                                            value="<%= branch_data[count].branch_id %>">
-                                                                            <%= branch_data[count].branch_name %>
-                                                                        </option>
-                                                                        <%} %>
-                                                                </select>
-
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-3">
-                                                            <div class="form-group">
-                                                                <label>Standard</label>
-                                                                <select class="form-control"
-                                                                    style="width: 15rem;overflow: hidden;height: 7.5rem;"
-                                                                    tabindex="-1" id="slct2" aria-hidden="true"
-                                                                    name="class" placeholder="select class" multiple>
-
-                                                                </select>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-3">
-                                                            <div class="form-group">
-                                                                <label>Division</label>
-                                                                <select class="form-control"
-                                                                    style="width: 15rem; overflow: hidden;height: 7rem;"
-                                                                    tabindex="-1" id="slct3" aria-hidden="true"
-                                                                    name="user_div" placeholder="" multiple required>
-                                                                    <!--<option selected="selected" value="1">
-                                                                        A
-                                                                    </option>
-                                                                    <option value="2">
-                                                                        B
-                                                                    </option>
-                                                                    <option value="3">
-                                                                        C
-                                                                    </option>
-                                                                    <option value="4">D</option>
-                                                                    <option value="5">E</option>-->
-                                                                </select>
-
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-3">
-                                                            <div class="form-group">
-                                                                <label>Gender</label>
-                                                                <select class="form-control " style="width: 15rem;"
-                                                                    tabindex="-1" id="slct3" aria-hidden="true"
-                                                                    name="user_gender" placeholder="select Gender"
-                                                                    required>
-                                                                    <option selected="selected" value="3">
-                                                                        All
-                                                                    </option>
-                                                                    <option value="2">
-                                                                        Other
-                                                                    </option>
-                                                                    <option value="1">
-                                                                        Male
-                                                                    </option>
-                                                                    <option value="0">Female</option>
-                                                                </select>
-
-                                                            </div>
-                                                        </div>
+                                                            <option selected="selected" value="0">
+                                                                ALL
+                                                            </option>
+                                                            <% for (let count=0; count < bsd_data.length; count++) { %>
+                                                                <option value="<%= bsd_data[count].bsd_id %>">
+                                                                    <%= bsd_data[count].bsd_value %>
+                                                                </option>
+                                                                <%} %>
+                                                        </select>
 
                                                     </div>
+
+
+                                                    <div class="form-group">
+                                                        <label>Gender</label>
+                                                        <select class="form-control " style="width: 15rem;"
+                                                            tabindex="-1" id="slct3" aria-hidden="true"
+                                                            name="user_gender" placeholder="select Gender" required>
+                                                            <option selected="selected" value="0">
+                                                                All
+                                                            </option>
+                                                            <option value="1">
+                                                                Male
+                                                            </option>
+                                                            <option value="2">Female</option>
+                                                            <option value="3">Other</option>
+                                                        </select>
+
+                                                    </div>
+
                                                     <div class="row">
                                                         <div class="col-lg-4">
                                                             <div class="form-group">
@@ -502,15 +452,13 @@
                                                                     tabindex="-1" aria-hidden="true" name="label"
                                                                     placeholder="select label type" id="notifLabel"
                                                                     onchange="notifLabelHandler();" required>
-                                                                    <option selected="selected" value="1">
-                                                                        Select label
-                                                                    </option>
-                                                                    <option value="Academics">Academics</option>
-                                                                    <option value="TPO">TPO</option>
-                                                                    <option value="Exam">Exam</option>
-                                                                    <option value="Urgent">Urgent</option>
-                                                                    <option value="Event">Event</option>
-                                                                    <!-- <option data-select2-id="38">EXAM</option> -->
+                                                                    <% for (let count=0; count < label_data.length;
+                                                                        count++) { %>
+                                                                        <option
+                                                                            value="<%= label_data[count].label_id %>">
+                                                                            <%= label_data[count].label_name %>
+                                                                        </option>
+                                                                        <%} %>
                                                                 </select>
                                                             </div>
                                                         </div>
@@ -772,25 +720,25 @@
                 <!-- function for sub category in notif form  -->
 
                 <script>
-                    
-                    $(document).ready(()=>{
+
+                    $(document).ready(() => {
                         console.log("hi jasmit");
-                        $.get('/dropdown',(data,status)=>{
+                        $.get('/dropdown', (data, status) => {
                             // console.log(data);
                             let standard = data.standard;
                             // console.log(standard);
                             let division = data.division;
                             // console.log(division);    
-                        //    console.log("std:"+standard);
+                            //    console.log("std:"+standard);
                         });
                     });
-                    // console.log("std:"+standard);
+                    
 
                     //dropdown logic
                     function populate(s1, s2) {
-                        
 
-                        // console.log("hello jasmit")
+
+                        
                         var s1 = document.getElementById(s1);
 
                         var s2 = document.getElementById(s2);
@@ -798,15 +746,9 @@
                         s2.innerHTML = "";
                         if (s1.value == 0) {
                             var optionArray = ["ALL|ALL"];
-                            // console.log(optionArray);
+                          
                         }
-                        // else if (s1.value == 2) {
-                        //     var optionArray = ["All|All"];
-                        //     console.log(optionArray);
-                        // }
-                        // else if (s1.value == 1 && s1.value == 2 || s1.value == 3 || s1.value == 4 || s1.value == 5 || s1.value == 6) {
-                        //     var optionArray = ["All|All"];
-                        // }
+                      
                         else if (s1.value == 1) {
                             var optionArray = ["All|All", "1|FE"];
                         }
@@ -824,6 +766,7 @@
 
                         }
                     }
+
                     function ScheduleDate() {
                         let todayDate = new Date();
                         let month = todayDate.getMonth() + 1;
@@ -839,7 +782,7 @@
                         return minDate;
                     }
                     function notifLabelHandler() {
-                        if (document.getElementById("notifLabel").value == "Event") {
+                        if (document.getElementById("notifLabel").value == 5) {
                             document.getElementById("notifEventSchedule").style.visibility = "visible";
                         } else {
                             notifEventSchedule.style.visibility = "hidden";

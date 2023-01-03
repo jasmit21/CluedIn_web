@@ -14,17 +14,20 @@ module.exports = {
       // res.render(Path,{message1 : req.flash('message1')});
 
       //dynamic data for dropdown in create notif form 
-      qry = `SELECT * FROM branch WHERE branch_type = 1`
-      pool.query(qry,(err,data)=>{
+      qry = `SELECT label_id,label_name FROM label_master;SELECT bsd_id,bsd_value FROM BranchStd_Div_Mapping Where bsd_id not in (6,7,8,9,10,14,15,16,17,18,22,23,24,25,26,30,31,32,33,34,35);`
+      pool.query(qry,(err,result)=>{
         if (err) {
-          throw err;
+          throw err;          
         }
-        // console.log(data);
+        var data=JSON.parse(JSON.stringify(result));
+        console.log(data);
+        var label = data[0];
+        var bsd = data[1];
         // res.render(Path,{branch_data:data});
-        res.render(Path,{message1 : req.flash('message1'),branch_data : data});
+        res.render(Path,{message1 : req.flash('message1'),label_data : label,bsd_data : bsd});
       })
 
-      res.render();
+      // res.render();
     } else {
       var Path = path.join(__dirname, "..", "views", "login");
       res.render(Path);
