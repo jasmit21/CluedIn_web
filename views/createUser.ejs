@@ -1,682 +1,453 @@
-<!DOCTYPE html>
-<html lang="en">
+<%- include('templates/header'); %>
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Admin Dashboard</title>
+    <body class="hold-transition dark-mode sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
+        <div class="wrapper">
 
-    <!-- Google Font: Source Sans Pro -->
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-    <!-- Font Awesome Icons -->
-    <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
-    <!-- overlayScrollbars -->
-    <link rel="stylesheet" href="plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
-    <!-- Theme style -->
-    <link rel="stylesheet" href="dist/css/adminlte.min.css">
-</head>
-
-<body class="hold-transition dark-mode sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
-    <div class="wrapper">
-
-        <!-- Preloader
+            <!-- Preloader
         <div class="preloader flex-column justify-content-center align-items-center">
             <img class="animation__shake" src="dist/img/dbit_logo.png" alt="DBIT" height="100" width="100">
         </div> -->
 
-        <!-- Navbar -->
-        <nav class="main-header navbar navbar-expand navbar-dark">
-            <!-- Left navbar links -->
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
-                </li>
-                <li class="nav-item d-none d-sm-inline-block">
-                    <a href="" class="nav-link">Home</a>
-                </li>
-                <li class="nav-item d-none d-sm-inline-block">
-                    <a href="#" class="nav-link">Contact</a>
-                </li>
-            </ul>
+            <!-- Navbar -->
+            <%- include('templates/navbar'); %>
+                <!-- /.navbar -->
 
-            <!-- Right navbar links -->
-            <ul class="navbar-nav ml-auto">
-                <!-- Navbar Search -->
-                <li class="nav-item">
-                    <a class="nav-link" data-widget="navbar-search" href="#" role="button">
-                        <i class="fas fa-search"></i>
-                    </a>
-                    <div class="navbar-search-block">
-                        <form class="form-inline">
-                            <div class="input-group input-group-sm">
-                                <input class="form-control form-control-navbar" type="search" placeholder="Search"
-                                    aria-label="Search">
-                                <div class="input-group-append">
-                                    <button class="btn btn-navbar" type="submit">
-                                        <i class="fas fa-search"></i>
-                                    </button>
-                                    <button class="btn btn-navbar" type="button" data-widget="navbar-search">
-                                        <i class="fas fa-times"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </li>
+                <!-- Main Sidebar Container -->
+                <%- include('templates/sidebar'); %>
 
-                <!-- Messages Dropdown Menu -->
-
-
-
-                <!-- Notifications Dropdown Menu -->
-                <li class="nav-item dropdown">
-                    <a class="nav-link" data-toggle="dropdown" href="#">
-                        <i class="far fa-bell"></i>
-                        <span class="badge badge-warning navbar-badge">15</span>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                        <span class="dropdown-item dropdown-header">15 Notifications</span>
-                        <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item">
-                            <i class="fas fa-envelope mr-2"></i> 4 new messages
-                            <span class="float-right text-muted text-sm">3 mins</span>
-                        </a>
-                        <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item">
-                            <i class="fas fa-users mr-2"></i> 8 friend requests
-                            <span class="float-right text-muted text-sm">12 hours</span>
-                        </a>
-                        <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item">
-                            <i class="fas fa-file mr-2"></i> 3 new reports
-                            <span class="float-right text-muted text-sm">2 days</span>
-                        </a>
-                        <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
-                    </div>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" data-widget="fullscreen" href="#" role="button">
-                        <i class="fas fa-expand-arrows-alt"></i>
-                    </a>
-                </li>
-                <!-- <li class="nav-item">
-                    <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
-                        <i class="fas fa-th-large"></i>
-                    </a>
-                </li> -->
-            </ul>
-        </nav>
-        <!-- /.navbar -->
-
-        <!-- Main Sidebar Container -->
-        <aside class="main-sidebar sidebar-dark-primary elevation-4">
-            <!-- Brand Logo -->
-            <a href="" class="brand-link">
-                <img src="dist/img/cluedIn_logo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
-                    style="opacity: .8">
-                <span class="brand-text font-weight-light">CluedIn</span>
-            </a>
-
-            <!-- Sidebar -->
-            <div class="sidebar">
-                <!-- Sidebar user panel (optional) -->
-                <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-                    <div class="image">
-                        <img src="dist/img/tushar.jpeg" class="img-circle elevation-2" alt="User Image">
-                    </div>
-                    <div class="info">
-                        <a href="#" class="d-block">Tushar Padhy</a>
-                    </div>
-                </div>
-
-                <!-- SidebarSearch Form -->
-                <div class="form-inline">
-                    <div class="input-group" data-widget="sidebar-search">
-                        <input class="form-control form-control-sidebar" type="search" placeholder="Search"
-                            aria-label="Search">
-                        <div class="input-group-append">
-                            <button class="btn btn-sidebar">
-                                <i class="fas fa-search fa-fw"></i>
-                            </button>
+                    <!-- Content Wrapper. Contains page content -->
+                    <div class="content-wrapper">
+                        <!-- Content Header (Page header) -->
+                        <div class="content-header">
+                            <div class="container-fluid">
+                                <div class="row mb-2">
+                                    <div class="col-sm-6">
+                                        <h1 class="m-0">Create User</h1>
+                                    </div><!-- /.col -->
+                                    <div class="col-sm-6">
+                                        <ol class="breadcrumb float-sm-right">
+                                            <li class="breadcrumb-item"><a href="#">Create User</a></li>
+                                            <li class="breadcrumb-item active">DBIT Dashboard</li>
+                                        </ol>
+                                    </div><!-- /.col -->
+                                </div><!-- /.row -->
+                            </div><!-- /.container-fluid -->
                         </div>
-                    </div>
-                </div>
-
-                <!-- Sidebar Menu -->
-                <nav class="mt-2">
-                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
-                        data-accordion="false">
-                        <!-- Add icons to the links using the .nav-icon class
-                        with font-awesome or any other icon font library -->
-
-                        <li class="nav-item">
-                            <a href="/dashboard" class="nav-link">
-                                <i class="nav-icon fas fa-solid fa-bell"></i>
-                                <p>
-                                    Notification Manager
-                                </p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="/createUser" class="nav-link active">
-                                <i class="nav-icon fas fa-user-plus"></i>
-                                <p>
-                                    Create User
-                                </p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="nav-icon fas fa-tachometer-alt"></i>
-                                <p>
-                                    Chapters
-                                    <i class="right fas fa-angle-left"></i>
-                                </p>
-                            </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>CSI</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>ACM</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>IETE</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>IEEE</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>MadGears</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Domain Maths Club</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Physics Club</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>E-Cell</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>SIE Club</p>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="nav-item">
-                            <a href="" class="nav-link">
-                                <i class="nav-icon fas fa-user-check"></i>
-                                <p>
-                                    Roles
-                                </p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="/logout" class="nav-link">
-                                <i class="nav-icon fas fa-regular fa-arrow-right"></i>
-                                <p>
-                                    Logout
-                                </p>
-                            </a>
-                        </li>
-
-                    </ul>
-                </nav>
-                <!-- /.sidebar-menu -->
-            </div>
-            <!-- /.sidebar -->
-        </aside>
-
-        <!-- Content Wrapper. Contains page content -->
-        <div class="content-wrapper">
-            <!-- Content Header (Page header) -->
-            <div class="content-header">
-                <div class="container-fluid">
-                    <div class="row mb-2">
-                        <div class="col-sm-6">
-                            <h1 class="m-0">DBIT Dashboard</h1>
-                        </div><!-- /.col -->
-                        <div class="col-sm-6">
-                            <ol class="breadcrumb float-sm-right">
-                                <li class="breadcrumb-item"><a href="#">Create User</a></li>
-                                <li class="breadcrumb-item active">DBIT Dashboard</li>
-                            </ol>
-                        </div><!-- /.col -->
-                    </div><!-- /.row -->
-                </div><!-- /.container-fluid -->
-            </div>
-            <!-- /.content-header -->
+                        <!-- /.content-header -->
 
 
 
 
 
-            <!-- Main content -->
-            <section class="content">
-                <div class="container-fluid">
+                        <!-- Main content -->
+                        <section class="content">
+                            <div class="container-fluid">
 
-                    <!-- Nav Tabs inside card header -->
+                                <!-- Nav Tabs inside card header -->
 
-                    <div class="card card-primary card-tabs">
-                        <div class="card-header p-0 pt-1">
-                            <ul class="nav nav-tabs" id="custom-tabs-two-tab" role="tablist">
-                                <!-- <li class="pt-2 px-3">
+                                <div class="card card-primary card-tabs">
+                                    <div class="card-header p-0 pt-1">
+                                        <ul class="nav nav-tabs" id="custom-tabs-two-tab" role="tablist">
+                                            <!-- <li class="pt-2 px-3">
                                     <h3 class="card-title">Card Title</h3>
                                 </li> -->
-                                <li class="nav-item">
-                                    <a class="nav-link active" id="custom-tabs-two-home-tab" data-toggle="pill"
-                                        href="#createUser" role="tab" aria-controls="custom-tabs-two-home"
-                                        aria-selected="true">Create</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" id="custom-tabs-two-profile-tab" data-toggle="pill"
-                                        href="#listUser" role="tab" aria-controls="custom-tabs-two-profile"
-                                        aria-selected="false">List
-                                        User</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" id="custom-tabs-two-messages" data-toggle="pill" href="#bulk"
-                                        role="tab" aria-controls="custom-tabs-two-messages"
-                                        aria-selected="false">Bulk</a>
-                                </li>
-                                <!-- <li class="nav-item">
+                                            <li class="nav-item">
+                                                <a class="nav-link active" id="custom-tabs-two-home-tab"
+                                                    data-toggle="pill" href="#createUser" role="tab"
+                                                    aria-controls="custom-tabs-two-home" aria-selected="true">Create</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" id="custom-tabs-two-profile-tab" data-toggle="pill"
+                                                    href="#listUser" role="tab" aria-controls="custom-tabs-two-profile"
+                                                    aria-selected="false">List
+                                                    User</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" id="custom-tabs-two-messages" data-toggle="pill"
+                                                    href="#bulk" role="tab" aria-controls="custom-tabs-two-messages"
+                                                    aria-selected="false">Bulk</a>
+                                            </li>
+                                            <!-- <li class="nav-item">
                                     <a class="nav-link" id="custom-tabs-two-settings-tab" data-toggle="pill"
                                         href="#custom-tabs-two-settings" role="tab"
                                         aria-controls="custom-tabs-two-settings" aria-selected="false">Settings</a>
                                 </li> -->
-                            </ul>
-                        </div>
-                        <div class="card-body">
-                            <div class="tab-content" id="custom-tabs-two-tabContent">
-                                <div class="tab-pane fade active show" id="createUser" role="tabpanel"
-                                    aria-labelledby="custom-tabs-two-home-tab">
-                                    <% if(message.length>0){ %>
-                                        <div class="alert alert-success">
-                                            <%= message %>
-                                        </div>
-                                        <% } %>
-                                            <!-- creating form -->
-                                            <form id="quickform" method="post" action="/submitUser">
-                                                <!--action looks for index.html -->
-                                                <div class="card-body">
-                                                    <div class="form-group">
-                                                        <label for="fname">First Name</label>
-                                                        <input type="text" class="form-control" id="user_fname"
-                                                            placeholder="Enter first name" name="user_fname" required>
+                                        </ul>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="tab-content" id="custom-tabs-two-tabContent">
+                                            <div class="tab-pane fade active show" id="createUser" role="tabpanel"
+                                                aria-labelledby="custom-tabs-two-home-tab">
+                                                <% if(message.length>0){ %>
+                                                    <div class="alert alert-success">
+                                                        <%= message %>
                                                     </div>
-                                                    <div class="form-group">
-                                                        <label>Last Name</label>
-                                                        <input type="text" class="form-control" id="user_lname"
-                                                            name="user_lname" placeholder="Enter last name"
-                                                            required></input>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label for="mobile">Mobile Number</label>
-                                                        <input type="number" class="form-control" id="user_mobno"
-                                                            placeholder="Enter mobile number" name="user_mobno"
-                                                            maxlength="10" required>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label for="password">Password</label>
-                                                        <input type="password" class="form-control" id="user_pwd"
-                                                            placeholder="Enter password" name="user_pwd" required>
-                                                    </div>
+                                                    <% } %>
+                                                        <!-- creating form -->
+                                                        <form id="quickform" method="post" action="/submitUser">
+                                                            <!--action looks for index.html -->
+                                                            <div class="card-body">
+                                                                <div class="form-group">
+                                                                    <label for="fname">First Name</label>
+                                                                    <input type="text" class="form-control"
+                                                                        id="user_fname" placeholder="Enter first name"
+                                                                        name="user_fname" required>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label>Last Name</label>
+                                                                    <input type="text" class="form-control"
+                                                                        id="user_lname" name="user_lname"
+                                                                        placeholder="Enter last name" required></input>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label for="mobile">Mobile Number</label>
+                                                                    <input type="number" class="form-control"
+                                                                        id="user_mobno"
+                                                                        placeholder="Enter mobile number"
+                                                                        name="user_mobno" maxlength="10" required>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label for="password">Password</label>
+                                                                    <input type="password" class="form-control"
+                                                                        id="user_pwd" placeholder="Enter password"
+                                                                        name="user_pwd" required>
+                                                                </div>
 
-                                                    <!-- Dropdown selection -->
-                                                    <div class="row">
-                                                        <div class="col-lg-4">
-                                                            <div class="form-group">
-                                                                <label>Role</label>
-                                                                <select class="form-control " style="width: 15rem;"
-                                                                    tabindex="-1" id="slct1" aria-hidden="true"
-                                                                    name="user_role" placeholder="select user role"
-                                                                    onchange="javascript:populate('slct1','slct2')"
-                                                                    required>
-                                                                </select>
+                                                                <!-- Dropdown selection -->
+                                                                <div class="row">
+                                                                    <div class="col-lg-4">
+                                                                        <div class="form-group">
+                                                                            <label>Role</label>
+                                                                            <select class="form-control "
+                                                                                style="width: 15rem;" tabindex="-1"
+                                                                                id="slct1" aria-hidden="true"
+                                                                                name="user_role"
+                                                                                placeholder="select user role"
+                                                                                onchange="javascript:populate('slct1','slct2')"
+                                                                                required>
+                                                                            </select>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-lg-4">
+                                                                        <div class="form-group">
+                                                                            <label>Department</label>
+                                                                            <select class="form-control"
+                                                                                style="width: 15rem;" tabindex="-1"
+                                                                                id="slct2" aria-hidden="true"
+                                                                                name="user_dept"
+                                                                                placeholder="select user dept">
+                                                                            </select>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-lg-4">
+                                                                        <div class="form-group">
+                                                                            <label>Gender</label>
+                                                                            <select class="form-control "
+                                                                                style="width: 15rem;" tabindex="-1"
+                                                                                id="slct3" aria-hidden="true"
+                                                                                name="user_gender"
+                                                                                placeholder="select Gender" required>
+                                                                                <option selected="selected" value="1">
+                                                                                    Male
+                                                                                </option>
+                                                                                <option value="2">Female</option>
+                                                                                <option value="3">Other</option>
+                                                                            </select>
+
+                                                                        </div>
+                                                                    </div>
+
+                                                                </div>
+
+                                                                <div class="form-group">
+                                                                    <label>Email</label>
+                                                                    <input type="email" class="form-control"
+                                                                        id="user_email" name="user_email"
+                                                                        placeholder="Enter email" style="width: 40%;"
+                                                                        required></input>
+                                                                </div>
+
+                                                                <div class="form-group">
+                                                                    <label>Address</label>
+                                                                    <textarea class="form-control" rows="3"
+                                                                        name="user_addr"
+                                                                        placeholder="Enter address"></textarea>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label>Pincode</label>
+                                                                    <input type="number" class="form-control"
+                                                                        id="user_pincode" name="user_pincode"
+                                                                        placeholder="Enter pin" style="width: 40%;"
+                                                                        minlength="6" maxlength="6"></input>
+                                                                </div>
+
+
+
+                                                            </div>
+
+                                                            <div class="card-footer">
+                                                                <button type="submit"
+                                                                    class="btn btn-primary">Submit</button>
+                                                            </div>
+                                                        </form>
+                                            </div>
+
+                                            <!-- OM YAHA  DAAL FORM  -->
+                                            <div class="tab-pane fade" id="listUser" role="tabpanel"
+                                                aria-labelledby="custom-tabs-two-profile-tab">
+
+                                                <!-- inside list notif div  -->
+                                                <div class="card">
+                                                    <div class="card-header">
+                                                        <span id="message"></span>
+                                                        <h3 class="card-title">USER Table</h3>
+                                                        <div class="card-tools">
+                                                            <div class="input-group input-group-sm"
+                                                                style="width: 150px;">
+                                                                <input type="text" name="table_search"
+                                                                    class="form-control float-right"
+                                                                    placeholder="Search">
+                                                                <div class="input-group-append">
+                                                                    <button type="submit" class="btn btn-default">
+                                                                        <i class="fas fa-search"></i>
+                                                                    </button>
+                                                                </div>
                                                             </div>
                                                         </div>
-                                                        <div class="col-lg-4">
-                                                            <div class="form-group">
-                                                                <label>Department</label>
-                                                                <select class="form-control" style="width: 15rem;"
-                                                                    tabindex="-1" id="slct2" aria-hidden="true"
-                                                                    name="user_dept" placeholder="select user dept">
-                                                                </select>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-4">
-                                                            <div class="form-group">
-                                                                <label>Gender</label>
-                                                                <select class="form-control " style="width: 15rem;"
-                                                                    tabindex="-1" id="slct3" aria-hidden="true"
-                                                                    name="user_gender" placeholder="select Gender"
-                                                                    required>
-                                                                    <option selected="selected" value="1">
-                                                                        Male
-                                                                    </option>
-                                                                    <option value="2">Female</option>
-                                                                    <option value="3">Other</option>
-                                                                </select>
-
-                                                            </div>
-                                                        </div>
-
                                                     </div>
 
-                                                    <div class="form-group">
-                                                        <label>Email</label>
-                                                        <input type="email" class="form-control" id="user_email"
-                                                            name="user_email" placeholder="Enter email"
-                                                            style="width: 40%;" required></input>
+                                                    <div class="card-body table-responsive p-0" style="height: 500px;">
+                                                        <table class="table table-head-fixed text-nowrap"
+                                                            id="user_table">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th>S.no</th>
+                                                                    <th>First Name</th>
+                                                                    <th>Last Name</th>
+                                                                    <th>Mobile No.</th>
+                                                                    <th>Email</th>
+                                                                    <th>Gender</th>
+                                                                    <th>Role</th>
+                                                                    <th>Department</th>
+                                                                    <th>Address</th>
+                                                                    <th>Pincode</th>
+                                                                    <th>Action</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+
+                                                            </tbody>
+                                                        </table>
                                                     </div>
 
-                                                    <div class="form-group">
-                                                        <label>Address</label>
-                                                        <textarea class="form-control" rows="3" name="user_addr"
-                                                            placeholder="Enter address"></textarea>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label>Pincode</label>
-                                                        <input type="number" class="form-control" id="user_pincode"
-                                                            name="user_pincode" placeholder="Enter pin"
-                                                            style="width: 40%;" minlength="6" maxlength="6"></input>
-                                                    </div>
-
-
-
-                                                </div>
-
-                                                <div class="card-footer">
-                                                    <button type="submit" class="btn btn-primary">Submit</button>
-                                                </div>
-                                            </form>
-                                </div>
-
-                                <!-- OM YAHA  DAAL FORM  -->
-                                <div class="tab-pane fade" id="listUser" role="tabpanel"
-                                    aria-labelledby="custom-tabs-two-profile-tab">
-
-                                    <!-- inside list notif div  -->
-                                    <div class="card">
-                                        <div class="card-header">
-                                            <span id="message"></span>
-                                            <h3 class="card-title">USER Table</h3>
-                                            <div class="card-tools">
-                                                <div class="input-group input-group-sm" style="width: 150px;">
-                                                    <input type="text" name="table_search"
-                                                        class="form-control float-right" placeholder="Search">
-                                                    <div class="input-group-append">
-                                                        <button type="submit" class="btn btn-default">
-                                                            <i class="fas fa-search"></i>
-                                                        </button>
-                                                    </div>
                                                 </div>
                                             </div>
+
+
+                                            <div class="tab-pane fade" id="bulk" role="tabpanel"
+                                                aria-labelledby="custom-tabs-two-messages-tab">
+
+                                                <% if(message.length>0){ %>
+                                                    <div class="alert alert-success">
+                                                        <%= message %>
+                                                    </div>
+                                                    <% } %>
+                                                        <h2>Upload Excel Sheet here</h2>
+                                                        <br>
+                                                        <form action="/import-excel" enctype="multipart/form-data"
+                                                            method="post">
+                                                            <div class="input-group mb-3" style="width: 50%; ">
+                                                                <input type="text" name="std" class="form-control"
+                                                                    id="inputGroupFile03"
+                                                                    style="padding-bottom:2.5rem;">
+                                                                <input type="file" name="import-excel"
+                                                                    class="form-control"
+                                                                    accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel"
+                                                                    id="inputGroupFile02"
+                                                                    style="padding-bottom:2.5rem;">
+                                                                <label class="input-group-text"
+                                                                    for="inputGroupFile02">Upload</label>
+                                                            </div>
+                                                            <button type="submit"
+                                                                class="btn btn-primary">Submit</button>
+                                                        </form>
+                                            </div>
+
                                         </div>
-
-                                        <div class="card-body table-responsive p-0" style="height: 500px;">
-                                            <table class="table table-head-fixed text-nowrap" id="user_table">
-                                                <thead>
-                                                    <tr>
-                                                        <th>S.no</th>
-                                                        <th>First Name</th>
-                                                        <th>Last Name</th>
-                                                        <th>Mobile No.</th>
-                                                        <th>Email</th>
-                                                        <th>Gender</th>
-                                                        <th>Role</th>
-                                                        <th>Department</th>
-                                                        <th>Address</th>
-                                                        <th>Pincode</th>
-                                                        <th>Action</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-
-                                                </tbody>
-                                            </table>
-                                        </div>
-
                                     </div>
+
                                 </div>
 
 
-                                <div class="tab-pane fade" id="bulk" role="tabpanel"
-                                    aria-labelledby="custom-tabs-two-messages-tab">
 
-                                    <% if(message.length>0){ %>
-                                        <div class="alert alert-success">
-                                            <%= message %>
-                                        </div>
-                                        <% } %>
-                                            <h2>Upload Excel Sheet here</h2>
-                                            <br>
-                                            <form action="/import-excel" enctype="multipart/form-data" method="post">
-                                                <div class="input-group mb-3" style="width: 50%; ">
-                                                    <input type="text" name="std" class="form-control"                                                   
-                                                    id="inputGroupFile03" style="padding-bottom:2.5rem;">
-                                                    <input type="file" name="import-excel" class="form-control"
-                                                        accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel"
-                                                        id="inputGroupFile02" style="padding-bottom:2.5rem;">
-                                                    <label class="input-group-text"
-                                                        for="inputGroupFile02">Upload</label>
-                                                </div>
-                                                <button type="submit" class="btn btn-primary">Submit</button>
-                                            </form>
-                                </div>
-                                <!-- <div class="tab-pane fade" id="custom-tabs-two-settings" role="tabpanel"
-                                    aria-labelledby="custom-tabs-two-settings-tab">
-                                    Pellentesque vestibulum commodo nibh nec blandit. Maecenas neque magna, iaculis
-                                    tempus
-                                    turpis ac, ornare sodales tellus. Mauris eget blandit dolor. Quisque tincidunt
-                                    venenatis
-                                    vulputate. Morbi euismod molestie tristique. Vestibulum consectetur dolor a
-                                    vestibulum
-                                    pharetra. Donec interdum placerat urna nec pharetra. Etiam eget dapibus orci, eget
-                                    aliquet
-                                    urna. Nunc at consequat diam. Nunc et felis ut nisl commodo dignissim. In hac
-                                    habitasse
-                                    platea dictumst. Praesent imperdiet accumsan ex sit amet facilisis.
-                                </div> -->
+                                <!-- Main Footer -->
+                                <footer class="main-footer">
+                                    <strong>Copyright &copy; 2022-2023 <a href="">CluedIn</a>.</strong>
+                                    All rights reserved.
+                                    <div class="float-right d-none d-sm-inline-block">
+                                        <b>Version</b> 1.0.0
+                                    </div>
+                                </footer>
                             </div>
-                        </div>
+                            <!-- ./wrapper -->
 
-                    </div>
+                            <!-- REQUIRED SCRIPTS -->
+                            <!-- jQuery -->
+                            <script>
+                                function populate(s1, s2) {
 
+                                    // console.log("hello jasmit")
+                                    var s1 = document.getElementById(s1);
 
+                                    var s2 = document.getElementById(s2);
 
-                    <!-- Main Footer -->
-                    <footer class="main-footer">
-                        <strong>Copyright &copy; 2022-2023 <a href="">CluedIn</a>.</strong>
-                        All rights reserved.
-                        <div class="float-right d-none d-sm-inline-block">
-                            <b>Version</b> 1.0.0
-                        </div>
-                    </footer>
-                </div>
-                <!-- ./wrapper -->
+                                    s2.innerHTML = "";
+                                    if (s1.value == 1 || s1.value == 2 || s1.value == 7 || s1.value == 8 || s1.value == 9 || s1.value == 13) {
+                                        var optionArray = ["---------------------|---------------------"];
+                                        console.log(optionArray);
+                                    }
+                                    else if (s1.value == 3) {
+                                        var optionArray = ["|", "2|IT", "3|COMPS", "4|EXTC", "5|MECH"];
+                                        console.log(optionArray);
+                                    }
+                                    else if (s1.value == 4 || s1.value == 5 || s1.value == 6 || s1.value == 14) {
+                                        var optionArray = ["|", "2|IT", "3|COMPS", "4|EXTC", "5|MECH"];
+                                    }
+                                    else if (s1.value == 10) {
+                                        var optionArray = ["|", "Head|Head", "PR|PR"];
+                                    }
+                                    else if (s1.value == 11 || s1.value == 12) {
+                                        var optionArray = ["|", "CSI|CSI", "ACM|ACM", "IETE|IETE", "Madgear|Madgear", "IEEE|IEEE", "E-Cell|E-Cell", "SIE|SIE", "NSS|NSS", "Domain Maths|Domain Maths", "Physics|Physics"];
+                                    }
+                                    for (var option in optionArray) {
+                                        var pair = optionArray[option].split("|");
 
-                <!-- REQUIRED SCRIPTS -->
-                <!-- jQuery -->
-                <script>
-                    function populate(s1, s2) {
+                                        var newOption = document.createElement("option");
+                                        newOption.value = pair[0];
+                                        newOption.innerHTML = pair[1];
+                                        s2.options.add(newOption);
 
-                        // console.log("hello jasmit")
-                        var s1 = document.getElementById(s1);
+                                    }
+                                }
 
-                        var s2 = document.getElementById(s2);
-
-                        s2.innerHTML = "";
-                        if (s1.value == 1 || s1.value == 2 || s1.value == 7 || s1.value == 8 || s1.value == 9 || s1.value == 13) {
-                            var optionArray = ["---------------------|---------------------"];
-                            console.log(optionArray);
-                        }
-                        else if (s1.value == 3) {
-                            var optionArray = ["|", "2|IT", "3|COMPS", "4|EXTC", "5|MECH"];
-                            console.log(optionArray);
-                        }
-                        else if (s1.value == 4 || s1.value == 5 || s1.value == 6 || s1.value == 14) {
-                            var optionArray = ["|", "2|IT", "3|COMPS", "4|EXTC", "5|MECH"];
-                        }
-                        else if (s1.value == 10) {
-                            var optionArray = ["|", "Head|Head", "PR|PR"];
-                        }
-                        else if (s1.value == 11 || s1.value == 12) {
-                            var optionArray = ["|", "CSI|CSI", "ACM|ACM", "IETE|IETE", "Madgear|Madgear", "IEEE|IEEE", "E-Cell|E-Cell", "SIE|SIE", "NSS|NSS", "Domain Maths|Domain Maths", "Physics|Physics"];
-                        }
-                        for (var option in optionArray) {
-                            var pair = optionArray[option].split("|");
-
-                            var newOption = document.createElement("option");
-                            newOption.value = pair[0];
-                            newOption.innerHTML = pair[1];
-                            s2.options.add(newOption);
-
-                        }
-                    }
-
-                </script>
+                            </script>
 
 
-                <!-- ---------------------------------Rendering user Table----------------------------------- -->
+                            <!-- ---------------------------------Rendering user Table----------------------------------- -->
 
 
 
-                <script src="plugins/jquery/jquery.min.js"></script>
-                <!-- Bootstrap -->
-                <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-                <!-- overlayScrollbars -->
-                <script src="plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
-                <!-- AdminLTE App -->
-                <script src="dist/js/adminlte.js"></script>
+                            <script src="plugins/jquery/jquery.min.js"></script>
+                            <!-- Bootstrap -->
+                            <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+                            <!-- overlayScrollbars -->
+                            <script src="plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+                            <!-- AdminLTE App -->
+                            <script src="dist/js/adminlte.js"></script>
 
-                <!-- PAGE PLUGINS -->
-                <!-- jQuery Mapael -->
-                <script src="plugins/jquery-mousewheel/jquery.mousewheel.js"></script>
-                <script src="plugins/raphael/raphael.min.js"></script>
-                <script src="plugins/jquery-mapael/jquery.mapael.min.js"></script>
-                <script src="plugins/jquery-mapael/maps/usa_states.min.js"></script>
-                <!-- ChartJS -->
-                <!-- <script src="plugins/chart.js/Chart.min.js"></script> -->
+                            <!-- PAGE PLUGINS -->
+                            <!-- jQuery Mapael -->
+                            <script src="plugins/jquery-mousewheel/jquery.mousewheel.js"></script>
+                            <script src="plugins/raphael/raphael.min.js"></script>
+                            <script src="plugins/jquery-mapael/jquery.mapael.min.js"></script>
+                            <script src="plugins/jquery-mapael/maps/usa_states.min.js"></script>
+                            <!-- ChartJS -->
+                            <!-- <script src="plugins/chart.js/Chart.min.js"></script> -->
 
-                <!-- AdminLTE for demo purposes -->
-                <script src="dist/js/demo.js"></script>
-                <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-                <!-- <script src="dist/js/pages/dashboard2.js"></script> -->
+                            <!-- AdminLTE for demo purposes -->
+                            <script src="dist/js/demo.js"></script>
+                            <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+                            <!-- <script src="dist/js/pages/dashboard2.js"></script> -->
 
-                <!--modal-->
-                <div class="modal" id="action_modal" tabindex="-1" aria-labelledby="exampleModalLabel"
-                    aria-hidden="true">
-                    <div class="modal-dialog">
+                            <!--modal-->
+                            <div class="modal" id="action_modal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                                aria-hidden="true">
+                                <div class="modal-dialog">
 
-                        <div class="modal-content">
-                            <form method="get" action="/updateuser" id="sample_form">
+                                    <div class="modal-content">
+                                        <form method="get" action="/updateuser" id="sample_form">
 
-                                <div class="modal-header" id="dynamic_modal_title">
-                                    <h5 class="modal-title" id="exampleModalLabel"></h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                        aria-label="Close"></button>
+                                            <div class="modal-header" id="dynamic_modal_title">
+                                                <h5 class="modal-title" id="exampleModalLabel"></h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                    aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+
+                                                <div class="mb-3">
+                                                    <label class="col-form-label">First Name</label>
+                                                    <input type="text" class="form-control" name="user_fname"
+                                                        id="first_name">
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label class="col-form-label">Last Name</label>
+                                                    <input type="text" class="form-control" name="user_lname"
+                                                        id="last_name">
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label class="col-form-label">Mobile No.</label>
+                                                    <input type="number" class="form-control" name="user_mobno"
+                                                        id="mobile_num" max="10">
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label class="col-form-label">Email</label>
+                                                    <input type="email" class="form-control" name="user_email"
+                                                        id="email">
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label class="col-form-label">Gender</label>
+                                                    <select class="form-control " id="gender" aria-hidden="true"
+                                                        name="user_gender" placeholder="select Gender" required>
+                                                        <option selected="selected" value="1">
+                                                            Male
+                                                        </option>
+                                                        <option value="0">Female</option>
+                                                    </select>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label class="col-form-label">Address</label>
+                                                    <textarea class="form-control" id="address"
+                                                        name="user_addr"></textarea>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label class="col-form-label">Pincode</label>
+                                                    <input type="number" name="user_pincode" id="pincode">
+                                                </div>
+
+                                            </div>
+                                            <div class="modal-footer">
+                                                <input type="hidden" name="id" id="id">
+                                                <input type="hidden" name="action" id="action" value="Add">
+                                                <button type="button" class="btn btn-secondary closed"
+                                                    data-bs-dismiss="modal">Close</button>
+                                                <button type="submit" class="btn btn-primary Update"
+                                                    id="action_button">Add</button>
+                                            </div>
+                                        </form>
+                                    </div>
                                 </div>
-                                <div class="modal-body">
-
-                                    <div class="mb-3">
-                                        <label class="col-form-label">First Name</label>
-                                        <input type="text" class="form-control" name="user_fname" id="first_name">
-                                    </div>
-                                    <div class="mb-3">
-                                        <label class="col-form-label">Last Name</label>
-                                        <input type="text" class="form-control" name="user_lname" id="last_name">
-                                    </div>
-                                    <div class="mb-3">
-                                        <label class="col-form-label">Mobile No.</label>
-                                        <input type="number" class="form-control" name="user_mobno" id="mobile_num"
-                                            max="10">
-                                    </div>
-                                    <div class="mb-3">
-                                        <label class="col-form-label">Email</label>
-                                        <input type="email" class="form-control" name="user_email" id="email">
-                                    </div>
-                                    <div class="mb-3">
-                                        <label class="col-form-label">Gender</label>
-                                        <select class="form-control " id="gender" aria-hidden="true" name="user_gender"
-                                            placeholder="select Gender" required>
-                                            <option selected="selected" value="1">
-                                                Male
-                                            </option>
-                                            <option value="0">Female</option>
-                                        </select>
-                                    </div>
-                                    <div class="mb-3">
-                                        <label class="col-form-label">Address</label>
-                                        <textarea class="form-control" id="address" name="user_addr"></textarea>
-                                    </div>
-                                    <div class="mb-3">
-                                        <label class="col-form-label">Pincode</label>
-                                        <input type="number" name="user_pincode" id="pincode">
-                                    </div>
-
-                                </div>
-                                <div class="modal-footer">
-                                    <input type="hidden" name="id" id="id">
-                                    <input type="hidden" name="action" id="action" value="Add">
-                                    <button type="button" class="btn btn-secondary closed"
-                                        data-bs-dismiss="modal">Close</button>
-                                    <button type="submit" class="btn btn-primary Update" id="action_button">Add</button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-                <!-- ---------------------------------Rendering user Table----------------------------------- -->
-                <script>
+                            </div>
+                            <!-- ---------------------------------Rendering user Table----------------------------------- -->
+                            <script>
 
 
 
-                    $(document).ready(function () {
+                                $(document).ready(function () {
 
-                        load_data();
-                        function load_data() {
-                            $.ajax({
-                                url: "/listuser",
-                                method: "POST",
-                                data: { action: 'fetch' },
-                                dataType: "JSON",
-                                success: function (data) {
-                                    // console.log(data.data[1].user_id);
-                                    var html = '';
+                                    load_data();
+                                    function load_data() {
+                                        $.ajax({
+                                            url: "/listuser",
+                                            method: "POST",
+                                            data: { action: 'fetch' },
+                                            dataType: "JSON",
+                                            success: function (data) {
+                                                // console.log(data.data[1].user_id);
+                                                var html = '';
 
-                                    if (data.data.length > 0) {
-                                        for (var count = 0; count < data.data.length; count++) {
-                                            html += `
+                                                if (data.data.length > 0) {
+                                                    for (var count = 0; count < data.data.length; count++) {
+                                                        html += `
                                                 <tr>
                                                     <td>`+ (count + 1) + `</td>
                                                     <td>`+ data.data[count].user_fname + `</td>
@@ -692,132 +463,132 @@
                                                 </tr>
                             
                                             `;
-                                        }
-                                    }
+                                                    }
+                                                }
 
-                                    $('tbody').html(html);
-                                    // console.log(html);
+                                                $('tbody').html(html);
+                                                // console.log(html);
 
-                                }
-                            });
-                            $.ajax({
-                                url: "/listuser",
-                                method: "POST",
-                                data: { action: 'fetch_user_role' },
-                                dataType: "JSON",
-                                success: function (data) {
-                                    // console.log(data[0]);
-                                    var html = '<option>----------Select Role---------</option>';
+                                            }
+                                        });
+                                        $.ajax({
+                                            url: "/listuser",
+                                            method: "POST",
+                                            data: { action: 'fetch_user_role' },
+                                            dataType: "JSON",
+                                            success: function (data) {
+                                                // console.log(data[0]);
+                                                var html = '<option>----------Select Role---------</option>';
 
-                                    if (data.length > 0) {
-                                        for (var count = 0; count < data.length; count++) {
-                                            html += `
+                                                if (data.length > 0) {
+                                                    for (var count = 0; count < data.length; count++) {
+                                                        html += `
                                                 <option value="`+ data[count].role_id + `">` + data[count].role_name + `</option>
                             
                                             `;
+                                                    }
+                                                }
+
+                                                $('#slct1').html(html);
+                                                // console.log(html);
+
+                                            }
+                                        });
+                                    }
+                                    $('#sample_form').on('submit', function () {
+                                        event.preventDefault
+                                        $('#action').val('Edit');
+                                        console.log("inside sample form");
+                                        $.ajax({
+                                            url: "/listuser",
+                                            method: "POST",
+                                            data: $('#sample_form').serialize(),
+                                            dataType: "JSON",
+                                            beforeSend: function () {
+                                                $('#action_button').attr('disabled', 'disable')
+                                            },
+                                            success: function (data) {
+                                                $('#action_button').attr('disabled', false);
+
+                                                $('#message').html('<div class="alert alert-success">' + data.success + '</div');
+
+                                                $('#action_modal').modal('hide');
+
+                                                load_data();
+
+                                                setTimeout(function () {
+                                                    $('#message'.html(''))
+                                                }, 5000);
+
+                                            }
+                                        })
+                                    });
+
+                                    $(document).on('click', '.edit', function () {
+                                        var id = $(this).data('id');
+
+                                        // console.log(id);
+                                        // var mobno = $('mobile_num');
+
+                                        $('#dynamic_modal_title').text('Edit Data');
+
+                                        $('#action').val('Edit');
+
+                                        $('#action_button').text('Edit');
+
+                                        $('#action_modal').modal('show');
+
+                                        $.ajax({
+                                            url: "/listuser",
+                                            method: "POST",
+                                            data: { id: id, action: 'fetch_single' },
+                                            dataType: "JSON",
+                                            success: function (data) {
+                                                console.log(data.user_addr);
+                                                $('#first_name').val(data.user_fname);
+                                                $('#last_name').val(data.user_lname);
+                                                $('#mobile_num').val(data.user_mobno);
+                                                $('#email').val(data.user_email);
+                                                $('#gender').val(data.user_gender);
+                                                $('#address').val(data.user_addr);
+                                                $('#pincode').val(data.user_pincode);
+                                                $('#id').val(data.user_id);
+
+                                            }
+                                        });
+
+                                    });
+                                    //delete ajax logic
+                                    $(document).on('click', '.delete', function () {
+
+                                        var id = $(this).data('id');
+
+                                        if (confirm("Are you sure you want to delete this data?")) {
+                                            console.log("inside if");
+                                            $.ajax({
+                                                url: "/listuser",
+                                                method: "GET",
+                                                data: { action: 'delete', id: id },
+                                                dataType: "JSON",
+                                                success: function (data) {
+                                                    $('#message').html('<div class="alert alert-success">' + data.message + '</div>');
+                                                    load_data();
+                                                    setTimeout(function () {
+                                                        $('#message').html('');
+                                                    }, 3000);
+                                                }
+                                            });
                                         }
-                                    }
 
-                                    $('#slct1').html(html);
-                                    // console.log(html);
+                                    });
 
-                                }
-                            });
-                        }
-                        $('#sample_form').on('submit', function () {
-                            event.preventDefault
-                            $('#action').val('Edit');
-                            console.log("inside sample form");
-                            $.ajax({
-                                url: "/listuser",
-                                method: "POST",
-                                data: $('#sample_form').serialize(),
-                                dataType: "JSON",
-                                beforeSend: function () {
-                                    $('#action_button').attr('disabled', 'disable')
-                                },
-                                success: function (data) {
-                                    $('#action_button').attr('disabled', false);
+                                    $(document).on('click', '.closed', function () {
+                                        $('#action_modal').modal('hide');
+                                    })
 
-                                    $('#message').html('<div class="alert alert-success">' + data.success + '</div');
-
-                                    $('#action_modal').modal('hide');
-
-                                    load_data();
-
-                                    setTimeout(function () {
-                                        $('#message'.html(''))
-                                    }, 5000);
-
-                                }
-                            })
-                        });
-
-                        $(document).on('click', '.edit', function () {
-                            var id = $(this).data('id');
-
-                            // console.log(id);
-                            // var mobno = $('mobile_num');
-
-                            $('#dynamic_modal_title').text('Edit Data');
-
-                            $('#action').val('Edit');
-
-                            $('#action_button').text('Edit');
-
-                            $('#action_modal').modal('show');
-
-                            $.ajax({
-                                url: "/listuser",
-                                method: "POST",
-                                data: { id: id, action: 'fetch_single' },
-                                dataType: "JSON",
-                                success: function (data) {
-                                    console.log(data.user_addr);
-                                    $('#first_name').val(data.user_fname);
-                                    $('#last_name').val(data.user_lname);
-                                    $('#mobile_num').val(data.user_mobno);
-                                    $('#email').val(data.user_email);
-                                    $('#gender').val(data.user_gender);
-                                    $('#address').val(data.user_addr);
-                                    $('#pincode').val(data.user_pincode);
-                                    $('#id').val(data.user_id);
-
-                                }
-                            });
-
-                        });
-                        //delete ajax logic
-                        $(document).on('click', '.delete', function () {
-
-                            var id = $(this).data('id');
-
-                            if (confirm("Are you sure you want to delete this data?")) {
-                                console.log("inside if");
-                                $.ajax({
-                                    url: "/listuser",
-                                    method: "GET",
-                                    data: { action: 'delete', id: id },
-                                    dataType: "JSON",
-                                    success: function (data) {
-                                        $('#message').html('<div class="alert alert-success">' + data.message + '</div>');
-                                        load_data();
-                                        setTimeout(function () {
-                                            $('#message').html('');
-                                        }, 3000);
-                                    }
                                 });
-                            }
+                            </script>
 
-                        });
+    </body>
 
-                        $(document).on('click', '.closed', function () {
-                            $('#action_modal').modal('hide');
-                        })
-
-                    });
-                </script>
-
-</body>
-
-</html>
+    </html>
