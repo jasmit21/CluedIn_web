@@ -22,6 +22,7 @@ module.exports = {
         var data=JSON.parse(JSON.stringify(result));
         // console.log(data);
         var label = data[0];
+        // console.log(label);
         var bsd = data[1];
         // res.render(Path,{branch_data:data});
         res.render(Path,{message1 : req.flash('message1'),label_data : label,bsd_data : bsd});
