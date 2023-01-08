@@ -1,0 +1,73 @@
+<h2>Student User Creation</h2>
+<% if(message.length>0){ %>
+    <div class="alert alert-success">
+        <%= message %>
+    </div>
+    <% } %>
+        <br>
+        <form action="/import-excel" enctype="multipart/form-data" method="post">
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        <label>Class</label>
+                        <select style="width: 75%;" class="form-control" tabindex="-1" id="class" aria-hidden="true"
+                            name="target_class" placeholder="select category" required>
+                            <option selected="selected" value="0">
+                                -----------Select Class----------------
+                            </option>
+                            <% for (let count=0; count < bsd_data.length; count++) { %>
+                                <option value="<%= bsd_data[count].bsd_id %>">
+                                    <%= bsd_data[count].bsd_value %>
+                                </option>
+                                <%} %>
+                        </select>
+
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        <label>Academic Year</label>
+                        <select style="width: 75%;" class="form-control " tabindex="-1" aria-hidden="true" name="ay"
+                            placeholder="select label type" id="ay" required>
+                            <option value="">-----Select Academic Year-----</option>
+                            <% for (let count=0; count < ay.length; count++) { %>
+                                <option value="<%= ay[count].ay_id %>">
+                                    <%= ay[count].ay_name %>
+                                </option>
+                                <%} %>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        <label>Semester</label>
+                        <select style="width: 75%;" class="form-control " tabindex="-1" aria-hidden="true" name="sem"
+                            id="sem" required>
+                            <option value="">-----Select Semester-----</option>
+                            <option value="1">Semester-1</option>
+                            <option value="2">Semester-2</option>
+                            <option value="3">Semester-3</option>
+                            <option value="4">Semester-4</option>
+                            <option value="5">Semester-5</option>
+                            <option value="6">Semester-6</option>
+                            <option value="7">Semester-7</option>
+                            <option value="8">Semester-8</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        <label>Upload</label>
+
+                        <div class="input-group " style="width: 100%; ">
+                            <input type="file" name="students" class="form-control"
+                                accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel"
+                                id="inputGroupFile02">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
