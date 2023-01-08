@@ -4,7 +4,7 @@ require("dotenv").config();
 const app = express();
 const bodyParser = require("body-parser");
 const multer = require("multer");
-const excel = require("xlsx");
+const xlsx = require("xlsx");
 //declaring routes
 //router files
 const homeRoute = require("./routes/homeRoute");
@@ -116,7 +116,7 @@ var Path = path.join(__dirname, "uploads");
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, __dirname + "/uploads/");
+    cb(null, __dirname + "/uploads/users");
   },
   filename: (req, file, cb) => {
     cb(null, file.fieldname + "-" + Date.now() + "-" + file.originalname);
@@ -126,21 +126,63 @@ const uploadFile = multer({ storage: storage });
 
 function importFileToDb(exFile, req) {
   //get bsd id from dropdown and store it in local variable and use select qry to get b,s&d
-  console.log("req:", req.body.std);
-  // readXlsxFile(exFile).then((rows) => {
-  //   rows.shift();
-  //   console.log("rowData =",rows[1][1]);
-  //   let query = //for loop
-  //     "INSERT INTO user_details (user_fname,user_lname,user_gender,user_email,user_mobno,user_addr,user_pincode,user_pwd,user_role_id,user_department) VALUES ?";
+  let bsd_id = req.body.target_class;
+  let acadYear = req.body.ay;
+  let semester = req.body.sem;
+  // console.log("req:", req.file.filename);
+  //using xlsx to extract data from sxcel sheet
+  var dataexcel = "uploads/users/" + req.file.filename;
+  var wb = xlsx.readFile(dataexcel);
+  var sheetname = wb.SheetNames[0];
+  var sheetval = wb.Sheets[sheetname];
+  var exceldata = xlsx.utils.sheet_to_json(sheetval);
 
-  //   pool.query(query, [rows], (error, result) => {
-  //     console.log("ROWS:",[rows]);
-  //     console.log(error || result);
-  //     //2nd query
-  //   });
-  // });
+  let query_1 = //for loop
+    "INSERT INTO user_details (user_fname,user_lname,user_gender,user_email,user_mobno,user_addr,user_pincode,user_pwd,user_role_id,user_department) VALUES (?)";
+  let query_2 = //for loop
+    "INSERT INTO Student_branch_standard_div_ay_rollno_sem_mapping (user_id,ay_id,bsd_id,roll_id,sem_id) VALUES (?)";
+  var values = [];
+  var studentData = []
+  for (let i = 0; i < exceldata.length; i++) {
+    value = [
+      exceldata[i].user_fname,
+      exceldata[i].user_lname,
+      exceldata[i].user_gender,
+      exceldata[i].user_email,
+      exceldata[i].user_mobno,
+      exceldata[i].user_addr,
+      exceldata[i].user_pincode,
+      exceldata[i].user_pwd,
+      14,
+      exceldata[i].user_department,
+    ];
+    
+    values.push(value);
+    console.log(values);
+    pool.query(query_1, [values[i]], (error, result) => {
+      console.log(error || result);
+      let userId = result.insertId;
+      console.log("userid:", userId);
+      //2nd query
+      data = [
+        userId,
+        acadYear,
+        bsd_id,
+        exceldata[i].user_rollno,
+        semester
+      ]
+      console.log("data ",data);
+      pool.query(query_2,[data],(err,result)=>{
+        console.log(err||result);
+      })
+    });
+    
+  }
+  values = [];
+  // console.log("val:", values);
+}
 
-  /* use any excel read package
+/* use any excel read package
 0) Get ay_id, sem_id, bsd_id from the html form and store in local variable.
 1) Check no. of rows in the excel file
 2) for each row 
@@ -148,58 +190,44 @@ function importFileToDb(exFile, req) {
   b. You will get user_id from the resultset (aka result).
   c. insert into table aka student mapping table 
 */
-}
 
-app.post("/import-excel", uploadFile.single("import-excel"), (req, res) => {
-  importFileToDb(__dirname + "/uploads/" + req.file.filename, req);
+app.post("/import-excel", uploadFile.single("students"), (req, res) => {
+  importFileToDb(__dirname + "/uploads/users" + req.file.filename, req);
   req.flash("message", `Users were created successfully`);
   res.redirect("/createUser");
 });
 
-// var target_gender = 1;
-// var params = {};
 
-// if(target_gender!=0) {
-//   params.target_gender=target_gender;
-// }
 
-// console.log(params);
-
-// function buildConditions(params) {
-//   var conditions = [];
-//   var values = [];
-//   var conditionsStr;
-
-//   if (typeof params.target_gender !== 'undefined') {
-//     conditions.push("t1.user_gender = ?");
-//     values.push(parseInt(params.target_gender));
-//   }
-
-//   if (1) {
-
-//     conditions.push("t2.user_id = t1.user_id and t2.ay_id=2 and t2.bsd_id =12 and t2.isDisabled=0 and t2.isDelete=0;");
-//    // values.push(parseInt(params.target_gender));
-// }
-
-//   return {
-//     where: conditions.length ?
-//              conditions.join(' AND ') : '1',
-//     values: values
-//   };
-// }
-
-// var conditions = buildConditions(params);
-// var sql_1 = 'select t1.firebase_token from user_details t1, Student_branch_standard_div_ay_rollno_sem_mapping t2 WHERE ' + conditions.where;
-
-// console.log(sql_1);
-// pool.query(sql_1, conditions.values, (err, result) => {
-
-//   if (err) res.send(err);
-
-//   // res.send("notif sent");
-//   console.log("om",result);
-// });
-
+//date and time
+function getDateTime() {
+  var now = new Date();
+  var year = now.getFullYear();
+  var month = now.getMonth() + 1;
+  var day = now.getDate();
+  var hour = now.getHours();
+  var minute = now.getMinutes();
+  var second = now.getSeconds();
+  if (month.toString().length == 1) {
+    month = "0" + month;
+  }
+  if (day.toString().length == 1) {
+    day = "0" + day;
+  }
+  if (hour.toString().length == 1) {
+    hour = "0" + hour;
+  }
+  if (minute.toString().length == 1) {
+    minute = "0" + minute;
+  }
+  if (second.toString().length == 1) {
+    second = "0" + second;
+  }
+  var dateTime =
+    day + "/" + month + "/" + year + " " + hour + ":" + minute + ":" + second;
+  return dateTime;
+}
+console.log("date:", getDateTime());
 //creating server
 var port = process.env.PORT || 5000;
 app.listen(port, (err) => {
