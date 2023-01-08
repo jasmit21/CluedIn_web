@@ -91,7 +91,8 @@ router.get("/createuser", function (request, response) {
     response.render("createUser", { message: request.flash("message") });
   } else {
     var Path = path.join(__dirname, "..", "views", "login");
-    res.render(Path);
+    // console.log("path to createuser:",Path);
+    response.redirect("/");
   }
 
 });

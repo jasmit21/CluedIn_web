@@ -4,11 +4,11 @@ require("dotenv").config();
 const app = express();
 const bodyParser = require("body-parser");
 const multer = require("multer");
-const excel = require('xlsx')
+const excel = require("xlsx");
 //declaring routes
 //router files
 const homeRoute = require("./routes/homeRoute");
-const appApi = require('./routes/appAPIroute');
+const appApi = require("./routes/appAPIroute");
 const dbApiRoute = require("./routes/dbApiRoute");
 
 //controller
@@ -28,10 +28,9 @@ const cookieParser = require("cookie-parser");
 //set ccokie-parser
 app.use(cookieParser());
 
-
 //----------------session setup------------------------
 // var session;
-//creating 5 mins from milliseconds 
+//creating 5 mins from milliseconds
 const expiry = 1000 * 60 * 60;
 
 //session middleware
@@ -74,7 +73,7 @@ app.use("/action", homeRoute);
 app.use("/createUser", homeRoute);
 app.use("/listuser", homeRoute);
 // app.use("/import-excel", importExcel);
-app.use('updateuser',homeRoute);
+app.use("updateuser", homeRoute);
 
 //role master
 app.use("/dbapi", dbApiRoute);
@@ -87,7 +86,6 @@ app.use("/api/getuser", homeRoute);
 app.use("/api/recieveMessage", homeRoute);
 app.use("/api/app", appApi);
 // app.use("/api/authAppUser", homeRoute);
-
 
 // handle errors related to multer
 
@@ -126,14 +124,15 @@ const storage = multer.diskStorage({
 });
 const uploadFile = multer({ storage: storage });
 
-function importFileToDb(exFile,req) {  //get bsd id from dropdown and store it in local variable and use select qry to get b,s&d
-  console.log("req:",req.body.std);
+function importFileToDb(exFile, req) {
+  //get bsd id from dropdown and store it in local variable and use select qry to get b,s&d
+  console.log("req:", req.body.std);
   // readXlsxFile(exFile).then((rows) => {
   //   rows.shift();
   //   console.log("rowData =",rows[1][1]);
-  //   let query = //for loop 
+  //   let query = //for loop
   //     "INSERT INTO user_details (user_fname,user_lname,user_gender,user_email,user_mobno,user_addr,user_pincode,user_pwd,user_role_id,user_department) VALUES ?";
-      
+
   //   pool.query(query, [rows], (error, result) => {
   //     console.log("ROWS:",[rows]);
   //     console.log(error || result);
@@ -141,8 +140,7 @@ function importFileToDb(exFile,req) {  //get bsd id from dropdown and store it i
   //   });
   // });
 
-
-/* use any excel read package
+  /* use any excel read package
 0) Get ay_id, sem_id, bsd_id from the html form and store in local variable.
 1) Check no. of rows in the excel file
 2) for each row 
@@ -153,11 +151,10 @@ function importFileToDb(exFile,req) {  //get bsd id from dropdown and store it i
 }
 
 app.post("/import-excel", uploadFile.single("import-excel"), (req, res) => {
-  importFileToDb(__dirname + "/uploads/" + req.file.filename,req);
+  importFileToDb(__dirname + "/uploads/" + req.file.filename, req);
   req.flash("message", `Users were created successfully`);
   res.redirect("/createUser");
 });
-
 
 // var target_gender = 1;
 // var params = {};
@@ -184,7 +181,6 @@ app.post("/import-excel", uploadFile.single("import-excel"), (req, res) => {
 //    // values.push(parseInt(params.target_gender));
 // }
 
-  
 //   return {
 //     where: conditions.length ?
 //              conditions.join(' AND ') : '1',
@@ -198,13 +194,11 @@ app.post("/import-excel", uploadFile.single("import-excel"), (req, res) => {
 // console.log(sql_1);
 // pool.query(sql_1, conditions.values, (err, result) => {
 
-
 //   if (err) res.send(err);
 
 //   // res.send("notif sent");
 //   console.log("om",result);
 // });
-
 
 //creating server
 var port = process.env.PORT || 5000;
@@ -212,5 +206,3 @@ app.listen(port, (err) => {
   if (err) throw err;
   console.log(`server running http://localhost:${port}`);
 });
-
-

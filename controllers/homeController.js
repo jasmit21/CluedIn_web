@@ -10,6 +10,7 @@ module.exports = {
       res.redirect("/dashboard");
     } 
     else {
+      console.log("redirect to /");
       var Path = path.join(__dirname, "..", "views", "login");
       res.render(Path, { Emsg : req.flash("Emsg")});
     }

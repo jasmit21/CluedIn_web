@@ -20,7 +20,7 @@ module.exports = {
           throw err;          
         }
         var data=JSON.parse(JSON.stringify(result));
-        console.log(data);
+        // console.log(data);
         var label = data[0];
         var bsd = data[1];
         // res.render(Path,{branch_data:data});
@@ -29,8 +29,8 @@ module.exports = {
 
       // res.render();
     } else {
-      var Path = path.join(__dirname, "..", "views", "login");
-      res.render(Path);
+      // var Path = path.join(__dirname, "..", "views", "login");
+      res.redirect('/');
     }
   },
 };
