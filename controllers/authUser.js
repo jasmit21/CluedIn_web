@@ -11,9 +11,9 @@ module.exports = {
     var pwd = req.body.user_pwd;
 
     // var sql = "INSERT INTO user_message (title,message,expDate,schDate,category) VALUES ?";
-    var sql = `Select * from user_details where user_mobno = "${usermobno}" and user_pwd = "${pwd}"`;
+    var sql = `Select * from user_details where user_mobno = ? and user_pwd = ?`;
 
-    pool.query(sql, (err, result) => {
+    pool.query(sql,[usermobno,pwd], (err, result) => {
       // console.log(result);
       if (err) res.send(err);
       if (result.length >= 1) {

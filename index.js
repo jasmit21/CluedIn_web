@@ -119,7 +119,7 @@ const storage = multer.diskStorage({
     cb(null, __dirname + "/uploads/users");
   },
   filename: (req, file, cb) => {
-    cb(null, file.fieldname + "-" + Date.now() + "-" + file.originalname);
+    cb(null, "stud" + "-" + Date.now() + "-" + file.originalname);
   },
 });
 const uploadFile = multer({ storage: storage });
@@ -164,6 +164,7 @@ function importFileToDb(exFile, req) {
       let userId = result.insertId;
       console.log("userid:", userId);
       //2nd query
+      data=[];
       data = [
         userId,
         acadYear,

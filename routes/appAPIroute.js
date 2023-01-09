@@ -1,7 +1,9 @@
 //import modules 
+const { ServiceCatalogAppRegistry } = require("aws-sdk");
 const express = require("express");
 const router = express.Router();
 const path = require("path");
+const { abort } = require("process");
 
 //import controller files 
 let authAppUser = require("../controllers/appControllers/authAppUser");
